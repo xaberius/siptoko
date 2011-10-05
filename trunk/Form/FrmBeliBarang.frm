@@ -1075,6 +1075,22 @@ With CmbBarang
 End With
 End Sub
 
+Private Sub CmbBarang_GotFocus()
+If Trim(CmbSupplier) = "" Or Not CmbSupplier.IsItemInList Then
+    MsgBox "Supplier Belum Dipilih"
+    CmbSupplier.SetFocus
+    Exit Sub
+ElseIf TxtTgl = Null Then
+    MsgBox "Tanggal Beli Kosong"
+    TxtTgl.SetFocus
+    Exit Sub
+ElseIf TxtTglKirim = Null Then
+    MsgBox "Tanggal Kosong Kosong"
+    TxtTglKirim.SetFocus
+    Exit Sub
+End If
+End Sub
+
 Private Sub CmbSupplier_DropDown()
 AdoSupplier.RecordSource = ""
 SQL = "Select KodeSupplier,NamaSupplier from Supplier order by kodeSupplier"
@@ -1090,6 +1106,51 @@ With CmbSupplier
 End With
 End Sub
 
+Private Sub CmdInput_Click()
+If Trim(CmbBarang) = "" Or Not CmbBarang.IsItemInList Then
+    MsgBox "Barang Belum Dipilih"
+    CmbBarang.SetFocus
+    Exit Sub
+ElseIf TxtJumlah = 0 Then
+    MsgBox "Jumlah Masih 0"
+    TxtJumlah.SetFocus
+    Exit Sub
+ElseIf TxtHarga = 0 Then
+    MsgBox "Harga Beli Masih 0"
+    TxtHarga.SetFocus
+    Exit Sub
+ElseIf TxtKirim = 0 Then
+    MsgBox "Biaya Kirim Masih 0"
+    TxtKirim.SetFocus
+    Exit Sub
+End If
+
+RsTmp.Find "namaBarang='" & Trim(CmbBarang) & "'", , adSearchForward, 1
+If RsTmp.EOF Then
+    With RsTmp
+        .AddNew
+        !noket = RsTmp.RecordCount
+        !namaBarang = Trim(CmbBarang)
+        !KodeBarang = Trim(CmbBarang.Columns(0).Text)
+        !jumlah = Val(TxtJumlah)
+        !hargaBeli = TxtHarga
+        !BiayaKirim = txtkirm
+        .Update
+    End With
+    Grid.DataSource = RsTmp
+    Grid.Refresh
+Else
+    MsgBox "Barang Sudah Diinputkan."
+    Exit Sub
+End If
+CmbBarang = ""
+TxtJumlah = 0
+TxtHarga = 0
+TxtKirim = 0
+CmbBarang.SetFocus
+
+End Sub
+
 Private Sub Form_Load()
 AdoBarang.ConnectionString = ConDB
 AdoSupplier.ConnectionString = ConDB
@@ -1103,6 +1164,7 @@ With RsTmp
     .Fields.Append "Jumlah", adInteger, 4
     .Fields.Append "HargaBeli", adDouble, 8
     .Fields.Append "BiayaKirim", adDouble, 8
+    .Open
 End With
 End Sub
 
@@ -1114,6 +1176,18 @@ CmbBarang = ""
 TxtJumlah = 0
 TxtHarga = 0
 TxtKirim = 0
+End Sub
+
+Private Sub TxtHarga_GotFocus()
+CmbBarang_GotFocus
+End Sub
+
+Private Sub TxtJumlah_GotFocus()
+CmbBarang_GotFocus
+End Sub
+
+Private Sub TxtKirim_GotFocus()
+CmbBarang_GotFocus
 End Sub
 
 Private Sub vbButton1_Click()

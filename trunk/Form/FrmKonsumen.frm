@@ -635,6 +635,7 @@ End Sub
 
 
 Private Sub Grid_DblClick()
+
 Edit = True
 TxtKode = Trim(Grid.Columns(0).Text)
 TxtNama = Trim(Grid.Columns(1).Text)
