@@ -669,7 +669,7 @@ Begin VB.Form FrmMutasi
    End
    Begin VB.Label Label5 
       BackStyle       =   0  'Transparent
-      Caption         =   "Kode Barang"
+      Caption         =   "Nama Barang"
       BeginProperty Font 
          Name            =   "Calibri"
          Size            =   11.25
@@ -777,6 +777,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Dim Keterangan1 As Integer
+Dim RsTemp1 As New ADODB.Recordset
 
 Private Sub CmbAsal_KeyDown(KeyCode As Integer, Shift As Integer)
 Enter KeyCode
@@ -784,7 +785,7 @@ End Sub
 
 Private Sub CmbBarang_DropDown()
 Adodc1.RecordSource = ""
-SQL = "Select KodeBarang,NamaBarang from Barang order by kodeBarang"
+SQL = "Select KodeBarang,NamaBarang,Satuan from Barang order by kodeBarang"
 Set RSFind = DbCon.Execute(SQL)
 If RSFind.BOF Then Exit Sub
 Adodc1.RecordSource = SQL
@@ -798,7 +799,7 @@ End With
 End Sub
 
 
-Private Sub cmbBarang_GotFocus()
+Private Sub CmbBarang_GotFocus()
 If IsNull(TxtTgl) Or TxtTgl < Date Then
     MsgBox "Tanggal Tidak Valid"
     TxtTgl.SetFocus
@@ -843,16 +844,16 @@ ElseIf TxtJumlah = 0 Then
 End If
 
 RsTmp.Find "namaBarang='" & Trim(cmbBarang) & "'", , adSearchForward, 1
-If RsTmp.EOF Then
-    With RsTmp
+If RsTemp1.EOF Then
+    With RsTemp1
         .AddNew
-        !noket = RsTmp.RecordCount
+        !noket = RsTemp1.RecordCount
         !namaBarang = Trim(cmbBarang)
         !KodeBarang = Trim(cmbBarang.Columns(0).Text)
         !jumlah = Val(TxtJumlah)
         .Update
     End With
-    Grid.DataSource = RsTmp
+    Grid.DataSource = RsTemp1
     Grid.Refresh
 Else
     MsgBox "Barang Sudah Diinputkan."
@@ -868,9 +869,9 @@ Private Sub CmdSave_Click()
 SQL = "insert into Mutasi values('" & FormatTgl(TxtTgl) & "','" & Trim(CmbAsal) & "','" & Trim(CmbTujuan) & _
     "','" & Trim(TxtKet) & "')"
 DbCon.Execute SQL
-RsTmp.MoveFirst
-While Not RsTmp.EOF
-    With RsTmp
+RsTemp1.MoveFirst
+While Not RsTemp1.EOF
+    With RsTemp1
         SQL = "insert into DtlMutasi values('" & FormatTgl(TxtTgl) & "','" & !noket & "','" & _
             !KodeBarang & "'," & !jumlah & ")"
         DbCon.Execute SQL
@@ -884,7 +885,7 @@ End Sub
 Private Sub Form_Load()
 Bersih
 Adodc1.ConnectionString = ConDB
-With RsTmp
+With RsTemp1
     .Fields.Append "noKet", adInteger, 4
     .Fields.Append "KodeBarang", adVarChar, 50
     .Fields.Append "NamaBarang", adVarChar, 50
@@ -915,20 +916,20 @@ If KeyCode = 46 Then
     MsgBox "Klik Salah Satu Item Di Tabel"
     Exit Sub
 End If
-RsTmp.Find "noket='" & Keterangan1 & "'", , adSearchForward, 1
-If Not RsTmp.EOF Then
-    MsgBox RsTmp!noket & " Dibatalkan"
-    RsTmp.Delete
+RsTemp1.Find "noket='" & Keterangan1 & "'", , adSearchForward, 1
+If Not RsTemp1.EOF Then
+    MsgBox RsTemp1!noket & " Dibatalkan"
+    RsTemp1.Delete
 End If
     Keterangan1 = Keterangan1 + 1
-    RsTmp.Find "noket='" & Keterangan1 & "'", , adSearchForward, 1
-    While Not RsTmp.EOF
-        With RsTmp
+    RsTemp1.Find "noket='" & Keterangan1 & "'", , adSearchForward, 1
+    While Not RsTemp1.EOF
+        With RsTemp1
             .Clone
             !noket = !noket - 1
             .Update
         End With
-        RsTmp.MoveNext
+        RsTemp1.MoveNext
     Wend
 Grid.Refresh
 End If
@@ -939,7 +940,7 @@ Keterangan1 = Val(Me.Grid.Columns(0).Text)
 End Sub
 
 Private Sub TxtJumlah_GotFocus()
-cmbBarang_GotFocus
+CmbBarang_GotFocus
 End Sub
 
 Private Sub TxtJumlah_KeyDown(KeyCode As Integer, Shift As Integer)
