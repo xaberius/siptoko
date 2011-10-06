@@ -2,12 +2,17 @@ Attribute VB_Name = "ModuleSQL"
 Sub CekTabel()
 TabelBarang 'ok
 TabelJabatan 'ok
-TabelJenis
-TabelKonsumen
-TabelPegawai
-TabelSales
-TabelSupplier
-TabelUserX
+TabelJenis 'ok
+TabelKonsumen 'ok
+TabelPegawai 'ok
+TabelSales 'ok
+TabelSupplier 'ok
+TabelUserX 'ok
+TabelMutasi 'ok
+TabelDtlMutasi 'ok
+TabelBeliBarang 'ok
+TabelDtlBeliBarang 'ok
+
 End Sub
 
 Sub TabelBarang()
@@ -128,3 +133,49 @@ If RSFind.BOF Or RSFind.RecordCount = 0 Then
 End If
 End Sub
 
+Sub TabelMutasi()
+SQL = "if not exists(select * from dbo.sysobjects where name = 'Mutasi') "
+SQL = SQL + "CREATE TABLE [dbo].[Mutasi] ("
+SQL = SQL + "    [TglMutasi] [datetime] NULL ,"
+SQL = SQL + "    [Asal] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [Tujuan] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [Keterangan] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL"
+SQL = SQL + ") ON [PRIMARY]"
+DbCon.Execute SQL
+End Sub
+
+Sub TabelDtlMutasi()
+SQL = "if not exists(select * from dbo.sysobjects where name = 'DtlMutasi') "
+SQL = SQL + "CREATE TABLE [dbo].[DtlMutasi] ("
+SQL = SQL + "    [TglMutasi] [datetime] NULL ,"
+SQL = SQL + "    [NoKet] [int] NULL ,"
+SQL = SQL + "    [KodeBarang] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [Jumlah] [int] NULL"
+SQL = SQL + ") ON [PRIMARY]"
+DbCon.Execute SQL
+End Sub
+
+Sub TabelBeliBarang()
+SQL = "if not exists(select * from dbo.sysobjects where name = 'BeliBarang') "
+SQL = SQL + "CREATE TABLE [dbo].[BeliBarang] ("
+SQL = SQL + "    [KodeTransaksi] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [TglTransaksi] [datetime] NULL ,"
+SQL = SQL + "    [KodeSupplier] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [TglKirim] [datetime] NULL"
+SQL = SQL + ") ON [PRIMARY]"
+DbCon.Execute SQL
+End Sub
+
+Sub TabelDtlBeliBarang()
+SQL = "if not exists(select * from dbo.sysobjects where name = 'DtlBeliBarang') "
+SQL = SQL + "CREATE TABLE [dbo].[DtlBeliBarang] ("
+SQL = SQL + "    [KodeTransaksi] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [TglTransaksi] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [NoKet] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [KodeBarang] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [Jumlah] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [HargaBeli] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [BiayaKirim] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL"
+SQL = SQL + ") ON [PRIMARY]"
+DbCon.Execute SQL
+End Sub
