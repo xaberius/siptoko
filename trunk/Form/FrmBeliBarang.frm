@@ -19,11 +19,11 @@ Begin VB.Form FrmBeliBarang
    ScaleHeight     =   6360
    ScaleWidth      =   9795
    ShowInTaskbar   =   0   'False
-   StartUpPosition =   3  'Windows Default
+   StartUpPosition =   2  'CenterScreen
    Begin SSDataWidgets_B_OLEDB.SSOleDBCombo CmbSupplier 
       Height          =   330
       Left            =   2040
-      TabIndex        =   22
+      TabIndex        =   2
       Top             =   1080
       Width           =   2295
       _Version        =   196616
@@ -39,7 +39,7 @@ Begin VB.Form FrmBeliBarang
       Appearance      =   0  'Flat
       Height          =   330
       Left            =   2040
-      TabIndex        =   12
+      TabIndex        =   0
       Top             =   720
       Width           =   2295
    End
@@ -93,7 +93,7 @@ Begin VB.Form FrmBeliBarang
    Begin TDBNumber6Ctl.TDBNumber TxtJumlah 
       Height          =   330
       Left            =   2040
-      TabIndex        =   0
+      TabIndex        =   5
       Top             =   2160
       Width           =   975
       _Version        =   65536
@@ -213,7 +213,7 @@ Begin VB.Form FrmBeliBarang
    Begin BasTombol.vbButton vbButton1 
       Height          =   375
       Left            =   8880
-      TabIndex        =   2
+      TabIndex        =   13
       Top             =   120
       Width           =   375
       _ExtentX        =   661
@@ -251,7 +251,7 @@ Begin VB.Form FrmBeliBarang
    Begin BasTombol.vbButton vbButton2 
       Height          =   375
       Left            =   9360
-      TabIndex        =   3
+      TabIndex        =   14
       Top             =   120
       Width           =   375
       _ExtentX        =   661
@@ -289,7 +289,7 @@ Begin VB.Form FrmBeliBarang
    Begin BasTombol.vbButton CmdCancel 
       Height          =   375
       Left            =   1560
-      TabIndex        =   4
+      TabIndex        =   10
       Top             =   5760
       Width           =   1215
       _ExtentX        =   2143
@@ -327,7 +327,7 @@ Begin VB.Form FrmBeliBarang
    Begin BasTombol.vbButton CmdSave 
       Height          =   375
       Left            =   240
-      TabIndex        =   5
+      TabIndex        =   9
       Top             =   5760
       Width           =   1215
       _ExtentX        =   2143
@@ -365,7 +365,7 @@ Begin VB.Form FrmBeliBarang
    Begin BasTombol.vbButton CmdInput 
       Height          =   375
       Left            =   8280
-      TabIndex        =   6
+      TabIndex        =   8
       Top             =   2760
       Width           =   1215
       _ExtentX        =   2143
@@ -403,7 +403,7 @@ Begin VB.Form FrmBeliBarang
    Begin TrueOleDBGrid70.TDBGrid Grid 
       Height          =   2775
       Left            =   240
-      TabIndex        =   7
+      TabIndex        =   12
       Top             =   2760
       Width           =   7920
       _ExtentX        =   13970
@@ -414,7 +414,7 @@ Begin VB.Form FrmBeliBarang
       Columns(0)._VlistStyle=   0
       Columns(0)._MaxComboItems=   5
       Columns(0).Caption=   "Nomor"
-      Columns(0).DataField=   "Nomor"
+      Columns(0).DataField=   "Noket"
       Columns(0)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
       Columns(1)._VlistStyle=   0
       Columns(1)._MaxComboItems=   5
@@ -511,7 +511,7 @@ Begin VB.Form FrmBeliBarang
       _StyleDefs(3)   =   ":id=0,.borderColor=&H80000005&,.borderType=0,.bold=0,.fontsize=825,.italic=0"
       _StyleDefs(4)   =   ":id=0,.underline=0,.strikethrough=0,.charset=0"
       _StyleDefs(5)   =   ":id=0,.fontname=MS Sans Serif"
-      _StyleDefs(6)   =   "Style:id=1,.parent=0,.namedParent=33,.fgcolor=&HFFFFFF&,.bold=0,.fontsize=825"
+      _StyleDefs(6)   =   "Style:id=1,.parent=0,.namedParent=33,.fgcolor=&H0&,.bold=0,.fontsize=825"
       _StyleDefs(7)   =   ":id=1,.italic=0,.underline=0,.strikethrough=0,.charset=0"
       _StyleDefs(8)   =   ":id=1,.fontname=MS Sans Serif"
       _StyleDefs(9)   =   "CaptionStyle:id=4,.parent=2,.namedParent=37"
@@ -590,7 +590,7 @@ Begin VB.Form FrmBeliBarang
    Begin TDBDate6Ctl.TDBDate TxtTglKirim 
       Height          =   330
       Left            =   6480
-      TabIndex        =   14
+      TabIndex        =   3
       Top             =   1080
       Width           =   1815
       _Version        =   65536
@@ -652,7 +652,7 @@ Begin VB.Form FrmBeliBarang
    Begin TDBNumber6Ctl.TDBNumber TxtHarga 
       Height          =   315
       Left            =   6480
-      TabIndex        =   18
+      TabIndex        =   6
       Top             =   1800
       Width           =   2295
       _Version        =   393216
@@ -710,7 +710,7 @@ Begin VB.Form FrmBeliBarang
    Begin TDBNumber6Ctl.TDBNumber TxtKirim 
       Height          =   315
       Left            =   6480
-      TabIndex        =   20
+      TabIndex        =   7
       Top             =   2160
       Width           =   2295
       _Version        =   393216
@@ -768,7 +768,7 @@ Begin VB.Form FrmBeliBarang
    Begin BasTombol.vbButton vbButton3 
       Height          =   375
       Left            =   6840
-      TabIndex        =   21
+      TabIndex        =   11
       Top             =   5760
       Width           =   1215
       _ExtentX        =   2143
@@ -853,7 +853,7 @@ Begin VB.Form FrmBeliBarang
    Begin SSDataWidgets_B_OLEDB.SSOleDBCombo CmbBarang 
       Height          =   330
       Left            =   2040
-      TabIndex        =   23
+      TabIndex        =   4
       Top             =   1800
       Width           =   2295
       _Version        =   196616
@@ -888,7 +888,7 @@ Begin VB.Form FrmBeliBarang
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   4680
-      TabIndex        =   19
+      TabIndex        =   23
       Top             =   2160
       Width           =   1575
    End
@@ -907,7 +907,7 @@ Begin VB.Form FrmBeliBarang
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   4680
-      TabIndex        =   17
+      TabIndex        =   22
       Top             =   1800
       Width           =   1575
    End
@@ -926,7 +926,7 @@ Begin VB.Form FrmBeliBarang
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   360
-      TabIndex        =   16
+      TabIndex        =   21
       Top             =   1800
       Width           =   1575
    End
@@ -945,7 +945,7 @@ Begin VB.Form FrmBeliBarang
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   4680
-      TabIndex        =   15
+      TabIndex        =   20
       Top             =   1080
       Width           =   1695
    End
@@ -964,7 +964,7 @@ Begin VB.Form FrmBeliBarang
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   360
-      TabIndex        =   13
+      TabIndex        =   19
       Top             =   720
       Width           =   1575
    End
@@ -983,7 +983,7 @@ Begin VB.Form FrmBeliBarang
       ForeColor       =   &H8000000D&
       Height          =   495
       Left            =   240
-      TabIndex        =   11
+      TabIndex        =   18
       Top             =   120
       Width           =   3255
    End
@@ -1010,7 +1010,7 @@ Begin VB.Form FrmBeliBarang
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   4680
-      TabIndex        =   10
+      TabIndex        =   17
       Top             =   720
       Width           =   1695
    End
@@ -1029,7 +1029,7 @@ Begin VB.Form FrmBeliBarang
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   360
-      TabIndex        =   9
+      TabIndex        =   16
       Top             =   1080
       Width           =   1575
    End
@@ -1048,7 +1048,7 @@ Begin VB.Form FrmBeliBarang
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   360
-      TabIndex        =   8
+      TabIndex        =   15
       Top             =   2160
       Width           =   1575
    End
@@ -1058,7 +1058,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-
+Dim RsTemp2 As New ADODB.Recordset
 
 Private Sub CmbBarang_DropDown()
 AdoBarang.RecordSource = ""
@@ -1067,7 +1067,7 @@ Set RSFind = DbCon.Execute(SQL)
 If RSFind.BOF Then Exit Sub
 AdoBarang.RecordSource = SQL
 AdoBarang.Refresh
-With CmbBarang
+With cmbBarang
     .DataSourceList = AdoBarang
     .DataFieldList = "NamaBarang"
     .Columns(0).Visible = False
@@ -1106,10 +1106,14 @@ With CmbSupplier
 End With
 End Sub
 
+Private Sub CmdCancel_Click()
+Form_Load
+End Sub
+
 Private Sub CmdInput_Click()
-If Trim(CmbBarang) = "" Or Not CmbBarang.IsItemInList Then
+If Trim(cmbBarang) = "" Or Not cmbBarang.IsItemInList Then
     MsgBox "Barang Belum Dipilih"
-    CmbBarang.SetFocus
+    cmbBarang.SetFocus
     Exit Sub
 ElseIf TxtJumlah = 0 Then
     MsgBox "Jumlah Masih 0"
@@ -1125,39 +1129,66 @@ ElseIf TxtKirim = 0 Then
     Exit Sub
 End If
 
-RsTmp.Find "namaBarang='" & Trim(CmbBarang) & "'", , adSearchForward, 1
-If RsTmp.EOF Then
-    With RsTmp
+RsTemp2.Find "namaBarang='" & Trim(cmbBarang) & "'", , adSearchForward, 1
+If RsTemp2.EOF Then
+    With RsTemp2
         .AddNew
-        !noket = RsTmp.RecordCount
-        !namaBarang = Trim(CmbBarang)
-        !KodeBarang = Trim(CmbBarang.Columns(0).Text)
-        !jumlah = Val(TxtJumlah)
-        !hargaBeli = TxtHarga
-        !BiayaKirim = txtkirm
+        !NoKet = RsTemp2.RecordCount
+        !namaBarang = Trim(cmbBarang)
+        !KodeBarang = Trim(cmbBarang.Columns(0).Text)
+        !Jumlah = Val(TxtJumlah)
+        !HargaBeli = Val(TxtHarga)
+        !BiayaKirim = Val(TxtKirim)
         .Update
     End With
-    Grid.DataSource = RsTmp
+    Grid.DataSource = RsTemp2
     Grid.Refresh
 Else
     MsgBox "Barang Sudah Diinputkan."
     Exit Sub
 End If
-CmbBarang = ""
+cmbBarang = ""
 TxtJumlah = 0
 TxtHarga = 0
 TxtKirim = 0
-CmbBarang.SetFocus
+cmbBarang.SetFocus
 
 End Sub
 
+Private Sub CmdSave_Click()
+If RsTemp2.RecordCount = 0 Then
+    MsgBox "Tidak Ada Barang Dalam List"
+    Exit Sub
+End If
+
+SQL = "insert into BeliBarang values('" & Trim(TxtKwitansi) & "','" & FormatTgl(TxtTgl) & "','" & _
+    Trim(CmbSupplier) & "','" & FormatTgl(TxtTglKirim) & "')"
+DbCon.Execute SQL
+
+RsTemp2.MoveFirst
+While Not RsTemp2.EOF
+    With RsTemp2
+        SQL = "insert into dtlBeliBarang values('" & Trim(TxtKwitansi) & "','" & FormatTgl(TxtTgl) & _
+            "','" & !NoKet & "','" & !KodeBarang & "'," & !Jumlah & "," & !HargaBeli & "," & _
+            !BiayaKirim & ")"
+        DbCon.Execute SQL
+    End With
+    RsTemp2.MoveNext
+Wend
+MsgBox "Data Saved"
+Bersih
+TxtKwitansi.SetFocus
+Form_Load
+End Sub
+
 Private Sub Form_Load()
+If RsTemp2.State Then RsTemp2.Close
 AdoBarang.ConnectionString = ConDB
 AdoSupplier.ConnectionString = ConDB
 Bersih
 TxtKwitansi = KodeAuto
 
-With RsTmp
+With RsTemp2
     .Fields.Append "NoKet", adInteger, 4
     .Fields.Append "KodeBarang", adVarChar, 50
     .Fields.Append "NamaBarang", adVarChar, 50
@@ -1172,7 +1203,7 @@ Sub Bersih()
 CmbSupplier = ""
 TxtTgl = Null
 TxtTglKirim = Null
-CmbBarang = ""
+cmbBarang = ""
 TxtJumlah = 0
 TxtHarga = 0
 TxtKirim = 0

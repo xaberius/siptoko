@@ -843,14 +843,14 @@ ElseIf TxtJumlah = 0 Then
     Exit Sub
 End If
 
-RsTmp.Find "namaBarang='" & Trim(cmbBarang) & "'", , adSearchForward, 1
+RsTemp1.Find "namaBarang='" & Trim(cmbBarang) & "'", , adSearchForward, 1
 If RsTemp1.EOF Then
     With RsTemp1
         .AddNew
-        !noket = RsTemp1.RecordCount
+        !NoKet = RsTemp1.RecordCount
         !namaBarang = Trim(cmbBarang)
         !KodeBarang = Trim(cmbBarang.Columns(0).Text)
-        !jumlah = Val(TxtJumlah)
+        !Jumlah = Val(TxtJumlah)
         .Update
     End With
     Grid.DataSource = RsTemp1
@@ -872,18 +872,20 @@ DbCon.Execute SQL
 RsTemp1.MoveFirst
 While Not RsTemp1.EOF
     With RsTemp1
-        SQL = "insert into DtlMutasi values('" & FormatTgl(TxtTgl) & "','" & !noket & "','" & _
-            !KodeBarang & "'," & !jumlah & ")"
+        SQL = "insert into DtlMutasi values('" & FormatTgl(TxtTgl) & "','" & !NoKet & "','" & _
+            !KodeBarang & "'," & !Jumlah & ")"
         DbCon.Execute SQL
         .MoveNext
     End With
 Wend
 MsgBox "Data Saved"
 Bersih
+Form_Load
 End Sub
 
 Private Sub Form_Load()
 Bersih
+If RsTemp1.State Then RsTemp1.Close
 Adodc1.ConnectionString = ConDB
 With RsTemp1
     .Fields.Append "noKet", adInteger, 4
@@ -892,7 +894,7 @@ With RsTemp1
     .Fields.Append "Jumlah", adInteger, 4
     .Open
 End With
-
+Set Grid.DataSource = RsTemp1
 End Sub
 Sub Bersih()
 TxtTgl = Date
@@ -900,6 +902,7 @@ CmbAsal = ""
 CmbTujuan = ""
 cmbBarang = ""
 TxtJumlah = 0
+TxtKet = ""
 End Sub
 
 Private Sub SSOleDBCombo1_GotFocus()
@@ -918,7 +921,7 @@ If KeyCode = 46 Then
 End If
 RsTemp1.Find "noket='" & Keterangan1 & "'", , adSearchForward, 1
 If Not RsTemp1.EOF Then
-    MsgBox RsTemp1!noket & " Dibatalkan"
+    MsgBox RsTemp1!NoKet & " Dibatalkan"
     RsTemp1.Delete
 End If
     Keterangan1 = Keterangan1 + 1
@@ -926,7 +929,7 @@ End If
     While Not RsTemp1.EOF
         With RsTemp1
             .Clone
-            !noket = !noket - 1
+            !NoKet = !NoKet - 1
             .Update
         End With
         RsTemp1.MoveNext
