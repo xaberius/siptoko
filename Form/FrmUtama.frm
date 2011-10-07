@@ -181,7 +181,11 @@ With SmartMenuXP1.MenuItems
             Case "mnuSales": CekKonek FrmSales
             Case "mnuMutasi": CekKonek FrmMutasi
             Case "mnuPembelian": CekKonek FrmBeliBarang
+            Case "mnuReturBeli": CekKonek FrmReturBeli
             Case "mnuMicrosoftPowerPoint": 'TODO : something here
+            Case "mnuMicrosoftPowerPoint": 'TODO : something here
+            Case "mnuMicrosoftPowerPoint": 'TODO : something here
+            
             Case "mnuExit": End
         End Select
     End With

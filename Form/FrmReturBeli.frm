@@ -5,26 +5,41 @@ Object = "{49CBFCC0-1337-11D2-9BBF-00A024695830}#1.0#0"; "tinumb6.ocx"
 Object = "{A49CE0E0-C0F9-11D2-B0EA-00A024695830}#1.0#0"; "tidate6.ocx"
 Object = "{DEF7CADD-83C0-11D0-A0F1-00A024703500}#7.0#0"; "todg7.ocx"
 Object = "{4A4AA691-3E6F-11D2-822F-00104B9E07A1}#3.0#0"; "ssdw3bo.ocx"
-Begin VB.Form FrmBeliBarang 
+Begin VB.Form FrmReturBeli 
    BackColor       =   &H00FFC0C0&
    BorderStyle     =   0  'None
    Caption         =   "Form2"
-   ClientHeight    =   6360
+   ClientHeight    =   6600
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   9795
+   ClientWidth     =   8280
    LinkTopic       =   "Form2"
-   MaxButton       =   0   'False
-   MinButton       =   0   'False
-   ScaleHeight     =   6360
-   ScaleWidth      =   9795
+   ScaleHeight     =   6600
+   ScaleWidth      =   8280
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
-   Begin SSDataWidgets_B_OLEDB.SSOleDBCombo CmbSupplier 
+   Begin VB.TextBox TxtAlasan 
+      Appearance      =   0  'Flat
+      Height          =   330
+      Left            =   3120
+      TabIndex        =   5
+      Top             =   2160
+      Width           =   4095
+   End
+   Begin VB.TextBox TxtSupplier 
+      Appearance      =   0  'Flat
+      Enabled         =   0   'False
       Height          =   330
       Left            =   2040
-      TabIndex        =   2
+      TabIndex        =   1
       Top             =   1080
+      Width           =   2295
+   End
+   Begin SSDataWidgets_B_OLEDB.SSOleDBCombo CmbTransaksi 
+      Height          =   330
+      Left            =   2040
+      TabIndex        =   0
+      Top             =   720
       Width           =   2295
       _Version        =   196616
       BackColorOdd    =   16761024
@@ -35,17 +50,9 @@ Begin VB.Form FrmBeliBarang
       ForeColor       =   -2147483640
       BackColor       =   -2147483643
    End
-   Begin VB.TextBox TxtKwitansi 
-      Appearance      =   0  'Flat
-      Height          =   330
-      Left            =   2040
-      TabIndex        =   0
-      Top             =   720
-      Width           =   2295
-   End
    Begin MSAdodcLib.Adodc AdoBarang 
       Height          =   330
-      Left            =   7320
+      Left            =   5520
       Top             =   120
       Visible         =   0   'False
       Width           =   1200
@@ -90,75 +97,17 @@ Begin VB.Form FrmBeliBarang
       EndProperty
       _Version        =   393216
    End
-   Begin TDBNumber6Ctl.TDBNumber TxtJumlah 
-      Height          =   330
-      Left            =   2040
-      TabIndex        =   5
-      Top             =   2160
-      Width           =   975
-      _Version        =   65536
-      _ExtentX        =   1720
-      _ExtentY        =   582
-      Calculator      =   "FrmBeliBarang.frx":0000
-      Caption         =   "FrmBeliBarang.frx":0020
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      DropDown        =   "FrmBeliBarang.frx":008C
-      Keys            =   "FrmBeliBarang.frx":00AA
-      Spin            =   "FrmBeliBarang.frx":00F4
-      AlignHorizontal =   1
-      AlignVertical   =   0
-      Appearance      =   0
-      BackColor       =   -2147483643
-      BorderStyle     =   1
-      BtnPositioning  =   0
-      ClipMode        =   0
-      ClearAction     =   0
-      DecimalPoint    =   ","
-      DisplayFormat   =   "####0;;Null"
-      EditMode        =   0
-      Enabled         =   -1
-      ErrorBeep       =   0
-      ForeColor       =   -2147483640
-      Format          =   "####0"
-      HighlightText   =   0
-      MarginBottom    =   1
-      MarginLeft      =   1
-      MarginRight     =   1
-      MarginTop       =   1
-      MaxValue        =   99999
-      MinValue        =   -99999
-      MousePointer    =   0
-      MoveOnLRKey     =   0
-      NegativeColor   =   255
-      OLEDragMode     =   0
-      OLEDropMode     =   0
-      ReadOnly        =   0
-      Separator       =   "."
-      ShowContextMenu =   -1
-      ValueVT         =   1245189
-      Value           =   0
-      MaxValueVT      =   1549533189
-      MinValueVT      =   1701707781
-   End
    Begin TDBDate6Ctl.TDBDate TxtTgl 
       Height          =   330
-      Left            =   6480
-      TabIndex        =   1
+      Left            =   6360
+      TabIndex        =   2
       Top             =   720
-      Width           =   1815
+      Width           =   1575
       _Version        =   65536
-      _ExtentX        =   3201
+      _ExtentX        =   2778
       _ExtentY        =   582
-      Calendar        =   "FrmBeliBarang.frx":011C
-      Caption         =   "FrmBeliBarang.frx":0248
+      Calendar        =   "FrmReturBeli.frx":0000
+      Caption         =   "FrmReturBeli.frx":012C
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -168,9 +117,9 @@ Begin VB.Form FrmBeliBarang
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      DropDown        =   "FrmBeliBarang.frx":02B4
-      Keys            =   "FrmBeliBarang.frx":02D2
-      Spin            =   "FrmBeliBarang.frx":0330
+      DropDown        =   "FrmReturBeli.frx":0198
+      Keys            =   "FrmReturBeli.frx":01B6
+      Spin            =   "FrmReturBeli.frx":0214
       AlignHorizontal =   0
       AlignVertical   =   0
       Appearance      =   0
@@ -182,7 +131,7 @@ Begin VB.Form FrmBeliBarang
       DataProperty    =   0
       DisplayFormat   =   "dd mmmm yyy"
       EditMode        =   0
-      Enabled         =   -1
+      Enabled         =   0
       ErrorBeep       =   0
       FirstMonth      =   4
       ForeColor       =   -2147483640
@@ -212,8 +161,8 @@ Begin VB.Form FrmBeliBarang
    End
    Begin BasTombol.vbButton vbButton1 
       Height          =   375
-      Left            =   8880
-      TabIndex        =   12
+      Left            =   7200
+      TabIndex        =   10
       Top             =   120
       Width           =   375
       _ExtentX        =   661
@@ -238,7 +187,7 @@ Begin VB.Form FrmBeliBarang
       FCOLO           =   16777215
       MCOL            =   12632256
       MPTR            =   1
-      MICON           =   "FrmBeliBarang.frx":0358
+      MICON           =   "FrmReturBeli.frx":023C
       UMCOL           =   -1  'True
       SOFT            =   0   'False
       PICPOS          =   0
@@ -250,8 +199,8 @@ Begin VB.Form FrmBeliBarang
    End
    Begin BasTombol.vbButton vbButton2 
       Height          =   375
-      Left            =   9360
-      TabIndex        =   13
+      Left            =   7680
+      TabIndex        =   11
       Top             =   120
       Width           =   375
       _ExtentX        =   661
@@ -276,7 +225,7 @@ Begin VB.Form FrmBeliBarang
       FCOLO           =   16777215
       MCOL            =   12632256
       MPTR            =   1
-      MICON           =   "FrmBeliBarang.frx":0374
+      MICON           =   "FrmReturBeli.frx":0258
       UMCOL           =   -1  'True
       SOFT            =   0   'False
       PICPOS          =   0
@@ -288,9 +237,9 @@ Begin VB.Form FrmBeliBarang
    End
    Begin BasTombol.vbButton CmdCancel 
       Height          =   375
-      Left            =   1560
-      TabIndex        =   10
-      Top             =   5760
+      Left            =   1680
+      TabIndex        =   8
+      Top             =   6000
       Width           =   1215
       _ExtentX        =   2143
       _ExtentY        =   661
@@ -314,7 +263,7 @@ Begin VB.Form FrmBeliBarang
       FCOLO           =   0
       MCOL            =   12632256
       MPTR            =   1
-      MICON           =   "FrmBeliBarang.frx":0390
+      MICON           =   "FrmReturBeli.frx":0274
       UMCOL           =   -1  'True
       SOFT            =   0   'False
       PICPOS          =   0
@@ -326,9 +275,9 @@ Begin VB.Form FrmBeliBarang
    End
    Begin BasTombol.vbButton CmdSave 
       Height          =   375
-      Left            =   240
-      TabIndex        =   9
-      Top             =   5760
+      Left            =   360
+      TabIndex        =   7
+      Top             =   6000
       Width           =   1215
       _ExtentX        =   2143
       _ExtentY        =   661
@@ -352,7 +301,7 @@ Begin VB.Form FrmBeliBarang
       FCOLO           =   0
       MCOL            =   12632256
       MPTR            =   1
-      MICON           =   "FrmBeliBarang.frx":03AC
+      MICON           =   "FrmReturBeli.frx":0290
       UMCOL           =   -1  'True
       SOFT            =   0   'False
       PICPOS          =   0
@@ -364,9 +313,9 @@ Begin VB.Form FrmBeliBarang
    End
    Begin BasTombol.vbButton CmdInput 
       Height          =   375
-      Left            =   8280
-      TabIndex        =   8
-      Top             =   2760
+      Left            =   6840
+      TabIndex        =   6
+      Top             =   3120
       Width           =   1215
       _ExtentX        =   2143
       _ExtentY        =   661
@@ -390,7 +339,7 @@ Begin VB.Form FrmBeliBarang
       FCOLO           =   0
       MCOL            =   12632256
       MPTR            =   1
-      MICON           =   "FrmBeliBarang.frx":03C8
+      MICON           =   "FrmReturBeli.frx":02AC
       UMCOL           =   -1  'True
       SOFT            =   0   'False
       PICPOS          =   0
@@ -401,13 +350,13 @@ Begin VB.Form FrmBeliBarang
       VALUE           =   0   'False
    End
    Begin TrueOleDBGrid70.TDBGrid Grid 
-      Height          =   2775
-      Left            =   240
-      TabIndex        =   11
-      Top             =   2760
-      Width           =   7920
-      _ExtentX        =   13970
-      _ExtentY        =   4895
+      Height          =   2655
+      Left            =   360
+      TabIndex        =   9
+      Top             =   3120
+      Width           =   6360
+      _ExtentX        =   11218
+      _ExtentY        =   4683
       _LayoutType     =   4
       _RowHeight      =   -2147483647
       _WasPersistedAsPixels=   0
@@ -433,15 +382,10 @@ Begin VB.Form FrmBeliBarang
       Columns(3)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
       Columns(4)._VlistStyle=   0
       Columns(4)._MaxComboItems=   5
-      Columns(4).Caption=   "Harga Beli"
-      Columns(4).DataField=   "HargaBeli"
+      Columns(4).Caption=   "Alasan"
+      Columns(4).DataField=   "Alasan"
       Columns(4)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
-      Columns(5)._VlistStyle=   0
-      Columns(5)._MaxComboItems=   5
-      Columns(5).Caption=   "Biaya Kirim"
-      Columns(5).DataField=   "BiayaKirim"
-      Columns(5)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
-      Columns.Count   =   6
+      Columns.Count   =   5
       Splits(0)._UserFlags=   0
       Splits(0).MarqueeStyle=   2
       Splits(0).RecordSelectors=   0   'False
@@ -450,7 +394,7 @@ Begin VB.Form FrmBeliBarang
       Splits(0).DividerColor=   14215660
       Splits(0).SpringMode=   0   'False
       Splits(0)._PropDict=   "_ColumnProps,515,0;_UserFlags,518,3"
-      Splits(0)._ColumnProps(0)=   "Columns.Count=6"
+      Splits(0)._ColumnProps(0)=   "Columns.Count=5"
       Splits(0)._ColumnProps(1)=   "Column(0).Width=2725"
       Splits(0)._ColumnProps(2)=   "Column(0).DividerColor=0"
       Splits(0)._ColumnProps(3)=   "Column(0)._WidthInPix=2646"
@@ -477,11 +421,6 @@ Begin VB.Form FrmBeliBarang
       Splits(0)._ColumnProps(24)=   "Column(4)._WidthInPix=2646"
       Splits(0)._ColumnProps(25)=   "Column(4)._EditAlways=0"
       Splits(0)._ColumnProps(26)=   "Column(4).Order=5"
-      Splits(0)._ColumnProps(27)=   "Column(5).Width=2725"
-      Splits(0)._ColumnProps(28)=   "Column(5).DividerColor=0"
-      Splits(0)._ColumnProps(29)=   "Column(5)._WidthInPix=2646"
-      Splits(0)._ColumnProps(30)=   "Column(5)._EditAlways=0"
-      Splits(0)._ColumnProps(31)=   "Column(5).Order=6"
       Splits.Count    =   1
       PrintInfos(0)._StateFlags=   3
       PrintInfos(0).Name=   "piInternal 0"
@@ -561,43 +500,39 @@ Begin VB.Form FrmBeliBarang
       _StyleDefs(53)  =   "Splits(0).Columns(4).HeadingStyle:id=51,.parent=14"
       _StyleDefs(54)  =   "Splits(0).Columns(4).FooterStyle:id=52,.parent=15"
       _StyleDefs(55)  =   "Splits(0).Columns(4).EditorStyle:id=53,.parent=17"
-      _StyleDefs(56)  =   "Splits(0).Columns(5).Style:id=58,.parent=13"
-      _StyleDefs(57)  =   "Splits(0).Columns(5).HeadingStyle:id=55,.parent=14"
-      _StyleDefs(58)  =   "Splits(0).Columns(5).FooterStyle:id=56,.parent=15"
-      _StyleDefs(59)  =   "Splits(0).Columns(5).EditorStyle:id=57,.parent=17"
-      _StyleDefs(60)  =   "Named:id=33:Normal"
-      _StyleDefs(61)  =   ":id=33,.parent=0"
-      _StyleDefs(62)  =   "Named:id=34:Heading"
-      _StyleDefs(63)  =   ":id=34,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
-      _StyleDefs(64)  =   ":id=34,.wraptext=-1,.appearance=0,.borderColor=&H80000013&"
-      _StyleDefs(65)  =   "Named:id=35:Footing"
-      _StyleDefs(66)  =   ":id=35,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
-      _StyleDefs(67)  =   "Named:id=36:Selected"
-      _StyleDefs(68)  =   ":id=36,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
-      _StyleDefs(69)  =   "Named:id=37:Caption"
-      _StyleDefs(70)  =   ":id=37,.parent=34,.alignment=2"
-      _StyleDefs(71)  =   "Named:id=38:HighlightRow"
-      _StyleDefs(72)  =   ":id=38,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
-      _StyleDefs(73)  =   "Named:id=39:EvenRow"
-      _StyleDefs(74)  =   ":id=39,.parent=33,.bgcolor=&HFFFF00&"
-      _StyleDefs(75)  =   "Named:id=40:OddRow"
-      _StyleDefs(76)  =   ":id=40,.parent=33"
-      _StyleDefs(77)  =   "Named:id=41:RecordSelector"
-      _StyleDefs(78)  =   ":id=41,.parent=34"
-      _StyleDefs(79)  =   "Named:id=42:FilterBar"
-      _StyleDefs(80)  =   ":id=42,.parent=33"
+      _StyleDefs(56)  =   "Named:id=33:Normal"
+      _StyleDefs(57)  =   ":id=33,.parent=0"
+      _StyleDefs(58)  =   "Named:id=34:Heading"
+      _StyleDefs(59)  =   ":id=34,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
+      _StyleDefs(60)  =   ":id=34,.wraptext=-1,.appearance=0,.borderColor=&H80000013&"
+      _StyleDefs(61)  =   "Named:id=35:Footing"
+      _StyleDefs(62)  =   ":id=35,.parent=33,.valignment=2,.bgcolor=&H8000000F&,.fgcolor=&H80000012&"
+      _StyleDefs(63)  =   "Named:id=36:Selected"
+      _StyleDefs(64)  =   ":id=36,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
+      _StyleDefs(65)  =   "Named:id=37:Caption"
+      _StyleDefs(66)  =   ":id=37,.parent=34,.alignment=2"
+      _StyleDefs(67)  =   "Named:id=38:HighlightRow"
+      _StyleDefs(68)  =   ":id=38,.parent=33,.bgcolor=&H8000000D&,.fgcolor=&H8000000E&"
+      _StyleDefs(69)  =   "Named:id=39:EvenRow"
+      _StyleDefs(70)  =   ":id=39,.parent=33,.bgcolor=&HFFFF00&"
+      _StyleDefs(71)  =   "Named:id=40:OddRow"
+      _StyleDefs(72)  =   ":id=40,.parent=33"
+      _StyleDefs(73)  =   "Named:id=41:RecordSelector"
+      _StyleDefs(74)  =   ":id=41,.parent=34"
+      _StyleDefs(75)  =   "Named:id=42:FilterBar"
+      _StyleDefs(76)  =   ":id=42,.parent=33"
    End
    Begin TDBDate6Ctl.TDBDate TxtTglKirim 
       Height          =   330
-      Left            =   6480
+      Left            =   6360
       TabIndex        =   3
       Top             =   1080
-      Width           =   1815
+      Width           =   1575
       _Version        =   65536
-      _ExtentX        =   3201
+      _ExtentX        =   2778
       _ExtentY        =   582
-      Calendar        =   "FrmBeliBarang.frx":03E4
-      Caption         =   "FrmBeliBarang.frx":0510
+      Calendar        =   "FrmReturBeli.frx":02C8
+      Caption         =   "FrmReturBeli.frx":03F4
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -607,9 +542,9 @@ Begin VB.Form FrmBeliBarang
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      DropDown        =   "FrmBeliBarang.frx":057C
-      Keys            =   "FrmBeliBarang.frx":059A
-      Spin            =   "FrmBeliBarang.frx":05F8
+      DropDown        =   "FrmReturBeli.frx":0460
+      Keys            =   "FrmReturBeli.frx":047E
+      Spin            =   "FrmReturBeli.frx":04DC
       AlignHorizontal =   0
       AlignVertical   =   0
       Appearance      =   0
@@ -621,7 +556,7 @@ Begin VB.Form FrmBeliBarang
       DataProperty    =   0
       DisplayFormat   =   "dd mmmm yyy"
       EditMode        =   0
-      Enabled         =   -1
+      Enabled         =   0
       ErrorBeep       =   0
       FirstMonth      =   4
       ForeColor       =   -2147483640
@@ -649,125 +584,9 @@ Begin VB.Form FrmBeliBarang
       Value           =   40819
       CenturyMode     =   0
    End
-   Begin TDBNumber6Ctl.TDBNumber TxtHarga 
-      Height          =   315
-      Left            =   6480
-      TabIndex        =   6
-      Top             =   1800
-      Width           =   2295
-      _Version        =   393216
-      _ExtentX        =   4048
-      _ExtentY        =   556
-      Calculator      =   "FrmBeliBarang.frx":0620
-      Caption         =   "FrmBeliBarang.frx":0640
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Verdana"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      DropDown        =   "FrmBeliBarang.frx":06AC
-      Keys            =   "FrmBeliBarang.frx":06CA
-      Spin            =   "FrmBeliBarang.frx":0714
-      AlignHorizontal =   1
-      AlignVertical   =   0
-      Appearance      =   0
-      BackColor       =   -2147483643
-      BorderStyle     =   1
-      BtnPositioning  =   0
-      ClipMode        =   0
-      ClearAction     =   0
-      DecimalPoint    =   ","
-      DisplayFormat   =   "###,###,###,##0.00;(###,###,###,##0.00)"
-      EditMode        =   0
-      Enabled         =   -1
-      ErrorBeep       =   0
-      ForeColor       =   -2147483640
-      Format          =   "###,###,###,##0.00"
-      HighlightText   =   0
-      MarginBottom    =   1
-      MarginLeft      =   1
-      MarginRight     =   1
-      MarginTop       =   1
-      MaxValue        =   999999999999999
-      MinValue        =   -999999999999999
-      MousePointer    =   0
-      MoveOnLRKey     =   0
-      NegativeColor   =   255
-      OLEDragMode     =   0
-      OLEDropMode     =   0
-      ReadOnly        =   0
-      Separator       =   "."
-      ShowContextMenu =   -1
-      ValueVT         =   1245189
-      Value           =   0
-      MaxValueVT      =   5
-      MinValueVT      =   5
-   End
-   Begin TDBNumber6Ctl.TDBNumber TxtKirim 
-      Height          =   315
-      Left            =   6480
-      TabIndex        =   7
-      Top             =   2160
-      Width           =   2295
-      _Version        =   393216
-      _ExtentX        =   4048
-      _ExtentY        =   556
-      Calculator      =   "FrmBeliBarang.frx":073C
-      Caption         =   "FrmBeliBarang.frx":075C
-      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Verdana"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      DropDown        =   "FrmBeliBarang.frx":07C8
-      Keys            =   "FrmBeliBarang.frx":07E6
-      Spin            =   "FrmBeliBarang.frx":0830
-      AlignHorizontal =   1
-      AlignVertical   =   0
-      Appearance      =   0
-      BackColor       =   -2147483643
-      BorderStyle     =   1
-      BtnPositioning  =   0
-      ClipMode        =   0
-      ClearAction     =   0
-      DecimalPoint    =   ","
-      DisplayFormat   =   "###,###,###,##0.00;(###,###,###,##0.00)"
-      EditMode        =   0
-      Enabled         =   -1
-      ErrorBeep       =   0
-      ForeColor       =   -2147483640
-      Format          =   "###,###,###,##0.00"
-      HighlightText   =   0
-      MarginBottom    =   1
-      MarginLeft      =   1
-      MarginRight     =   1
-      MarginTop       =   1
-      MaxValue        =   999999999999999
-      MinValue        =   -999999999999999
-      MousePointer    =   0
-      MoveOnLRKey     =   0
-      NegativeColor   =   255
-      OLEDragMode     =   0
-      OLEDropMode     =   0
-      ReadOnly        =   0
-      Separator       =   "."
-      ShowContextMenu =   -1
-      ValueVT         =   1245189
-      Value           =   0
-      MaxValueVT      =   5
-      MinValueVT      =   5
-   End
-   Begin MSAdodcLib.Adodc AdoSupplier 
+   Begin MSAdodcLib.Adodc AdoTransaksi 
       Height          =   330
-      Left            =   6000
+      Left            =   4200
       Top             =   120
       Visible         =   0   'False
       Width           =   1200
@@ -814,49 +633,80 @@ Begin VB.Form FrmBeliBarang
    End
    Begin SSDataWidgets_B_OLEDB.SSOleDBCombo CmbBarang 
       Height          =   330
-      Left            =   2040
+      Left            =   3120
       TabIndex        =   4
       Top             =   1800
-      Width           =   2295
+      Width           =   4095
       _Version        =   196616
       BackColorOdd    =   16761024
       Columns(0).Width=   3200
-      _ExtentX        =   4048
+      _ExtentX        =   7223
       _ExtentY        =   582
       _StockProps     =   93
       ForeColor       =   -2147483640
       BackColor       =   -2147483643
    End
-   Begin VB.Line Line1 
-      BorderColor     =   &H00FF0000&
-      BorderWidth     =   2
-      X1              =   120
-      X2              =   9710
-      Y1              =   1680
-      Y2              =   1680
-   End
-   Begin VB.Label Label9 
-      BackStyle       =   0  'Transparent
-      Caption         =   "Biaya Kirim"
-      BeginProperty Font 
-         Name            =   "Calibri"
-         Size            =   11.25
+   Begin TDBNumber6Ctl.TDBNumber TxtJumlah 
+      Height          =   330
+      Left            =   3120
+      TabIndex        =   19
+      Top             =   2520
+      Width           =   975
+      _Version        =   65536
+      _ExtentX        =   1720
+      _ExtentY        =   582
+      Calculator      =   "FrmReturBeli.frx":0504
+      Caption         =   "FrmReturBeli.frx":0524
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H00C00000&
-      Height          =   375
-      Left            =   4680
-      TabIndex        =   22
-      Top             =   2160
-      Width           =   1575
+      DropDown        =   "FrmReturBeli.frx":0590
+      Keys            =   "FrmReturBeli.frx":05AE
+      Spin            =   "FrmReturBeli.frx":05F8
+      AlignHorizontal =   1
+      AlignVertical   =   0
+      Appearance      =   0
+      BackColor       =   -2147483643
+      BorderStyle     =   1
+      BtnPositioning  =   0
+      ClipMode        =   0
+      ClearAction     =   0
+      DecimalPoint    =   ","
+      DisplayFormat   =   "####0;;Null"
+      EditMode        =   0
+      Enabled         =   -1
+      ErrorBeep       =   0
+      ForeColor       =   -2147483640
+      Format          =   "####0"
+      HighlightText   =   0
+      MarginBottom    =   1
+      MarginLeft      =   1
+      MarginRight     =   1
+      MarginTop       =   1
+      MaxValue        =   99999
+      MinValue        =   -99999
+      MousePointer    =   0
+      MoveOnLRKey     =   0
+      NegativeColor   =   255
+      OLEDragMode     =   0
+      OLEDropMode     =   0
+      ReadOnly        =   0
+      Separator       =   "."
+      ShowContextMenu =   -1
+      ValueVT         =   1245189
+      Value           =   0
+      MaxValueVT      =   1549533189
+      MinValueVT      =   1701707781
    End
    Begin VB.Label Label8 
       BackStyle       =   0  'Transparent
-      Caption         =   "Harga Beli"
+      Caption         =   "Jumlah Barang Retur"
       BeginProperty Font 
          Name            =   "Calibri"
          Size            =   11.25
@@ -868,33 +718,14 @@ Begin VB.Form FrmBeliBarang
       EndProperty
       ForeColor       =   &H00C00000&
       Height          =   375
-      Left            =   4680
-      TabIndex        =   21
-      Top             =   1800
-      Width           =   1575
-   End
-   Begin VB.Label Label7 
-      BackStyle       =   0  'Transparent
-      Caption         =   "Nama Barang"
-      BeginProperty Font 
-         Name            =   "Calibri"
-         Size            =   11.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00C00000&
-      Height          =   375
-      Left            =   360
+      Left            =   840
       TabIndex        =   20
-      Top             =   1800
-      Width           =   1575
+      Top             =   2520
+      Width           =   2055
    End
-   Begin VB.Label Label5 
+   Begin VB.Label Label6 
       BackStyle       =   0  'Transparent
-      Caption         =   "Tanggal Kirim"
+      Caption         =   "Alasan"
       BeginProperty Font 
          Name            =   "Calibri"
          Size            =   11.25
@@ -906,75 +737,10 @@ Begin VB.Form FrmBeliBarang
       EndProperty
       ForeColor       =   &H00C00000&
       Height          =   375
-      Left            =   4680
-      TabIndex        =   19
-      Top             =   1080
-      Width           =   1695
-   End
-   Begin VB.Label Label4 
-      BackStyle       =   0  'Transparent
-      Caption         =   "No Kwitansi"
-      BeginProperty Font 
-         Name            =   "Calibri"
-         Size            =   11.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00C00000&
-      Height          =   375
-      Left            =   360
+      Left            =   840
       TabIndex        =   18
-      Top             =   720
+      Top             =   2160
       Width           =   1575
-   End
-   Begin VB.Label Label1 
-      BackStyle       =   0  'Transparent
-      Caption         =   "Form Pembelian Barang"
-      BeginProperty Font 
-         Name            =   "Calibri"
-         Size            =   15.75
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H8000000D&
-      Height          =   495
-      Left            =   240
-      TabIndex        =   17
-      Top             =   120
-      Width           =   3255
-   End
-   Begin VB.Shape Shape1 
-      BorderColor     =   &H00FF0000&
-      BorderWidth     =   2
-      Height          =   5655
-      Left            =   120
-      Top             =   600
-      Width           =   9600
-   End
-   Begin VB.Label Label2 
-      BackStyle       =   0  'Transparent
-      Caption         =   "Tanggal Transaksi"
-      BeginProperty Font 
-         Name            =   "Calibri"
-         Size            =   11.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      ForeColor       =   &H00C00000&
-      Height          =   375
-      Left            =   4680
-      TabIndex        =   16
-      Top             =   720
-      Width           =   1695
    End
    Begin VB.Label Label3 
       BackStyle       =   0  'Transparent
@@ -991,13 +757,59 @@ Begin VB.Form FrmBeliBarang
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   360
-      TabIndex        =   15
+      TabIndex        =   17
       Top             =   1080
       Width           =   1575
    End
-   Begin VB.Label Label6 
+   Begin VB.Label Label2 
       BackStyle       =   0  'Transparent
-      Caption         =   "Jumlah"
+      Caption         =   "Tanggal Transaksi"
+      BeginProperty Font 
+         Name            =   "Calibri"
+         Size            =   11.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00C00000&
+      Height          =   375
+      Left            =   4560
+      TabIndex        =   16
+      Top             =   720
+      Width           =   1695
+   End
+   Begin VB.Shape Shape1 
+      BorderColor     =   &H00FF0000&
+      BorderWidth     =   2
+      Height          =   5895
+      Left            =   120
+      Top             =   600
+      Width           =   8040
+   End
+   Begin VB.Label Label1 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Form Pembelian Barang"
+      BeginProperty Font 
+         Name            =   "Calibri"
+         Size            =   15.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H8000000D&
+      Height          =   495
+      Left            =   240
+      TabIndex        =   15
+      Top             =   120
+      Width           =   3255
+   End
+   Begin VB.Label Label4 
+      BackStyle       =   0  'Transparent
+      Caption         =   "No Kwitansi"
       BeginProperty Font 
          Name            =   "Calibri"
          Size            =   11.25
@@ -1011,176 +823,181 @@ Begin VB.Form FrmBeliBarang
       Height          =   375
       Left            =   360
       TabIndex        =   14
-      Top             =   2160
+      Top             =   720
       Width           =   1575
    End
+   Begin VB.Label Label5 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Tanggal Kirim"
+      BeginProperty Font 
+         Name            =   "Calibri"
+         Size            =   11.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00C00000&
+      Height          =   375
+      Left            =   4560
+      TabIndex        =   13
+      Top             =   1080
+      Width           =   1695
+   End
+   Begin VB.Label Label7 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Nama Barang"
+      BeginProperty Font 
+         Name            =   "Calibri"
+         Size            =   11.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00C00000&
+      Height          =   375
+      Left            =   840
+      TabIndex        =   12
+      Top             =   1800
+      Width           =   1575
+   End
+   Begin VB.Line Line1 
+      BorderColor     =   &H00FF0000&
+      BorderWidth     =   2
+      X1              =   120
+      X2              =   8110
+      Y1              =   1680
+      Y2              =   1680
+   End
 End
-Attribute VB_Name = "FrmBeliBarang"
+Attribute VB_Name = "FrmReturBeli"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Dim RsTemp2 As New ADODB.Recordset
+Dim RsTemp3 As New ADODB.Recordset
 
 Private Sub CmbBarang_DropDown()
 AdoBarang.RecordSource = ""
-SQL = "Select KodeBarang,NamaBarang from Barang order by kodeBarang"
+SQL = "SELECT     DtlBeliBarang.KodeBarang, Barang.NamaBarang, DtlBeliBarang.Jumlah, " & _
+    " Barang.NamaBarang + ' - ' + DtlBeliBarang.Jumlah + ' ' + Barang.Satuan AS Pesanan " & _
+    " FROM         Barang INNER JOIN " & _
+    " DtlBeliBarang ON Barang.KodeBarang = DtlBeliBarang.KodeBarang where " & _
+    " kodeTransaksi='" & Trim(CmbTransaksi) & "'"
 Set RSFind = DbCon.Execute(SQL)
 If RSFind.BOF Then Exit Sub
 AdoBarang.RecordSource = SQL
 AdoBarang.Refresh
 With CmbBarang
     .DataSourceList = AdoBarang
-    .DataFieldList = "NamaBarang"
+    .DataFieldList = "Pesanan"
     .Columns(0).Visible = False
-    .Columns(1).Width = 2000
+    .Columns(1).Visible = False
+    .Columns(2).Visible = False
+    .Columns(3).Width = 4000
 End With
 End Sub
 
+
 Private Sub CmbBarang_GotFocus()
-If Trim(CmbSupplier) = "" Or Not CmbSupplier.IsItemInList Then
-    MsgBox "Supplier Belum Dipilih"
-    CmbSupplier.SetFocus
-    Exit Sub
-ElseIf TxtTgl = Null Then
-    MsgBox "Tanggal Beli Kosong"
-    TxtTgl.SetFocus
-    Exit Sub
-ElseIf TxtTglKirim = Null Then
-    MsgBox "Tanggal Kosong Kosong"
-    TxtTglKirim.SetFocus
+If Trim(CmbTransaksi) = "" Or Not CmbTransaksi.IsItemInList Then
+    MsgBox "Transaksi Belum Dipilih"
+    CmbTransaksi.SetFocus
     Exit Sub
 End If
 End Sub
 
-Private Sub CmbSupplier_DropDown()
-AdoSupplier.RecordSource = ""
-SQL = "Select KodeSupplier,NamaSupplier from Supplier order by kodeSupplier"
-Set RSFind = DbCon.Execute(SQL)
-If RSFind.BOF Then Exit Sub
-AdoSupplier.RecordSource = SQL
-AdoSupplier.Refresh
-With CmbSupplier
-    .DataSourceList = AdoSupplier
-    .DataFieldList = "NamaSupplier"
-    .Columns(0).Visible = False
-    .Columns(1).Width = 2000
-End With
+Private Sub CmbTransaksi_Click()
+TxtSupplier = Trim(CmbTransaksi.Columns(2).Text)
+TxtTgl = CmbTransaksi.Columns(1).Value
+TxtTglKirim = CmbTransaksi.Columns(3).Value
+CmbBarang = ""
+CmbBarang.SetFocus
 End Sub
 
-Private Sub CmdCancel_Click()
-Form_Load
+Private Sub CmbTransaksi_DropDown()
+AdoTransaksi.RecordSource = ""
+SQL = "SELECT * from BeliBarang"
+Set RSFind = DbCon.Execute(SQL)
+If RSFind.BOF Then Exit Sub
+AdoTransaksi.RecordSource = SQL
+AdoTransaksi.Refresh
+With CmbTransaksi
+    .DataSourceList = AdoTransaksi
+    .DataFieldList = "KodeTransaksi"
+    .Columns(3).Visible = False
+    .Columns(2).Visible = False
+    .Columns(1).Visible = False
+    .Columns(3).Width = 4000
+End With
 End Sub
 
 Private Sub CmdInput_Click()
 If Trim(CmbBarang) = "" Or Not CmbBarang.IsItemInList Then
-    MsgBox "Barang Belum Dipilih"
+    MsgBox "Barang Belum Ada"
     CmbBarang.SetFocus
     Exit Sub
+ElseIf Trim(TxtAlasan) = "" Then
+    MsgBox "Alasan Belum Ada"
+    TxtAlasan.SetFocus
+    Exit Sub
 ElseIf TxtJumlah = 0 Then
-    MsgBox "Jumlah Masih 0"
+    MsgBox "Jumlah Belum Ada"
     TxtJumlah.SetFocus
     Exit Sub
-ElseIf TxtHarga = 0 Then
-    MsgBox "Harga Beli Masih 0"
-    TxtHarga.SetFocus
-    Exit Sub
-ElseIf TxtKirim = 0 Then
-    MsgBox "Biaya Kirim Masih 0"
-    TxtKirim.SetFocus
+End If
+
+SQL = "Select jumlah from dtlbelibarang where kodeTransaksi='" & Trim(CmbTransaksi) & _
+    "' and kodebarang='" & Trim(CmbBarang.Columns(0).Text) & "'"
+Set RSFind = DbCon.Execute(SQL)
+If Val(RSFind!jumlah) < TxtJumlah Then
+    MsgBox "Jumlah Tidak Sesuai Dengan Pesanan"
+    TxtJumlah = 0
+    TxtJumlah.SetFocus
     Exit Sub
 End If
 
-RsTemp2.Find "namaBarang='" & Trim(CmbBarang) & "'", , adSearchForward, 1
-If RsTemp2.EOF Then
-    With RsTemp2
-        .AddNew
-        !NoKet = RsTemp2.RecordCount
-        !namaBarang = Trim(CmbBarang)
-        !KodeBarang = Trim(CmbBarang.Columns(0).Text)
-        !Jumlah = Val(TxtJumlah)
-        !HargaBeli = Val(TxtHarga)
-        !BiayaKirim = Val(TxtKirim)
-        .Update
-    End With
-    Grid.DataSource = RsTemp2
+With RsTemp3
+    .AddNew
+    !noket = .RecordCount
+    !kodebarang = Trim(CmbBarang.Columns(0).Text)
+    !namaBarang = Trim(CmbBarang.Columns(1).Text)
+    !jumlah = TxtJumlah
+    !alasan = Trim(TxtAlasan)
+    .Update
     Grid.Refresh
-Else
-    MsgBox "Barang Sudah Diinputkan."
-    Exit Sub
-End If
-CmbBarang = ""
-TxtJumlah = 0
-TxtHarga = 0
-TxtKirim = 0
-CmbBarang.SetFocus
-
-End Sub
-
-Private Sub CmdSave_Click()
-If RsTemp2.RecordCount = 0 Then
-    MsgBox "Tidak Ada Barang Dalam List"
-    Exit Sub
-End If
-
-SQL = "insert into BeliBarang values('" & Trim(TxtKwitansi) & "','" & FormatTgl(TxtTgl) & "','" & _
-    Trim(CmbSupplier) & "','" & FormatTgl(TxtTglKirim) & "')"
-DbCon.Execute SQL
-
-RsTemp2.MoveFirst
-While Not RsTemp2.EOF
-    With RsTemp2
-        SQL = "insert into dtlBeliBarang values('" & Trim(TxtKwitansi) & "','" & FormatTgl(TxtTgl) & _
-            "','" & !NoKet & "','" & !KodeBarang & "'," & !Jumlah & "," & !HargaBeli & "," & _
-            !BiayaKirim & ")"
-        DbCon.Execute SQL
-    End With
-    RsTemp2.MoveNext
-Wend
-MsgBox "Data Saved"
-Bersih
-TxtKwitansi.SetFocus
-Form_Load
+    
+End With
 End Sub
 
 Private Sub Form_Load()
-If RsTemp2.State Then RsTemp2.Close
+AdoTransaksi.ConnectionString = ConDB
 AdoBarang.ConnectionString = ConDB
-AdoSupplier.ConnectionString = ConDB
 Bersih
-TxtKwitansi = KodeAuto
 
-With RsTemp2
+With RsTemp3
+    If .State Then .Close
     .Fields.Append "NoKet", adInteger, 4
     .Fields.Append "KodeBarang", adVarChar, 50
     .Fields.Append "NamaBarang", adVarChar, 50
     .Fields.Append "Jumlah", adInteger, 4
-    .Fields.Append "HargaBeli", adDouble, 8
-    .Fields.Append "BiayaKirim", adDouble, 8
+    .Fields.Append "Alasan", adVarChar, 50
     .Open
+    Set Grid.DataSource = RsTemp3
+    Grid.Refresh
 End With
 End Sub
 
 Sub Bersih()
-CmbSupplier = ""
+CmbTransaksi = ""
+TxtSupplier = ""
 TxtTgl = Null
 TxtTglKirim = Null
 CmbBarang = ""
-TxtJumlah = 0
-TxtHarga = 0
-TxtKirim = 0
-End Sub
-
-Private Sub TxtHarga_GotFocus()
-CmbBarang_GotFocus
-End Sub
-
-Private Sub TxtJumlah_GotFocus()
-CmbBarang_GotFocus
-End Sub
-
-Private Sub TxtKirim_GotFocus()
-CmbBarang_GotFocus
+TxtAlasan = ""
 End Sub
 
 Private Sub vbButton1_Click()
@@ -1190,18 +1007,3 @@ End Sub
 Private Sub vbButton2_Click()
 Unload Me
 End Sub
-Function KodeAuto()
-'SQL = "Select No_Urut from ServiceMobil order by No_Urut"
-'Set RSFind = DbCon.Execute(SQL)
-'If Not RSFind.BOF Then
-'   KodeAuto = RSFind!no_urut
-'   Exit Function
-'End If
-SQL = "Select KodeTransaksi from BeliBarang order by KodeTransaksi Desc"
-Set RSFind = DbCon.Execute(SQL)
-If RSFind.BOF Then
-    KodeAuto = "0000001"
-Else
-    KodeAuto = Format(CInt(Left(RSFind!KodeTransaksi, 7)) + 1, "0000000")
-End If
-End Function
