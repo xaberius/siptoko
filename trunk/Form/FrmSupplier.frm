@@ -608,6 +608,7 @@ ElseIf Not Edit Then
     DbCon.Execute SQL
     MsgBox "Data Saved"
     Form_Load
+    FrmBeliBarang.CmbSupplier.Refresh
 End If
 End Sub
 

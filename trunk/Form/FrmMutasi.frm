@@ -790,7 +790,7 @@ Set RSFind = DbCon.Execute(SQL)
 If RSFind.BOF Then Exit Sub
 Adodc1.RecordSource = SQL
 Adodc1.Refresh
-With cmbBarang
+With CmbBarang
     .DataSourceList = Adodc1
     .DataFieldList = "NamaBarang"
     .Columns(0).Visible = False
@@ -833,9 +833,9 @@ Form_Load
 End Sub
 
 Private Sub CmdInput_Click()
-If Trim(cmbBarang) = "" And Not cmbBarang.IsItemInList Then
+If Trim(CmbBarang) = "" And Not CmbBarang.IsItemInList Then
     MsgBox "Barang Masih Kosong"
-    cmbBarang.SetFocus
+    CmbBarang.SetFocus
     Exit Sub
 ElseIf TxtJumlah = 0 Then
     MsgBox "Jumlah masih Kosong"
@@ -843,14 +843,14 @@ ElseIf TxtJumlah = 0 Then
     Exit Sub
 End If
 
-RsTemp1.Find "namaBarang='" & Trim(cmbBarang) & "'", , adSearchForward, 1
+RsTemp1.Find "namaBarang='" & Trim(CmbBarang) & "'", , adSearchForward, 1
 If RsTemp1.EOF Then
     With RsTemp1
         .AddNew
-        !NoKet = RsTemp1.RecordCount
-        !namaBarang = Trim(cmbBarang)
-        !KodeBarang = Trim(cmbBarang.Columns(0).Text)
-        !Jumlah = Val(TxtJumlah)
+        !noket = RsTemp1.RecordCount
+        !namaBarang = Trim(CmbBarang)
+        !kodebarang = Trim(CmbBarang.Columns(0).Text)
+        !jumlah = Val(TxtJumlah)
         .Update
     End With
     Grid.DataSource = RsTemp1
@@ -859,9 +859,9 @@ Else
     MsgBox "Barang Sudah Diinputkan."
     Exit Sub
 End If
-cmbBarang = ""
+CmbBarang = ""
 TxtJumlah = 0
-cmbBarang.SetFocus
+CmbBarang.SetFocus
 End Sub
 
 
@@ -872,8 +872,8 @@ DbCon.Execute SQL
 RsTemp1.MoveFirst
 While Not RsTemp1.EOF
     With RsTemp1
-        SQL = "insert into DtlMutasi values('" & FormatTgl(TxtTgl) & "','" & !NoKet & "','" & _
-            !KodeBarang & "'," & !Jumlah & ")"
+        SQL = "insert into DtlMutasi values('" & FormatTgl(TxtTgl) & "','" & !noket & "','" & _
+            !kodebarang & "'," & !jumlah & ")"
         DbCon.Execute SQL
         .MoveNext
     End With
@@ -900,7 +900,7 @@ Sub Bersih()
 TxtTgl = Date
 CmbAsal = ""
 CmbTujuan = ""
-cmbBarang = ""
+CmbBarang = ""
 TxtJumlah = 0
 TxtKet = ""
 End Sub
@@ -911,31 +911,6 @@ End Sub
 
 Private Sub Grid_Click()
 Keterangan1 = Grid.Columns(0).Text
-End Sub
-
-Private Sub Grid_KeyDown(KeyCode As Integer, Shift As Integer)
-If KeyCode = 46 Then
-    If Keterangan1 = 0 Then
-    MsgBox "Klik Salah Satu Item Di Tabel"
-    Exit Sub
-End If
-RsTemp1.Find "noket='" & Keterangan1 & "'", , adSearchForward, 1
-If Not RsTemp1.EOF Then
-    MsgBox RsTemp1!NoKet & " Dibatalkan"
-    RsTemp1.Delete
-End If
-    Keterangan1 = Keterangan1 + 1
-    RsTemp1.Find "noket='" & Keterangan1 & "'", , adSearchForward, 1
-    While Not RsTemp1.EOF
-        With RsTemp1
-            .Clone
-            !NoKet = !NoKet - 1
-            .Update
-        End With
-        RsTemp1.MoveNext
-    Wend
-Grid.Refresh
-End If
 End Sub
 
 Private Sub Grid_RowColChange(LastRow As Variant, ByVal LastCol As Integer)

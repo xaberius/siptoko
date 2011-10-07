@@ -743,7 +743,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Dim RsTemp As New ADODB.Recordset
+Dim RsTemp1 As New ADODB.Recordset
 
 
 Private Sub CmdCancel_Click()
@@ -822,6 +822,7 @@ Wend
 MsgBox "Data Saved"
 Grid.MarqueeStyle = dbgHighlightCell
 Form_Load
+FrmBeliBarang.CmbBarang.Refresh
 
    On Error GoTo 0
    Exit Sub
@@ -853,13 +854,17 @@ End Sub
 
 
 Private Sub Form_Unload(Cancel As Integer)
-If RsTemp.State Then RsTemp.Close
+If RsTemp1.State Then RsTemp1.Close
 End Sub
 
 
-Private Sub Grid_BeforeColUpdate(ByVal ColIndex As Integer, OldValue As Variant, Cancel As Integer)
-RSFind.Find "kodeBarang='" & UCase(Trim(Grid.Columns(0).Text)) & "'", , adSearchForward, 1
-If RSFind.BOF Then
+Private Sub Grid_BeforeDelete(Cancel As Integer)
+If Grid.EOF Or Grid.BOF Then Cancel = False
+End Sub
+
+Private Sub Grid_BeforeUpdate(Cancel As Integer)
+RsTemp1.Find "kodeBarang='" & Trim(Grid.Columns(ColIndex).Text) & "'", , adSearchForward, 1
+If RsTemp1.BOF Then
 Else
     MsgBox "Sudah Ada"
     Grid.Columns(0).Text = ""
@@ -867,16 +872,12 @@ Else
 End If
 End Sub
 
-Private Sub Grid_BeforeDelete(Cancel As Integer)
-If Grid.EOF Or Grid.BOF Then Cancel = False
-End Sub
-
 Private Sub Grid_KeyDown(KeyCode As Integer, Shift As Integer)
 Dim Kolom As Integer
 Dim Coba As Boolean
 Dim Ex As String
 
-If KeyCode = 46 And RsTemp.RecordCount <> 0 Then
+If KeyCode = 46 And RsTemp1.RecordCount <> 0 Then
     Grid.Delete
     
 ElseIf KeyCode = 40 Then
@@ -920,8 +921,8 @@ Private Sub CreateTbl(Optional Edit As Boolean = False)
 
 On Error GoTo vb_error
 
-  If RsTemp.State Then RsTemp.Close
-  With RsTemp
+  If RsTemp1.State Then RsTemp1.Close
+  With RsTemp1
       .Fields.Append "KodeBarang", adVarChar, 50 '1
       .Fields.Append "NamaBarang", adVarChar, 50 '1
       .Fields.Append "Jenis", adVarChar, 50
@@ -943,28 +944,28 @@ On Error GoTo vb_error
       Set RSFind = DbCon.Execute(SQL)
       RSFind.MoveFirst
       While Not RSFind.EOF
-          RsTemp.AddNew
-          RsTemp!KodeBarang = RSFind!KodeBarang
-          RsTemp!namaBarang = RSFind!namaBarang
-          RsTemp!jenis = RSFind!jenis
-          RsTemp!satuan = RSFind!satuan
-          RsTemp!HargaBeli = RSFind!HargaBeli
-          RsTemp!BiayaKirim = RSFind!BiayaKirim
-          RsTemp!HargaPokok = RSFind!HargaPokok
-          RsTemp!HargaGrosir = RSFind!HargaGrosir
-          RsTemp!HargaEcer = RSFind!HargaEcer
-          RsTemp!StockMax = RSFind!StockMax
-          RsTemp!StockMin = RSFind!StockMin
-          RsTemp!Stock = RSFind!Stock
+          RsTemp1.AddNew
+          RsTemp1!KodeBarang = RSFind!KodeBarang
+          RsTemp1!namaBarang = RSFind!namaBarang
+          RsTemp1!jenis = RSFind!jenis
+          RsTemp1!satuan = RSFind!satuan
+          RsTemp1!HargaBeli = RSFind!HargaBeli
+          RsTemp1!BiayaKirim = RSFind!BiayaKirim
+          RsTemp1!HargaPokok = RSFind!HargaPokok
+          RsTemp1!HargaGrosir = RSFind!HargaGrosir
+          RsTemp1!HargaEcer = RSFind!HargaEcer
+          RsTemp1!StockMax = RSFind!StockMax
+          RsTemp1!StockMin = RSFind!StockMin
+          RsTemp1!Stock = RSFind!Stock
           
-          RsTemp.Update
+          RsTemp1.Update
           RSFind.MoveNext
       Wend
-      Set Grid.DataSource = RsTemp
+      Set Grid.DataSource = RsTemp1
       Grid.MoveFirst
       Grid.Delete
       Grid.Refresh
-  End With        'With RsTemp
+  End With        'With rstemp1
         
 Exit Sub
 vb_error:

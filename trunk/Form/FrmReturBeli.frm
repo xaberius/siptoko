@@ -9,21 +9,29 @@ Begin VB.Form FrmReturBeli
    BackColor       =   &H00FFC0C0&
    BorderStyle     =   0  'None
    Caption         =   "Form2"
-   ClientHeight    =   6600
+   ClientHeight    =   7125
    ClientLeft      =   0
    ClientTop       =   0
    ClientWidth     =   8280
    LinkTopic       =   "Form2"
-   ScaleHeight     =   6600
+   ScaleHeight     =   7125
    ScaleWidth      =   8280
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
+   Begin VB.TextBox TxtPenerima 
+      Appearance      =   0  'Flat
+      Height          =   330
+      Left            =   2040
+      TabIndex        =   4
+      Top             =   1440
+      Width           =   5895
+   End
    Begin VB.TextBox TxtAlasan 
       Appearance      =   0  'Flat
       Height          =   330
       Left            =   3120
-      TabIndex        =   5
-      Top             =   2160
+      TabIndex        =   6
+      Top             =   2640
       Width           =   4095
    End
    Begin VB.TextBox TxtSupplier 
@@ -162,7 +170,7 @@ Begin VB.Form FrmReturBeli
    Begin BasTombol.vbButton vbButton1 
       Height          =   375
       Left            =   7200
-      TabIndex        =   10
+      TabIndex        =   12
       Top             =   120
       Width           =   375
       _ExtentX        =   661
@@ -200,7 +208,7 @@ Begin VB.Form FrmReturBeli
    Begin BasTombol.vbButton vbButton2 
       Height          =   375
       Left            =   7680
-      TabIndex        =   11
+      TabIndex        =   13
       Top             =   120
       Width           =   375
       _ExtentX        =   661
@@ -238,8 +246,8 @@ Begin VB.Form FrmReturBeli
    Begin BasTombol.vbButton CmdCancel 
       Height          =   375
       Left            =   1680
-      TabIndex        =   8
-      Top             =   6000
+      TabIndex        =   10
+      Top             =   6480
       Width           =   1215
       _ExtentX        =   2143
       _ExtentY        =   661
@@ -276,8 +284,8 @@ Begin VB.Form FrmReturBeli
    Begin BasTombol.vbButton CmdSave 
       Height          =   375
       Left            =   360
-      TabIndex        =   7
-      Top             =   6000
+      TabIndex        =   9
+      Top             =   6480
       Width           =   1215
       _ExtentX        =   2143
       _ExtentY        =   661
@@ -314,8 +322,8 @@ Begin VB.Form FrmReturBeli
    Begin BasTombol.vbButton CmdInput 
       Height          =   375
       Left            =   6840
-      TabIndex        =   6
-      Top             =   3120
+      TabIndex        =   8
+      Top             =   3600
       Width           =   1215
       _ExtentX        =   2143
       _ExtentY        =   661
@@ -352,8 +360,8 @@ Begin VB.Form FrmReturBeli
    Begin TrueOleDBGrid70.TDBGrid Grid 
       Height          =   2655
       Left            =   360
-      TabIndex        =   9
-      Top             =   3120
+      TabIndex        =   11
+      Top             =   3600
       Width           =   6360
       _ExtentX        =   11218
       _ExtentY        =   4683
@@ -634,8 +642,8 @@ Begin VB.Form FrmReturBeli
    Begin SSDataWidgets_B_OLEDB.SSOleDBCombo CmbBarang 
       Height          =   330
       Left            =   3120
-      TabIndex        =   4
-      Top             =   1800
+      TabIndex        =   5
+      Top             =   2280
       Width           =   4095
       _Version        =   196616
       BackColorOdd    =   16761024
@@ -649,8 +657,8 @@ Begin VB.Form FrmReturBeli
    Begin TDBNumber6Ctl.TDBNumber TxtJumlah 
       Height          =   330
       Left            =   3120
-      TabIndex        =   19
-      Top             =   2520
+      TabIndex        =   7
+      Top             =   3000
       Width           =   975
       _Version        =   65536
       _ExtentX        =   1720
@@ -704,6 +712,25 @@ Begin VB.Form FrmReturBeli
       MaxValueVT      =   1549533189
       MinValueVT      =   1701707781
    End
+   Begin VB.Label Label9 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Penerima"
+      BeginProperty Font 
+         Name            =   "Calibri"
+         Size            =   11.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00C00000&
+      Height          =   375
+      Left            =   360
+      TabIndex        =   22
+      Top             =   1440
+      Width           =   1575
+   End
    Begin VB.Label Label8 
       BackStyle       =   0  'Transparent
       Caption         =   "Jumlah Barang Retur"
@@ -719,8 +746,8 @@ Begin VB.Form FrmReturBeli
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   840
-      TabIndex        =   20
-      Top             =   2520
+      TabIndex        =   21
+      Top             =   3000
       Width           =   2055
    End
    Begin VB.Label Label6 
@@ -738,8 +765,8 @@ Begin VB.Form FrmReturBeli
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   840
-      TabIndex        =   18
-      Top             =   2160
+      TabIndex        =   20
+      Top             =   2640
       Width           =   1575
    End
    Begin VB.Label Label3 
@@ -757,7 +784,7 @@ Begin VB.Form FrmReturBeli
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   360
-      TabIndex        =   17
+      TabIndex        =   19
       Top             =   1080
       Width           =   1575
    End
@@ -776,14 +803,14 @@ Begin VB.Form FrmReturBeli
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   4560
-      TabIndex        =   16
+      TabIndex        =   18
       Top             =   720
       Width           =   1695
    End
    Begin VB.Shape Shape1 
       BorderColor     =   &H00FF0000&
       BorderWidth     =   2
-      Height          =   5895
+      Height          =   6375
       Left            =   120
       Top             =   600
       Width           =   8040
@@ -803,7 +830,7 @@ Begin VB.Form FrmReturBeli
       ForeColor       =   &H8000000D&
       Height          =   495
       Left            =   240
-      TabIndex        =   15
+      TabIndex        =   17
       Top             =   120
       Width           =   3255
    End
@@ -822,7 +849,7 @@ Begin VB.Form FrmReturBeli
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   360
-      TabIndex        =   14
+      TabIndex        =   16
       Top             =   720
       Width           =   1575
    End
@@ -841,7 +868,7 @@ Begin VB.Form FrmReturBeli
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   4560
-      TabIndex        =   13
+      TabIndex        =   15
       Top             =   1080
       Width           =   1695
    End
@@ -860,8 +887,8 @@ Begin VB.Form FrmReturBeli
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   840
-      TabIndex        =   12
-      Top             =   1800
+      TabIndex        =   14
+      Top             =   2280
       Width           =   1575
    End
    Begin VB.Line Line1 
@@ -869,8 +896,8 @@ Begin VB.Form FrmReturBeli
       BorderWidth     =   2
       X1              =   120
       X2              =   8110
-      Y1              =   1680
-      Y2              =   1680
+      Y1              =   2160
+      Y2              =   2160
    End
 End
 Attribute VB_Name = "FrmReturBeli"
@@ -879,6 +906,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Dim RsTemp3 As New ADODB.Recordset
+Dim Keterangan1 As Integer
 
 Private Sub CmbBarang_DropDown()
 AdoBarang.RecordSource = ""
@@ -907,6 +935,7 @@ If Trim(CmbTransaksi) = "" Or Not CmbTransaksi.IsItemInList Then
     MsgBox "Transaksi Belum Dipilih"
     CmbTransaksi.SetFocus
     Exit Sub
+
 End If
 End Sub
 
@@ -935,6 +964,10 @@ With CmbTransaksi
 End With
 End Sub
 
+Private Sub CmdCancel_Click()
+Form_Load
+End Sub
+
 Private Sub CmdInput_Click()
 If Trim(CmbBarang) = "" Or Not CmbBarang.IsItemInList Then
     MsgBox "Barang Belum Ada"
@@ -960,17 +993,55 @@ If Val(RSFind!jumlah) < TxtJumlah Then
     Exit Sub
 End If
 
-With RsTemp3
-    .AddNew
-    !noket = .RecordCount
-    !kodebarang = Trim(CmbBarang.Columns(0).Text)
-    !namaBarang = Trim(CmbBarang.Columns(1).Text)
-    !jumlah = TxtJumlah
-    !alasan = Trim(TxtAlasan)
-    .Update
-    Grid.Refresh
+RsTemp3.Find "KodeBarang='" & Trim(CmbBarang.Columns(0).Text) & "'", , adSearchForward, 1
+
+If RsTemp3.EOF Then
+    With RsTemp3
+        .AddNew
+        !noKet = .RecordCount
+        !kodeBarang = Trim(CmbBarang.Columns(0).Text)
+        !namaBarang = Trim(CmbBarang.Columns(1).Text)
+        !jumlah = TxtJumlah
+        !Alasan = Trim(TxtAlasan)
+        .Update
+        Grid.Refresh
+        CmbBarang = ""
+        TxtAlasan = ""
+        TxtJumlah = 0
+        CmbBarang.SetFocus
+    End With
+Else
+    MsgBox "Barang Sudah Dinputkan"
+    CmbBarang = ""
+    TxtAlasan = ""
+    TxtJumlah = 0
+    CmbBarang.SetFocus
+    Exit Sub
+End If
+End Sub
+
+Private Sub CmdSave_Click()
+If RsTemp3.RecordCount = 0 Then
+    MsgBox "Tidak Ada Daftar Barang Retur"
+    Exit Sub
+Else
+    SQL = "insert into ReturBeli values('" & Trim(CmbTransaksi) & "','" & FormatTgl(Date) & "','" & _
+        Trim(TxtPenerima) & "')"
+    DbCon.Execute SQL
     
-End With
+    RsTemp3.MoveFirst
+    While Not RsTemp3.EOF
+        With RsTemp3
+            SQL = "insert into dtlReturBeli values('" & Trim(CmbTransaksi) & "','" & FormatTgl(Date) & "','" & _
+            Trim(!noKet) & "','" & Trim(!kodeBarang) & "','" & !jumlah & "','" & !Alasan & "')"
+            DbCon.Execute SQL
+        End With
+        RsTemp3.MoveNext
+    Wend
+End If
+
+MsgBox "Data Saved"
+Form_Load
 End Sub
 
 Private Sub Form_Load()
@@ -984,7 +1055,7 @@ With RsTemp3
     .Fields.Append "KodeBarang", adVarChar, 50
     .Fields.Append "NamaBarang", adVarChar, 50
     .Fields.Append "Jumlah", adInteger, 4
-    .Fields.Append "Alasan", adVarChar, 50
+    .Fields.Append "Alasan", adVarChar, 100
     .Open
     Set Grid.DataSource = RsTemp3
     Grid.Refresh
@@ -998,6 +1069,41 @@ TxtTgl = Null
 TxtTglKirim = Null
 CmbBarang = ""
 TxtAlasan = ""
+TxtPenerima = ""
+End Sub
+
+
+Private Sub Grid_Click()
+Keterangan1 = Val(Grid.Columns(0).Text)
+End Sub
+
+Private Sub Grid_KeyDown(KeyCode As Integer, Shift As Integer)
+If KeyCode = 46 Then
+    If Keterangan1 = 0 Then
+    MsgBox "Klik Salah Satu Item Di Tabel"
+    Exit Sub
+End If
+RsTemp3.Find "noket='" & Keterangan1 & "'", , adSearchForward, 1
+If Not RsTemp3.EOF Then
+    MsgBox RsTemp3!noKet & " Dibatalkan"
+    RsTemp3.Delete
+End If
+    Keterangan1 = Keterangan1 + 1
+    RsTemp3.Find "noket='" & Keterangan1 & "'", , adSearchForward, 1
+    While Not RsTemp3.EOF
+        With RsTemp3
+            .Clone
+            !noKet = !noKet - 1
+            .Update
+        End With
+        RsTemp3.MoveNext
+    Wend
+Grid.Refresh
+End If
+End Sub
+
+Private Sub Grid_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
+Keterangan1 = Val(Grid.Columns(0).Text)
 End Sub
 
 Private Sub vbButton1_Click()
