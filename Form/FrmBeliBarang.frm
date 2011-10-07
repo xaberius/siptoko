@@ -1033,7 +1033,7 @@ With CmbBarang
     .DataSourceList = AdoBarang
     .DataFieldList = "NamaBarang"
     .Columns(0).Visible = False
-    .Columns(1).Width = 2000
+    .Columns(1).Width = 5000
 End With
 End Sub
 

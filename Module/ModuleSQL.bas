@@ -12,6 +12,8 @@ TabelMutasi 'ok
 TabelDtlMutasi 'ok
 TabelBeliBarang 'ok
 TabelDtlBeliBarang 'ok
+TabelReturBeli 'ok
+TabelDtlReturBeli 'ok
 
 End Sub
 
@@ -179,3 +181,27 @@ SQL = SQL + "    [BiayaKirim] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_A
 SQL = SQL + ") ON [PRIMARY]"
 DbCon.Execute SQL
 End Sub
+
+Sub TabelDtlReturBeli()
+SQL = "if not exists(select * from dbo.sysobjects where name = 'DtlReturBeli') "
+SQL = SQL + "CREATE TABLE [dbo].[DtlReturBeli] ("
+SQL = SQL + "    [KodeTransaksi] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [TglRetur] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [NoKet] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [KodeBarang] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [Jumlah] [int] NULL ,"
+SQL = SQL + "    [Alasan] [varchar] (100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL"
+SQL = SQL + ") ON [PRIMARY]"
+DbCon.Execute SQL
+End Sub
+
+Sub TabelReturBeli()
+SQL = "if not exists(select * from dbo.sysobjects where name = 'ReturBeli') "
+SQL = SQL + "CREATE TABLE [dbo].[ReturBeli] ("
+SQL = SQL + "    [KodeTransaksi] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [TglRetur] [datetime] NULL ,"
+SQL = SQL + "    [Penerima] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL"
+SQL = SQL + ") ON [PRIMARY]"
+DbCon.Execute SQL
+End Sub
+
