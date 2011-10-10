@@ -1048,6 +1048,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Dim RsTemp2 As New ADODB.Recordset
+Dim Keterangan1 As Integer
 
 Private Sub CmbBarang_Click()
 TxtHarga = Val(CmbBarang.Columns(2).Text)
@@ -1129,9 +1130,9 @@ If RsTemp2.EOF Then
     With RsTemp2
         .AddNew
         !NoKet = RsTemp2.RecordCount
-        !NamaBarang = Trim(CmbBarang)
+        !namaBarang = Trim(CmbBarang)
         !KodeBarang = Trim(CmbBarang.Columns(0).Text)
-        !jumlah = Val(TxtJumlah)
+        !Jumlah = Val(TxtJumlah)
         !HargaBeli = Val(TxtHarga)
         !BiayaKirim = Val(TxtKirim)
         .Update
@@ -1142,18 +1143,25 @@ Else
     MsgBox "Barang Sudah Diinputkan."
     Exit Sub
 End If
-Grid.MoveFirst
-While Not Grid.EOF
-    JumlahBayar = JumlahBayar + (RsTemp2!jumlah * RsTemp2!HargaBeli) - (RsTemp2!jumlah * RsTemp2!BiayaKirim)
-    Grid.MoveNext
-Wend
-Label10.Caption = Label10.Caption & "Rp. " & Str(JumlahBayar)
+
+HitungBayar
 CmbBarang = ""
 TxtJumlah = 0
 TxtHarga = 0
 TxtKirim = 0
 CmbBarang.SetFocus
 
+End Sub
+
+Sub HitungBayar()
+Grid.MoveFirst
+While Not Grid.EOF
+    With Grid
+        JumlahBayar = JumlahBayar + (Val(.Columns(3)) * Val(.Columns(4))) - (Val(.Columns(3)) * Val(.Columns(5)))
+        Grid.MoveNext
+    End With
+Wend
+Label10.Caption = "Jumlah Bayar : Rp. " + Str(JumlahBayar)
 End Sub
 
 Private Sub CmdSave_Click()
@@ -1170,7 +1178,7 @@ RsTemp2.MoveFirst
 While Not RsTemp2.EOF
     With RsTemp2
         SQL = "insert into dtlBeliBarang values('" & Trim(TxtKwitansi) & "','" & FormatTgl(TxtTgl) & _
-            "','" & !NoKet & "','" & !KodeBarang & "'," & !jumlah & "," & !HargaBeli & "," & _
+            "','" & !NoKet & "','" & !KodeBarang & "'," & !Jumlah & "," & !HargaBeli & "," & _
             !BiayaKirim & ")"
         DbCon.Execute SQL
         KodesBarang = Trim(RsTemp2!KodeBarang)
@@ -1221,6 +1229,36 @@ CmbBarang = ""
 TxtJumlah = 0
 TxtHarga = 0
 TxtKirim = 0
+End Sub
+
+Private Sub Grid_KeyDown(KeyCode As Integer, Shift As Integer)
+If KeyCode = 46 And Not RsTemp2.BOF Then
+    If Keterangan1 = 0 Then
+    MsgBox "Klik Salah Satu Item Di Tabel"
+    Exit Sub
+End If
+RsTemp2.Find "noket='" & Keterangan1 & "'", , adSearchForward, 1
+If Not RsTemp2.EOF Then
+    MsgBox RsTemp2!NoKet & " Dibatalkan"
+    RsTemp2.Delete
+End If
+    Keterangan1 = Keterangan1 + 1
+    RsTemp2.Find "noket='" & Keterangan1 & "'", , adSearchForward, 1
+    While Not RsTemp2.EOF
+        With RsTemp2
+            .Clone
+            !NoKet = !NoKet - 1
+            .Update
+        End With
+        RsTemp2.MoveNext
+    Wend
+Grid.Refresh
+HitungBayar
+End If
+End Sub
+
+Private Sub Grid_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
+Keterangan1 = Val(Grid.Columns(0).Text)
 End Sub
 
 Private Sub TxtHarga_GotFocus()

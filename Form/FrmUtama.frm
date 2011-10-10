@@ -182,7 +182,7 @@ With SmartMenuXP1.MenuItems
             Case "mnuMutasi": CekKonek FrmMutasi
             Case "mnuPembelian": CekKonek FrmBeliBarang
             Case "mnuReturBeli": CekKonek FrmReturBeli
-            Case "mnuMicrosoftPowerPoint": 'TODO : something here
+            Case "mnuGrosir": CekKonek FrmJualGrosir
             Case "mnuMicrosoftPowerPoint": 'TODO : something here
             Case "mnuMicrosoftPowerPoint": 'TODO : something here
             

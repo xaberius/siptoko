@@ -817,7 +817,7 @@ Begin VB.Form FrmReturBeli
    End
    Begin VB.Label Label1 
       BackStyle       =   0  'Transparent
-      Caption         =   "Form Pembelian Barang"
+      Caption         =   "Form Retur Pembelian"
       BeginProperty Font 
          Name            =   "Calibri"
          Size            =   15.75
@@ -1078,7 +1078,7 @@ Keterangan1 = Val(Grid.Columns(0).Text)
 End Sub
 
 Private Sub Grid_KeyDown(KeyCode As Integer, Shift As Integer)
-If KeyCode = 46 Then
+If KeyCode = 46 And Not RsTemp3.BOF Then
     If Keterangan1 = 0 Then
     MsgBox "Klik Salah Satu Item Di Tabel"
     Exit Sub
