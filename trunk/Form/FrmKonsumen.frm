@@ -609,6 +609,7 @@ ElseIf Not Edit Then
     DbCon.Execute SQL
     MsgBox "Data Saved"
     Form_Load
+    FrmJualGrosir.CmbKonsumen.Refresh
 End If
 End Sub
 

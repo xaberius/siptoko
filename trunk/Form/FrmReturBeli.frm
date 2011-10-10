@@ -9,13 +9,13 @@ Begin VB.Form FrmReturBeli
    BackColor       =   &H00FFC0C0&
    BorderStyle     =   0  'None
    Caption         =   "Form2"
-   ClientHeight    =   7125
+   ClientHeight    =   7080
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   8280
+   ClientWidth     =   8265
    LinkTopic       =   "Form2"
-   ScaleHeight     =   7125
-   ScaleWidth      =   8280
+   ScaleHeight     =   7080
+   ScaleWidth      =   8265
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
    Begin VB.TextBox TxtPenerima 
@@ -986,7 +986,7 @@ End If
 SQL = "Select jumlah from dtlbelibarang where kodeTransaksi='" & Trim(CmbTransaksi) & _
     "' and kodebarang='" & Trim(CmbBarang.Columns(0).Text) & "'"
 Set RSFind = DbCon.Execute(SQL)
-If Val(RSFind!jumlah) < TxtJumlah Then
+If Val(RSFind!Jumlah) < TxtJumlah Then
     MsgBox "Jumlah Tidak Sesuai Dengan Pesanan"
     TxtJumlah = 0
     TxtJumlah.SetFocus
@@ -998,10 +998,10 @@ RsTemp3.Find "KodeBarang='" & Trim(CmbBarang.Columns(0).Text) & "'", , adSearchF
 If RsTemp3.EOF Then
     With RsTemp3
         .AddNew
-        !noKet = .RecordCount
-        !kodeBarang = Trim(CmbBarang.Columns(0).Text)
+        !NoKet = .RecordCount
+        !KodeBarang = Trim(CmbBarang.Columns(0).Text)
         !namaBarang = Trim(CmbBarang.Columns(1).Text)
-        !jumlah = TxtJumlah
+        !Jumlah = TxtJumlah
         !Alasan = Trim(TxtAlasan)
         .Update
         Grid.Refresh
@@ -1033,7 +1033,7 @@ Else
     While Not RsTemp3.EOF
         With RsTemp3
             SQL = "insert into dtlReturBeli values('" & Trim(CmbTransaksi) & "','" & FormatTgl(Date) & "','" & _
-            Trim(!noKet) & "','" & Trim(!kodeBarang) & "','" & !jumlah & "','" & !Alasan & "')"
+            Trim(!NoKet) & "','" & Trim(!KodeBarang) & "','" & !Jumlah & "','" & !Alasan & "')"
             DbCon.Execute SQL
         End With
         RsTemp3.MoveNext
@@ -1085,7 +1085,7 @@ If KeyCode = 46 Then
 End If
 RsTemp3.Find "noket='" & Keterangan1 & "'", , adSearchForward, 1
 If Not RsTemp3.EOF Then
-    MsgBox RsTemp3!noKet & " Dibatalkan"
+    MsgBox RsTemp3!NoKet & " Dibatalkan"
     RsTemp3.Delete
 End If
     Keterangan1 = Keterangan1 + 1
@@ -1093,7 +1093,7 @@ End If
     While Not RsTemp3.EOF
         With RsTemp3
             .Clone
-            !noKet = !noKet - 1
+            !NoKet = !NoKet - 1
             .Update
         End With
         RsTemp3.MoveNext
