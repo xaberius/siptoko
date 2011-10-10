@@ -9,14 +9,14 @@ Begin VB.Form FrmJualGrosir
    BackColor       =   &H00FFC0C0&
    BorderStyle     =   0  'None
    Caption         =   "Form2"
-   ClientHeight    =   7185
+   ClientHeight    =   7965
    ClientLeft      =   0
    ClientTop       =   0
    ClientWidth     =   9825
    LinkTopic       =   "Form2"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   7185
+   ScaleHeight     =   7965
    ScaleWidth      =   9825
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
@@ -290,7 +290,7 @@ Begin VB.Form FrmJualGrosir
       Height          =   375
       Left            =   1560
       TabIndex        =   6
-      Top             =   6600
+      Top             =   7320
       Width           =   1215
       _ExtentX        =   2143
       _ExtentY        =   661
@@ -328,7 +328,7 @@ Begin VB.Form FrmJualGrosir
       Height          =   375
       Left            =   240
       TabIndex        =   7
-      Top             =   6600
+      Top             =   7320
       Width           =   1215
       _ExtentX        =   2143
       _ExtentY        =   661
@@ -434,7 +434,7 @@ Begin VB.Form FrmJualGrosir
       Columns(4)._VlistStyle=   0
       Columns(4)._MaxComboItems=   5
       Columns(4).Caption=   "Harga Jual"
-      Columns(4).DataField=   "HargaJual"
+      Columns(4).DataField=   "HargaGrosir"
       Columns(4)._PropDict=   "_MaxComboItems,516,2;_VlistStyle,514,3"
       Columns(5)._VlistStyle=   0
       Columns(5)._MaxComboItems=   5
@@ -832,7 +832,7 @@ Begin VB.Form FrmJualGrosir
       Caption         =   "Diskon : "
       BeginProperty Font 
          Name            =   "Calibri"
-         Size            =   12
+         Size            =   14.25
          Charset         =   0
          Weight          =   700
          Underline       =   0   'False
@@ -844,14 +844,14 @@ Begin VB.Form FrmJualGrosir
       Left            =   240
       TabIndex        =   24
       Top             =   5880
-      Width           =   4095
+      Width           =   7815
    End
    Begin VB.Label Label10 
       BackStyle       =   0  'Transparent
       Caption         =   "Jumlah Bayar : "
       BeginProperty Font 
          Name            =   "Calibri"
-         Size            =   12
+         Size            =   14.25
          Charset         =   0
          Weight          =   700
          Underline       =   0   'False
@@ -860,10 +860,10 @@ Begin VB.Form FrmJualGrosir
       EndProperty
       ForeColor       =   &H00C00000&
       Height          =   375
-      Left            =   4800
+      Left            =   240
       TabIndex        =   23
-      Top             =   5880
-      Width           =   4695
+      Top             =   6480
+      Width           =   7815
    End
    Begin VB.Label Label6 
       BackStyle       =   0  'Transparent
@@ -925,7 +925,7 @@ Begin VB.Form FrmJualGrosir
    Begin VB.Shape Shape1 
       BorderColor     =   &H00FF0000&
       BorderWidth     =   2
-      Height          =   6495
+      Height          =   7215
       Left            =   120
       Top             =   600
       Width           =   9600
@@ -1059,10 +1059,13 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Dim RsTemp4 As New ADODB.Recordset
+Dim Keterangan1 As Integer
+Dim JumlahBayar As Double
+Dim Discount As Double
 
 Private Sub CmbBarang_Click()
-TxtHarga = Val(cmbBarang.Columns(2).Text)
-TxtKirim = Val(cmbBarang.Columns(3).Text)
+TxtHarga = Val(CmbBarang.Columns(2).Text)
+TxtKirim = Val(CmbBarang.Columns(3).Text)
 End Sub
 
 Private Sub CmbBarang_DropDown()
@@ -1072,7 +1075,7 @@ Set RSFind = DbCon.Execute(SQL)
 If RSFind.BOF Then Exit Sub
 AdoBarang.RecordSource = SQL
 AdoBarang.Refresh
-With cmbBarang
+With CmbBarang
     .DataSourceList = AdoBarang
     .DataFieldList = "NamaBarang"
     .Columns(0).Visible = False
@@ -1083,11 +1086,15 @@ End With
 End Sub
 
 Private Sub CmbBarang_GotFocus()
-If Trim(CmbKonsumen) Or Not CmbKonsumen.IsItemInList Then
+If Trim(CmbKonsumen) = "" Or Not CmbKonsumen.IsItemInList Then
     MsgBox "Konsumen Masih Kosong"
     CmbKonsumen.SetFocus
     Exit Sub
-ElseIf TxtTglKirim = Null Then
+ElseIf IsNull(TxtTgl) Then
+    MsgBox "Tgl Transaksi Masih Kosong"
+    TxtTgl.SetFocus
+    Exit Sub
+ElseIf IsNull(TxtTglKirim) Then
     MsgBox "Tgl Kirim Masih Kosong"
     TxtTglKirim.SetFocus
     Exit Sub
@@ -1111,25 +1118,75 @@ End With
 End Sub
 
 Private Sub CmdInput_Click()
-RsTemp2.Find "namaBarang='" & Trim(cmbBarang) & "'", , adSearchForward, 1
-If RsTemp2.EOF Then
-    With RsTemp2
+If Trim(CmbBarang) = "" Or Not CmbBarang.IsItemInList Then
+    MsgBox "Nama Barang Masih Kosong"
+    CmbBarang.SetFocus
+    Exit Sub
+ElseIf TxtJumlah = 0 Then
+    MsgBox "Jumlah Barang masih 0"
+    TxtJumlah.SetFocus
+    Exit Sub
+ElseIf TxtHarga = 0 Then
+    MsgBox "Harga Masih Kosong"
+    TxtHarga.SetFocus
+    Exit Sub
+ElseIf TxtKirim = 0 Then
+    MsgBox "Biaya Kirim Masih 0"
+    TxtKirim.SetFocus
+    Exit Sub
+End If
+
+RsTemp4.Find "namaBarang='" & Trim(CmbBarang) & "'", , adSearchForward, 1
+If RsTemp4.EOF Then
+    With RsTemp4
         .AddNew
-        !NoKet = RsTemp2.RecordCount
-        !namaBarang = Trim(cmbBarang)
-        !KodeBarang = Trim(cmbBarang.Columns(0).Text)
+        !NoKet = RsTemp4.RecordCount
+        !namaBarang = Trim(CmbBarang)
+        !KodeBarang = Trim(CmbBarang.Columns(0).Text)
         !Jumlah = Val(TxtJumlah)
         !HargaGrosir = Val(TxtHarga)
         !BiayaKirim = Val(TxtKirim)
         .Update
     End With
-    Grid.DataSource = RsTemp2
+    Grid.DataSource = RsTemp4
     Grid.Refresh
+    HitungBayar
 Else
     MsgBox "Barang Sudah Diinputkan."
     Exit Sub
 End If
 
+End Sub
+
+Sub HitungBayar()
+Dim Angka As String
+Grid.MoveFirst
+While Not Grid.EOF
+    With Grid
+        JumlahBayar = JumlahBayar + (Val(.Columns(3)) * Val(.Columns(4))) + (Val(.Columns(3)) * Val(.Columns(5)))
+        Grid.MoveNext
+    End With
+Wend
+Label10.Caption = "Jumlah Bayar : Rp. " + Str(JumlahBayar)
+
+If JumlahBayar > 15000000 Then
+    Discount = Fix(JumlahBayar * 20 / 100)
+    Label11.Caption = "Diskon : Rp. " + Str(Discount)
+ElseIf JumlahBayar > 10000000 Then
+    Discount = Fix(JumlahBayar * 15 / 100)
+    Label11.Caption = "Diskon : Rp. " + Str(Discount)
+ElseIf JumlahBayar > 5000000 Then
+    Discount = Fix(JumlahBayar * 10 / 100)
+    Label11.Caption = "Diskon : Rp. " + Str(Discount)
+End If
+End Sub
+
+
+Private Sub CmdSave_Click()
+If RSFind.BOF Then
+    MsgBox "List Barang Masih Kosong"
+    Exit Sub
+End If
 End Sub
 
 Private Sub Form_Load()
@@ -1152,9 +1209,9 @@ End Sub
 
 Sub Bersih()
 CmbKonsumen = ""
-TxtTgl = Date
+TxtTgl = Null
 TxtTglKirim = Null
-cmbBarang = ""
+CmbBarang = ""
 TxtJumlah = 0
 TxtHarga = 0
 TxtKirim = 0
@@ -1175,6 +1232,38 @@ Else
     KodeAuto = Format(CInt(Left(RSFind!KodeTransaksi, 7)) + 1, "0000000")
 End If
 End Function
+
+Private Sub Grid_KeyDown(KeyCode As Integer, Shift As Integer)
+If KeyCode = 46 And Not RsTemp4.BOF Then
+    If Keterangan1 = 0 Then
+    MsgBox "Klik Salah Satu Item Di Tabel"
+    Exit Sub
+End If
+RsTemp4.Find "noket='" & Keterangan1 & "'", , adSearchForward, 1
+If Not RsTemp4.EOF Then
+    MsgBox RsTemp4!NoKet & " Dibatalkan"
+    RsTemp4.Delete
+End If
+    Keterangan1 = Keterangan1 + 1
+    RsTemp4.Find "noket='" & Keterangan1 & "'", , adSearchForward, 1
+    While Not RsTemp4.EOF
+        With RsTemp4
+            .Clone
+            !NoKet = !NoKet - 1
+            .Update
+        End With
+        RsTemp4.MoveNext
+    Wend
+Grid.Refresh
+HitungBayar
+End If
+End Sub
+
+
+
+Private Sub Grid_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
+Keterangan1 = Val(Grid.Columns(0).Text)
+End Sub
 
 Private Sub TxtHarga_GotFocus()
 CmbBarang_GotFocus

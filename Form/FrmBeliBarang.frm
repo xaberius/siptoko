@@ -849,10 +849,10 @@ Begin VB.Form FrmBeliBarang
       EndProperty
       ForeColor       =   &H00C00000&
       Height          =   375
-      Left            =   4800
+      Left            =   3480
       TabIndex        =   23
       Top             =   5760
-      Width           =   4695
+      Width           =   6015
    End
    Begin VB.Line Line1 
       BorderColor     =   &H00FF0000&
@@ -1049,6 +1049,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Dim RsTemp2 As New ADODB.Recordset
 Dim Keterangan1 As Integer
+Dim JumlahBayar As Double
 
 Private Sub CmbBarang_Click()
 TxtHarga = Val(CmbBarang.Columns(2).Text)
@@ -1075,11 +1076,11 @@ If Trim(CmbSupplier) = "" Or Not CmbSupplier.IsItemInList Then
     MsgBox "Supplier Belum Dipilih"
     CmbSupplier.SetFocus
     Exit Sub
-ElseIf TxtTgl = Null Then
+ElseIf IsNull(TxtTgl) Then
     MsgBox "Tanggal Beli Kosong"
     TxtTgl.SetFocus
     Exit Sub
-ElseIf TxtTglKirim = Null Then
+ElseIf IsNull(TxtTglKirim) Then
     MsgBox "Tanggal Kosong Kosong"
     TxtTglKirim.SetFocus
     Exit Sub
@@ -1106,7 +1107,7 @@ Form_Load
 End Sub
 
 Private Sub CmdInput_Click()
-Dim JumlahBayar As Double
+
 If Trim(CmbBarang) = "" Or Not CmbBarang.IsItemInList Then
     MsgBox "Barang Belum Dipilih"
     CmbBarang.SetFocus
