@@ -662,12 +662,24 @@ Private Sub TxtAlamat_KeyDown(KeyCode As Integer, Shift As Integer)
 Enter KeyCode
 End Sub
 
+Private Sub TxtAlamat_KeyPress(KeyAscii As Integer)
+KeyAscii = CekHuruf(KeyAscii)
+End Sub
+
 Private Sub TxtKota_KeyDown(KeyCode As Integer, Shift As Integer)
 Enter KeyCode
 End Sub
 
+Private Sub TxtKota_KeyPress(KeyAscii As Integer)
+KeyAscii = CekHuruf(KeyAscii)
+End Sub
+
 Private Sub TxtNama_KeyDown(KeyCode As Integer, Shift As Integer)
 Enter KeyCode
+End Sub
+
+Private Sub TxtNama_KeyPress(KeyAscii As Integer)
+KeyAscii = CekHuruf(KeyAscii)
 End Sub
 
 Private Sub TxtTelepon_KeyDown(KeyCode As Integer, Shift As Integer)
