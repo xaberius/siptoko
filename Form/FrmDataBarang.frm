@@ -823,6 +823,7 @@ MsgBox "Data Saved"
 Grid.MarqueeStyle = dbgHighlightCell
 Form_Load
 FrmBeliBarang.CmbBarang.Refresh
+FrmJualGrosir.CmbBarang.Refresh
 
    On Error GoTo 0
    Exit Sub
