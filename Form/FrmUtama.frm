@@ -160,6 +160,8 @@ With SmartMenuXP1.MenuItems
 End Sub
 
 
+
+
 Private Sub SmartMenuXP1_Click(ByVal ID As Long)
 With SmartMenuXP1.MenuItems
         Select Case .Key(ID)
@@ -183,6 +185,10 @@ With SmartMenuXP1.MenuItems
             Case "mnuPembelian": CekKonek FrmBeliBarang
             Case "mnuReturBeli": CekKonek FrmReturBeli
             Case "mnuGrosir": CekKonek FrmJualGrosir
+            Case "mnuEceran": CekKonek FrmJualEcer
+            Case "mnuReturJual": CekKonek FrmReturJual
+            Case "mnuMicrosoftPowerPoint": 'TODO : something here
+            Case "mnuMicrosoftPowerPoint": 'TODO : something here
             Case "mnuMicrosoftPowerPoint": 'TODO : something here
             Case "mnuMicrosoftPowerPoint": 'TODO : something here
             

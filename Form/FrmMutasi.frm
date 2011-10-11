@@ -790,7 +790,7 @@ Set RSFind = DbCon.Execute(SQL)
 If RSFind.BOF Then Exit Sub
 Adodc1.RecordSource = SQL
 Adodc1.Refresh
-With cmbBarang
+With CmbBarang
     .DataSourceList = Adodc1
     .DataFieldList = "NamaBarang"
     .Columns(0).Visible = False
@@ -833,9 +833,9 @@ Form_Load
 End Sub
 
 Private Sub CmdInput_Click()
-If Trim(cmbBarang) = "" And Not cmbBarang.IsItemInList Then
+If Trim(CmbBarang) = "" And Not CmbBarang.IsItemInList Then
     MsgBox "Barang Masih Kosong"
-    cmbBarang.SetFocus
+    CmbBarang.SetFocus
     Exit Sub
 ElseIf TxtJumlah = 0 Then
     MsgBox "Jumlah masih Kosong"
@@ -843,14 +843,14 @@ ElseIf TxtJumlah = 0 Then
     Exit Sub
 End If
 
-RsTemp1.Find "namaBarang='" & Trim(cmbBarang) & "'", , adSearchForward, 1
+RsTemp1.Find "namaBarang='" & Trim(CmbBarang) & "'", , adSearchForward, 1
 If RsTemp1.EOF Then
     With RsTemp1
         .AddNew
-        !NoKet = RsTemp1.RecordCount
-        !namaBarang = Trim(cmbBarang)
-        !KodeBarang = Trim(cmbBarang.Columns(0).Text)
-        !Jumlah = Val(TxtJumlah)
+        !Noket = RsTemp1.RecordCount
+        !namaBarang = Trim(CmbBarang)
+        !kodeBarang = Trim(CmbBarang.Columns(0).Text)
+        !jumlah = Val(TxtJumlah)
         .Update
     End With
     Grid.DataSource = RsTemp1
@@ -859,9 +859,9 @@ Else
     MsgBox "Barang Sudah Diinputkan."
     Exit Sub
 End If
-cmbBarang = ""
+CmbBarang = ""
 TxtJumlah = 0
-cmbBarang.SetFocus
+CmbBarang.SetFocus
 End Sub
 
 
@@ -872,8 +872,8 @@ DbCon.Execute SQL
 RsTemp1.MoveFirst
 While Not RsTemp1.EOF
     With RsTemp1
-        SQL = "insert into DtlMutasi values('" & FormatTgl(TxtTgl) & "','" & !NoKet & "','" & _
-            !KodeBarang & "'," & !Jumlah & ")"
+        SQL = "insert into DtlMutasi values('" & FormatTgl(TxtTgl) & "','" & !Noket & "','" & _
+            !kodeBarang & "'," & !jumlah & ")"
         DbCon.Execute SQL
         .MoveNext
     End With
@@ -900,7 +900,7 @@ Sub Bersih()
 TxtTgl = Date
 CmbAsal = ""
 CmbTujuan = ""
-cmbBarang = ""
+CmbBarang = ""
 TxtJumlah = 0
 TxtKet = ""
 End Sub
@@ -917,7 +917,7 @@ If KeyCode = 46 And Not RsTemp1.BOF Then
 End If
 RsTemp1.Find "noket='" & Keterangan1 & "'", , adSearchForward, 1
 If Not RsTemp1.EOF Then
-    MsgBox RsTemp1!NoKet & " Dibatalkan"
+    MsgBox RsTemp1!Noket & " Dibatalkan"
     RsTemp1.Delete
 End If
     Keterangan1 = Keterangan1 + 1
@@ -925,7 +925,7 @@ End If
     While Not RsTemp1.EOF
         With RsTemp1
             .Clone
-            !NoKet = !NoKet - 1
+            !Noket = !Noket - 1
             .Update
         End With
         RsTemp1.MoveNext
@@ -949,6 +949,10 @@ End Sub
 
 Private Sub TxtKet_KeyDown(KeyCode As Integer, Shift As Integer)
 Enter KeyCode
+End Sub
+
+Private Sub TxtKet_KeyPress(KeyAscii As Integer)
+KeyAscii = CekHuruf(KeyAscii)
 End Sub
 
 Private Sub vbButton1_Click()

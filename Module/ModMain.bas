@@ -359,19 +359,19 @@ Optional MataUang As String = "rupiah") As String
    Dim X As Integer, Y As Integer, z As Integer
    On Error GoTo Pesan
    Dim strValid As String, huruf As String * 1
-   Dim i As Integer
+   Dim I As Integer
    'Periksa setiap karakter yg diketikkan ke kotak
    'UserID
    strValid = "1234567890"
-   For i% = 1 To Len(strAngka)
-     huruf = Chr(Asc(Mid(strAngka, i%, 1)))
+   For I% = 1 To Len(strAngka)
+     huruf = Chr(Asc(Mid(strAngka, I%, 1)))
      If InStr(strValid, huruf) = 0 Then
        Set AngkaTerbilang = Nothing
        MsgBox "Harus karakter angka!", _
                "Karakter Tidak Valid", mOKOnly, mCritical, mMedium
        Exit Function
      End If
-   Next i%
+   Next I%
     
    If strAngka = "" Then Exit Function
    If Len(Trim(strAngka)) > 15 Then GoTo Pesan

@@ -659,10 +659,6 @@ Private Sub Timer1_Timer()
 RefreshData
 End Sub
 
-Private Sub TxtAlamat_Change()
-
-End Sub
-
 Private Sub TxtAlamat_KeyDown(KeyCode As Integer, Shift As Integer)
 Enter KeyCode
 End Sub
