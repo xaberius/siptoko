@@ -437,6 +437,26 @@ TxtKwitansi = Trim(FrmBeliBarang.TxtKwitansi)
 TxtKodeBarang = Trim(FrmBeliBarang.KodesBarang)
 End Sub
 
+Private Sub TxtHarga_GotFocus()
+TxtNama_GotFocus
+End Sub
+
+Private Sub TxtHargaLama_GotFocus()
+TxtNama_GotFocus
+End Sub
+
+Private Sub TxtKet_GotFocus()
+TxtNama_GotFocus
+End Sub
+
+Private Sub TxtKet_KeyPress(KeyAscii As Integer)
+KeyAscii = CekHuruf(KeyAscii)
+End Sub
+
+Private Sub TxtKodeBarang_GotFocus()
+TxtNama_GotFocus
+End Sub
+
 Private Sub TxtNama_GotFocus()
 SQL = "Select namaBarang,HargaBeli from barang where kodeBarang='" & Trim(TxtKodeBarang) & "'"
 Set RSFind = DbCon.Execute(SQL)

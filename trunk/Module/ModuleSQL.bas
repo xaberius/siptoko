@@ -14,7 +14,12 @@ TabelBeliBarang 'ok
 TabelDtlBeliBarang 'ok
 TabelReturBeli 'ok
 TabelDtlReturBeli 'ok
-
+TabelJualGrosir 'ok
+TabelDtlJualGrosir 'ok
+TabelJualEcer 'ok
+TabelDtlJualEcer 'ok
+TabelReturJual 'ok
+TabelDtlReturJual 'ok
 End Sub
 
 Sub TabelBarang()
@@ -204,4 +209,76 @@ SQL = SQL + "    [Penerima] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS 
 SQL = SQL + ") ON [PRIMARY]"
 DbCon.Execute SQL
 End Sub
+
+
+Sub TabelDtlJualEcer()
+SQL = "if not exists(select * from dbo.sysobjects where name = 'DtlJualEcer') "
+SQL = SQL + "CREATE TABLE [dbo].[DtlJualEcer] ("
+SQL = SQL + "    [KodeTransaksi] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [TglTransaksi] [datetime] NULL ,"
+SQL = SQL + "    [NoKet] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [KodeBarang] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [Jumlah] [int] NULL ,"
+SQL = SQL + "    [HargaJual] [money] NULL ,"
+SQL = SQL + "    [BiayaKirim] [money] NULL"
+SQL = SQL + ") ON [PRIMARY]"
+End Sub
+
+Sub TabelDtlJualGrosir()
+SQL = "if not exists(select * from dbo.sysobjects where name = 'DtlJualGrosir') "
+SQL = SQL + "CREATE TABLE [dbo].[DtlJualGrosir] ("
+SQL = SQL + "    [KodeTransaksi] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [TglTransaksi] [datetime] NULL ,"
+SQL = SQL + "    [NoKet] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [KodeBarang] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [Jumlah] [int] NULL ,"
+SQL = SQL + "    [HargaJual] [money] NULL ,"
+SQL = SQL + "    [BiayaKirim] [money] NULL"
+SQL = SQL + ") ON [PRIMARY]"
+End Sub
+
+Sub TabelDtlReturJual()
+SQL = "if not exists(select * from dbo.sysobjects where name = 'DtlReturJual') "
+SQL = SQL + "CREATE TABLE [dbo].[DtlReturJual] ("
+SQL = SQL + "    [KodeTransaksi] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [TglTransaksi] [datetime] NULL ,"
+SQL = SQL + "    [NoKet] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [KodeBarang] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [Jumlah] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [Alasan] [varchar] (100) COLLATE SQL_Latin1_General_CP1_CI_AS NULL"
+SQL = SQL + ") ON [PRIMARY]"
+End Sub
+
+Sub TabelJualEcer()
+SQL = "if not exists(select * from dbo.sysobjects where name = 'JualEcer') "
+SQL = SQL + "CREATE TABLE [dbo].[JualEcer] ("
+SQL = SQL + "    [KodeTransaksi] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [TglTransaksi] [datetime] NULL ,"
+SQL = SQL + "    [KodeKonsumen] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [TglKirim] [datetime] NULL ,"
+SQL = SQL + "    [Discount] [money] NULL"
+SQL = SQL + ") ON [PRIMARY]"
+End Sub
+
+Sub TabelJualGrosir()
+SQL = "if not exists(select * from dbo.sysobjects where name = 'JualGrosir') "
+SQL = SQL + "CREATE TABLE [dbo].[JualGrosir] ("
+SQL = SQL + "    [KodeTransaksi] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [TglTransaksi] [datetime] NULL ,"
+SQL = SQL + "    [KodeKonsumen] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [TglKirim] [datetime] NULL ,"
+SQL = SQL + "    [Discount] [money] NULL"
+SQL = SQL + ") ON [PRIMARY]"
+End Sub
+
+Sub TabelReturJual()
+SQL = "if not exists(select * from dbo.sysobjects where name = 'ReturJual') "
+SQL = SQL + "CREATE TABLE [dbo].[ReturJual] ("
+SQL = SQL + "    [KodeTransaksi] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [TglRetur] [datetime] NULL ,"
+SQL = SQL + "    [Penerima] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [Keterangan] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL"
+SQL = SQL + ") ON [PRIMARY]"
+End Sub
+
 
