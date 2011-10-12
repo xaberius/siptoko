@@ -33,6 +33,7 @@ Form=Form\FrmJualGrosir.frm
 Form=Form\FrmPerubahanHarga.frm
 Form=Form\FrmJualEcer.frm
 Form=Form\FrmReturJual.frm
+Form=Form\FrmUser.frm
 IconForm="FrmUtama"
 Startup="Sub Main"
 HelpFile=""

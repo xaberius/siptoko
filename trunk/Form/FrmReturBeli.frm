@@ -911,7 +911,7 @@ Dim Keterangan1 As Integer
 Private Sub CmbBarang_DropDown()
 AdoBarang.RecordSource = ""
 SQL = "SELECT     DtlBeliBarang.KodeBarang, Barang.NamaBarang, DtlBeliBarang.Jumlah, " & _
-    " Barang.NamaBarang + ' - ' + DtlBeliBarang.Jumlah + ' ' + Barang.Satuan AS Pesanan " & _
+    " Barang.NamaBarang + ' - ' + convert(varchar(50),DtlBeliBarang.Jumlah) + ' ' + Barang.Satuan AS Pesanan " & _
     " FROM         Barang INNER JOIN " & _
     " DtlBeliBarang ON Barang.KodeBarang = DtlBeliBarang.KodeBarang where " & _
     " kodeTransaksi='" & Trim(CmbTransaksi) & "'"
@@ -935,7 +935,10 @@ If Trim(CmbTransaksi) = "" Or Not CmbTransaksi.IsItemInList Then
     MsgBox "Transaksi Belum Dipilih"
     CmbTransaksi.SetFocus
     Exit Sub
-
+ElseIf Trim(TxtPenerima) = "" Then
+    MsgBox "Penerima Masih Kosong"
+    TxtPenerima.SetFocus
+    Exit Sub
 End If
 End Sub
 
@@ -1104,6 +1107,14 @@ End Sub
 
 Private Sub Grid_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
 Keterangan1 = Val(Grid.Columns(0).Text)
+End Sub
+
+Private Sub TxtAlasan_GotFocus()
+CmbBarang_GotFocus
+End Sub
+
+Private Sub TxtJumlah_GotFocus()
+CmbBarang_GotFocus
 End Sub
 
 Private Sub vbButton1_Click()

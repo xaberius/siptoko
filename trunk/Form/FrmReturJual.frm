@@ -967,12 +967,17 @@ Dim Keterangan1 As Integer
 Dim Penjualan As String
 
 Private Sub CmbBarang_DropDown()
+Dim Tran As String
+If Option1 Then
 AdoBarang.RecordSource = ""
-SQL = "SELECT     DtlBeliBarang.KodeBarang, Barang.NamaBarang, DtlBeliBarang.Jumlah, " & _
-    " Barang.NamaBarang + ' - ' + DtlBeliBarang.Jumlah + ' ' + Barang.Satuan AS Pesanan " & _
-    " FROM         Barang INNER JOIN " & _
-    " DtlBeliBarang ON Barang.KodeBarang = DtlBeliBarang.KodeBarang where " & _
-    " kodeTransaksi='" & Trim(CmbTransaksi) & "'"
+
+SQL = "SELECT     DtlJualGrosir.KodeBarang, Barang.NamaBarang, DtlJualGrosir.Jumlah, " & _
+        "Barang.NamaBarang + ' - ' + CONVERT(varchar(50), DtlJualGrosir.Jumlah) " & _
+        "+ ' ' + Barang.Satuan AS Pesanan " & _
+        "FROM         Barang INNER JOIN " & _
+        "DtlJualGrosir ON Barang.KodeBarang = DtlJualGrosir.KodeBarang " & _
+        "WHERE     (DtlJualGrosir.KodeTransaksi ='" & Trim(CmbTransaksi) & "')"
+        
 Set RSFind = DbCon.Execute(SQL)
 If RSFind.BOF Then Exit Sub
 AdoBarang.RecordSource = SQL
@@ -985,6 +990,7 @@ With CmbBarang
     .Columns(2).Visible = False
     .Columns(3).Width = 4000
 End With
+End If
 End Sub
 
 
@@ -993,7 +999,10 @@ If Trim(CmbTransaksi) = "" Or Not CmbTransaksi.IsItemInList Then
     MsgBox "Transaksi Belum Dipilih"
     CmbTransaksi.SetFocus
     Exit Sub
-
+ElseIf Trim(TxtPenerima) = "" Then
+    MsgBox "Penerima Masih Kosong"
+    TxtPenerima.SetFocus
+    Exit Sub
 End If
 End Sub
 
@@ -1202,6 +1211,14 @@ TxtSupplier = ""
 TxtTgl = Null
 TxtTglKirim = Null
 Penjualan = "Eceran"
+End Sub
+
+Private Sub TxtAlasan_GotFocus()
+CmbBarang_GotFocus
+End Sub
+
+Private Sub TxtJumlah_GotFocus()
+CmbBarang_GotFocus
 End Sub
 
 Private Sub vbButton1_Click()
