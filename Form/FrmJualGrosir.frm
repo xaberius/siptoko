@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{8B946F6F-F1C6-4F89-A615-115403ACC638}#1.0#0"; "BasTombol.ocx"
 Object = "{49CBFCC0-1337-11D2-9BBF-00A024695830}#1.0#0"; "tinumb6.ocx"
 Object = "{A49CE0E0-C0F9-11D2-B0EA-00A024695830}#1.0#0"; "tidate6.ocx"
@@ -1200,7 +1200,7 @@ End If
 
 With RsTemp4
     SQL = "Insert into JualGrosir values('" & Trim(TxtKwitansi) & "','" & FormatTgl(TxtTgl) & _
-            "','" & Trim(CmbKonsumen) & "','" & FormatTgl(TxtTglKirim) & "'," & Discount & ")"
+            "','" & Trim(CmbKonsumen.Columns(0).Text) & "','" & FormatTgl(TxtTglKirim) & "'," & Discount & ")"
         DbCon.Execute SQL
     .MoveFirst
     

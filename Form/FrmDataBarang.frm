@@ -577,8 +577,8 @@ Begin VB.Form FrmDataBarang
       _StyleDefs(8)   =   ":id=1,.fontname=MS Sans Serif"
       _StyleDefs(9)   =   "CaptionStyle:id=4,.parent=2,.namedParent=37"
       _StyleDefs(10)  =   "HeadingStyle:id=2,.parent=1,.namedParent=34,.bgcolor=&HFFC0C0&,.bold=-1"
-      _StyleDefs(11)  =   ":id=2,.fontsize=1200,.italic=0,.underline=0,.strikethrough=0,.charset=0"
-      _StyleDefs(12)  =   ":id=2,.fontname=Calibri"
+      _StyleDefs(11)  =   ":id=2,.fontsize=825,.italic=0,.underline=0,.strikethrough=0,.charset=0"
+      _StyleDefs(12)  =   ":id=2,.fontname=MS Sans Serif"
       _StyleDefs(13)  =   "FooterStyle:id=3,.parent=1,.namedParent=35,.bold=0,.fontsize=825,.italic=0"
       _StyleDefs(14)  =   ":id=3,.underline=0,.strikethrough=0,.charset=0"
       _StyleDefs(15)  =   ":id=3,.fontname=MS Sans Serif"
@@ -701,6 +701,44 @@ Begin VB.Form FrmDataBarang
       MCOL            =   12632256
       MPTR            =   1
       MICON           =   "FrmDataBarang.frx":0070
+      UMCOL           =   -1  'True
+      SOFT            =   0   'False
+      PICPOS          =   0
+      NGREY           =   0   'False
+      FX              =   0
+      HAND            =   0   'False
+      CHECK           =   0   'False
+      VALUE           =   0   'False
+   End
+   Begin BasTombol.vbButton vbButton3 
+      Height          =   375
+      Left            =   4680
+      TabIndex        =   9
+      Top             =   7440
+      Width           =   1815
+      _ExtentX        =   3201
+      _ExtentY        =   661
+      BTYPE           =   4
+      TX              =   "C&etak Laporan"
+      ENAB            =   -1  'True
+      BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      COLTYPE         =   1
+      FOCUSR          =   -1  'True
+      BCOL            =   14215660
+      BCOLO           =   14215660
+      FCOL            =   0
+      FCOLO           =   0
+      MCOL            =   12632256
+      MPTR            =   1
+      MICON           =   "FrmDataBarang.frx":008C
       UMCOL           =   -1  'True
       SOFT            =   0   'False
       PICPOS          =   0
@@ -989,3 +1027,32 @@ End Sub
 '        Else
 '        End If
 
+Private Sub vbButton3_Click()
+ With Grid.PrintInfo
+
+        ' Set the page header
+
+        .PageHeaderFont.Italic = True
+
+        .PageHeader = "Tabel Barang"
+
+        
+
+        ' Column headers will be on every page
+
+        .RepeatColumnHeaders = True
+
+        
+
+        ' Display page numbers (centered)
+
+        .PageFooter = "\tPage: \p"
+
+        ' Invoke Print Preview
+
+        .PrintPreview
+
+    End With
+
+
+End Sub
