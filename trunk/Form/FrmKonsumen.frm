@@ -387,6 +387,44 @@ Begin VB.Form FrmKonsumen
       CHECK           =   0   'False
       VALUE           =   0   'False
    End
+   Begin BasTombol.vbButton vbButton3 
+      Height          =   375
+      Left            =   6600
+      TabIndex        =   19
+      Top             =   1680
+      Width           =   1215
+      _ExtentX        =   2143
+      _ExtentY        =   661
+      BTYPE           =   4
+      TX              =   "C&etak Laporan"
+      ENAB            =   -1  'True
+      BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      COLTYPE         =   1
+      FOCUSR          =   -1  'True
+      BCOL            =   14215660
+      BCOLO           =   14215660
+      FCOL            =   0
+      FCOLO           =   0
+      MCOL            =   12632256
+      MPTR            =   1
+      MICON           =   "FrmKonsumen.frx":008C
+      UMCOL           =   -1  'True
+      SOFT            =   0   'False
+      PICPOS          =   0
+      NGREY           =   0   'False
+      FX              =   0
+      HAND            =   0   'False
+      CHECK           =   0   'False
+      VALUE           =   0   'False
+   End
    Begin VB.Label Label1 
       BackStyle       =   0  'Transparent
       Caption         =   "Form Data Konsumen"
@@ -717,3 +755,30 @@ End If
 End Function
 
 
+Private Sub vbButton3_Click()
+ With Grid.PrintInfo
+
+        ' Set the page header
+
+        .PageHeaderFont.Italic = True
+
+        .PageHeader = "Tabel Konsumen"
+
+        
+
+        ' Column headers will be on every page
+
+        .RepeatColumnHeaders = True
+
+        
+
+        ' Display page numbers (centered)
+
+        .PageFooter = "\tPage: \p"
+
+        ' Invoke Print Preview
+
+        .PrintPreview
+
+    End With
+End Sub

@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{8B946F6F-F1C6-4F89-A615-115403ACC638}#1.0#0"; "BasTombol.ocx"
 Object = "{49CBFCC0-1337-11D2-9BBF-00A024695830}#1.0#0"; "tinumb6.ocx"
 Object = "{A49CE0E0-C0F9-11D2-B0EA-00A024695830}#1.0#0"; "tidate6.ocx"
@@ -1172,7 +1172,7 @@ If RsTemp2.RecordCount = 0 Then
 End If
 
 SQL = "insert into BeliBarang values('" & Trim(TxtKwitansi) & "','" & FormatTgl(TxtTgl) & "','" & _
-    Trim(CmbSupplier) & "','" & FormatTgl(TxtTglKirim) & "')"
+    Trim(CmbSupplier.Columns(0).Text) & "','" & FormatTgl(TxtTglKirim) & "')"
 DbCon.Execute SQL
 
 RsTemp2.MoveFirst
@@ -1205,6 +1205,9 @@ FrmReturBeli.CmbTransaksi.Refresh
 End Sub
 
 Private Sub Form_Load()
+
+
+
 If RsTemp2.State Then RsTemp2.Close
 AdoBarang.ConnectionString = ConDB
 AdoSupplier.ConnectionString = ConDB

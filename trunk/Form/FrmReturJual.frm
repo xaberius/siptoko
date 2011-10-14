@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{8B946F6F-F1C6-4F89-A615-115403ACC638}#1.0#0"; "BasTombol.ocx"
 Object = "{49CBFCC0-1337-11D2-9BBF-00A024695830}#1.0#0"; "tinumb6.ocx"
 Object = "{A49CE0E0-C0F9-11D2-B0EA-00A024695830}#1.0#0"; "tidate6.ocx"
@@ -205,82 +205,6 @@ Begin VB.Form FrmReturJual
       Value           =   1.181123214261E-317
       CenturyMode     =   0
    End
-   Begin BasTombol.vbButton vbButton1 
-      Height          =   375
-      Left            =   7200
-      TabIndex        =   14
-      Top             =   120
-      Width           =   375
-      _ExtentX        =   661
-      _ExtentY        =   661
-      BTYPE           =   3
-      TX              =   "-"
-      ENAB            =   -1  'True
-      BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
-         Size            =   18
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      COLTYPE         =   2
-      FOCUSR          =   -1  'True
-      BCOL            =   16744576
-      BCOLO           =   16744576
-      FCOL            =   16777215
-      FCOLO           =   16777215
-      MCOL            =   12632256
-      MPTR            =   1
-      MICON           =   "FrmReturJual.frx":023C
-      UMCOL           =   -1  'True
-      SOFT            =   0   'False
-      PICPOS          =   0
-      NGREY           =   0   'False
-      FX              =   0
-      HAND            =   0   'False
-      CHECK           =   0   'False
-      VALUE           =   0   'False
-   End
-   Begin BasTombol.vbButton vbButton2 
-      Height          =   375
-      Left            =   7680
-      TabIndex        =   15
-      Top             =   120
-      Width           =   375
-      _ExtentX        =   661
-      _ExtentY        =   661
-      BTYPE           =   3
-      TX              =   "X"
-      ENAB            =   -1  'True
-      BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
-         Size            =   13.5
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      COLTYPE         =   2
-      FOCUSR          =   -1  'True
-      BCOL            =   16744576
-      BCOLO           =   16744576
-      FCOL            =   16777215
-      FCOLO           =   16777215
-      MCOL            =   12632256
-      MPTR            =   1
-      MICON           =   "FrmReturJual.frx":0258
-      UMCOL           =   -1  'True
-      SOFT            =   0   'False
-      PICPOS          =   0
-      NGREY           =   0   'False
-      FX              =   0
-      HAND            =   0   'False
-      CHECK           =   0   'False
-      VALUE           =   0   'False
-   End
    Begin BasTombol.vbButton CmdCancel 
       Height          =   375
       Left            =   1680
@@ -309,7 +233,7 @@ Begin VB.Form FrmReturJual
       FCOLO           =   0
       MCOL            =   12632256
       MPTR            =   1
-      MICON           =   "FrmReturJual.frx":0274
+      MICON           =   "FrmReturJual.frx":023C
       UMCOL           =   -1  'True
       SOFT            =   0   'False
       PICPOS          =   0
@@ -347,7 +271,7 @@ Begin VB.Form FrmReturJual
       FCOLO           =   0
       MCOL            =   12632256
       MPTR            =   1
-      MICON           =   "FrmReturJual.frx":0290
+      MICON           =   "FrmReturJual.frx":0258
       UMCOL           =   -1  'True
       SOFT            =   0   'False
       PICPOS          =   0
@@ -385,7 +309,7 @@ Begin VB.Form FrmReturJual
       FCOLO           =   0
       MCOL            =   12632256
       MPTR            =   1
-      MICON           =   "FrmReturJual.frx":02AC
+      MICON           =   "FrmReturJual.frx":0274
       UMCOL           =   -1  'True
       SOFT            =   0   'False
       PICPOS          =   0
@@ -577,8 +501,8 @@ Begin VB.Form FrmReturJual
       _Version        =   65536
       _ExtentX        =   2778
       _ExtentY        =   582
-      Calendar        =   "FrmReturJual.frx":02C8
-      Caption         =   "FrmReturJual.frx":03F4
+      Calendar        =   "FrmReturJual.frx":0290
+      Caption         =   "FrmReturJual.frx":03BC
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -588,9 +512,9 @@ Begin VB.Form FrmReturJual
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      DropDown        =   "FrmReturJual.frx":0460
-      Keys            =   "FrmReturJual.frx":047E
-      Spin            =   "FrmReturJual.frx":04DC
+      DropDown        =   "FrmReturJual.frx":0428
+      Keys            =   "FrmReturJual.frx":0446
+      Spin            =   "FrmReturJual.frx":04A4
       AlignHorizontal =   0
       AlignVertical   =   0
       Appearance      =   0
@@ -701,8 +625,8 @@ Begin VB.Form FrmReturJual
       _Version        =   65536
       _ExtentX        =   1720
       _ExtentY        =   582
-      Calculator      =   "FrmReturJual.frx":0504
-      Caption         =   "FrmReturJual.frx":0524
+      Calculator      =   "FrmReturJual.frx":04CC
+      Caption         =   "FrmReturJual.frx":04EC
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -712,9 +636,9 @@ Begin VB.Form FrmReturJual
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      DropDown        =   "FrmReturJual.frx":0590
-      Keys            =   "FrmReturJual.frx":05AE
-      Spin            =   "FrmReturJual.frx":05F8
+      DropDown        =   "FrmReturJual.frx":0558
+      Keys            =   "FrmReturJual.frx":0576
+      Spin            =   "FrmReturJual.frx":05C0
       AlignHorizontal =   1
       AlignVertical   =   0
       Appearance      =   0
@@ -765,7 +689,7 @@ Begin VB.Form FrmReturJual
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   360
-      TabIndex        =   25
+      TabIndex        =   23
       Top             =   720
       Width           =   1695
    End
@@ -784,7 +708,7 @@ Begin VB.Form FrmReturJual
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   360
-      TabIndex        =   24
+      TabIndex        =   22
       Top             =   1320
       Width           =   1575
    End
@@ -811,7 +735,7 @@ Begin VB.Form FrmReturJual
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   840
-      TabIndex        =   23
+      TabIndex        =   21
       Top             =   2880
       Width           =   1575
    End
@@ -830,7 +754,7 @@ Begin VB.Form FrmReturJual
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   4560
-      TabIndex        =   22
+      TabIndex        =   20
       Top             =   1680
       Width           =   1695
    End
@@ -849,17 +773,9 @@ Begin VB.Form FrmReturJual
       ForeColor       =   &H8000000D&
       Height          =   495
       Left            =   240
-      TabIndex        =   21
+      TabIndex        =   19
       Top             =   120
       Width           =   3255
-   End
-   Begin VB.Shape Shape1 
-      BorderColor     =   &H00FF0000&
-      BorderWidth     =   2
-      Height          =   6975
-      Left            =   120
-      Top             =   600
-      Width           =   8040
    End
    Begin VB.Label Label2 
       BackStyle       =   0  'Transparent
@@ -876,7 +792,7 @@ Begin VB.Form FrmReturJual
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   4560
-      TabIndex        =   20
+      TabIndex        =   18
       Top             =   1320
       Width           =   1695
    End
@@ -895,7 +811,7 @@ Begin VB.Form FrmReturJual
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   360
-      TabIndex        =   19
+      TabIndex        =   17
       Top             =   1680
       Width           =   1575
    End
@@ -914,7 +830,7 @@ Begin VB.Form FrmReturJual
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   840
-      TabIndex        =   18
+      TabIndex        =   16
       Top             =   3240
       Width           =   1575
    End
@@ -933,7 +849,7 @@ Begin VB.Form FrmReturJual
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   840
-      TabIndex        =   17
+      TabIndex        =   15
       Top             =   3600
       Width           =   2055
    End
@@ -952,7 +868,7 @@ Begin VB.Form FrmReturJual
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   360
-      TabIndex        =   16
+      TabIndex        =   14
       Top             =   2040
       Width           =   1575
    End
