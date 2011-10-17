@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{8B946F6F-F1C6-4F89-A615-115403ACC638}#1.0#0"; "BasTombol.ocx"
 Object = "{DEF7CADD-83C0-11D0-A0F1-00A024703500}#7.0#0"; "todg7.ocx"
 Begin VB.Form FrmDataBarang 
@@ -22,6 +22,7 @@ Begin VB.Form FrmDataBarang
       Top             =   3240
    End
    Begin VB.TextBox TxtCari 
+      Appearance      =   0  'Flat
       Height          =   330
       Left            =   7680
       TabIndex        =   3

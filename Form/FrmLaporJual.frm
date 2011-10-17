@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{C4847593-972C-11D0-9567-00A0C9273C2A}#8.0#0"; "crviewer.dll"
-Begin VB.Form FrmLaporBeli 
-   Caption         =   "Laporan Pembelian"
+Begin VB.Form FrmLaporJual 
+   Caption         =   "Laporan Penjualan"
    ClientHeight    =   3090
    ClientLeft      =   60
    ClientTop       =   450
@@ -10,26 +10,6 @@ Begin VB.Form FrmLaporBeli
    ScaleHeight     =   3090
    ScaleWidth      =   4680
    StartUpPosition =   3  'Windows Default
-   Begin VB.CommandButton CmdSetting 
-      BackColor       =   &H0080FFFF&
-      Caption         =   "&Setting Printer"
-      BeginProperty Font 
-         Name            =   "Verdana"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   330
-      Left            =   0
-      MaskColor       =   &H00FFFFFF&
-      Style           =   1  'Graphical
-      TabIndex        =   2
-      Top             =   0
-      Width           =   1785
-   End
    Begin VB.CommandButton CmdKeluar 
       BackColor       =   &H0080FFFF&
       Cancel          =   -1  'True
@@ -47,9 +27,29 @@ Begin VB.Form FrmLaporBeli
       Left            =   1875
       MaskColor       =   &H00FFFFFF&
       Style           =   1  'Graphical
-      TabIndex        =   1
+      TabIndex        =   2
       Top             =   0
       Width           =   1185
+   End
+   Begin VB.CommandButton CmdSetting 
+      BackColor       =   &H0080FFFF&
+      Caption         =   "&Setting Printer"
+      BeginProperty Font 
+         Name            =   "Verdana"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   330
+      Left            =   0
+      MaskColor       =   &H00FFFFFF&
+      Style           =   1  'Graphical
+      TabIndex        =   1
+      Top             =   0
+      Width           =   1785
    End
    Begin CRVIEWERLibCtl.CRViewer CRViewer1 
       Height          =   7000
@@ -82,7 +82,7 @@ Begin VB.Form FrmLaporBeli
       EnableHelpButton=   0   'False
    End
 End
-Attribute VB_Name = "FrmLaporBeli"
+Attribute VB_Name = "FrmLaporJual"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
@@ -100,13 +100,27 @@ End Sub
 'bengkel as c, department as d, dealer as e ,mstpemakai as f
 Private Sub Form_Load()
 'a.no_urut,a.tgl_urut,a.no_mesin,a.no_rangka,a.no_polisi,a.cabang,a.pemakai,a.department,a.bengkel
-ssql = "SELECT     * FROM Barang INNER JOIN DtlBeliBarang ON Barang.KodeBarang = DtlBeliBarang.KodeBarang INNER JOIN BeliBarang INNER JOIN " & _
-        "Supplier ON BeliBarang.KodeSupplier = Supplier.KodeSupplier ON " & _
-        "DtlBeliBarang.KodeTransaksi = BeliBarang.KodeTransaksi " & _
-        "where belibarang.kodeTransaksi='" & Trim(FrmLapBeli.Grid.Columns(0).Text) & _
-        "' order by belibarang.kodeTransaksi "
+If FrmLapJual.TxtLapor = "grosir" Then
+    ssql = "SELECT     * FROM         DtlJualGrosir INNER JOIN " & _
+        "Barang ON DtlJualGrosir.KodeBarang = Barang.KodeBarang INNER JOIN " & _
+        "JualGrosir ON DtlJualGrosir.KodeTransaksi = JualGrosir.KodeTransaksi INNER JOIN " & _
+        "Konsumen ON JualGrosir.KodeKonsumen = Konsumen.KodeKonsumen " & _
+        "where JualGrosir.kodeTransaksi='" & Trim(FrmLapJual.Grid.Columns(0).Text) & _
+        "' order by JualGrosir.kodeTransaksi "
+    
+    Set Report = New ReportJual
+ElseIf FrmLapJual.TxtLapor = "ecer" Then
+    ssql = "SELECT     * FROM         DtlJualecer INNER JOIN " & _
+        "Barang ON DtlJualecer.KodeBarang = Barang.KodeBarang INNER JOIN " & _
+        "Jualecer ON DtlJualecer.KodeTransaksi = Jualecer.KodeTransaksi INNER JOIN " & _
+        "Konsumen ON Jualecer.KodeKonsumen = Konsumen.KodeKonsumen " & _
+        "where JualEcer.kodeTransaksi='" & Trim(FrmLapJual.Grid.Columns(0).Text) & _
+        "' order by JualEcer.kodeTransaksi "
+    
+    Set Report = New ReportJual2
+End If
+
 Set oRS = DbCon.Execute(ssql)
-Set Report = New ReportBeli
 Report.Database.SetDataSource oRS
 CRViewer1.ReportSource = Report
 Screen.MousePointer = vbHourglass
@@ -128,5 +142,7 @@ CRViewer1.Height = ScaleHeight
 CRViewer1.Width = ScaleWidth
 
 End Sub
+
+
 
 
