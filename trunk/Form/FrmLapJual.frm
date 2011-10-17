@@ -1,23 +1,32 @@
 VERSION 5.00
 Object = "{8B946F6F-F1C6-4F89-A615-115403ACC638}#1.0#0"; "BasTombol.ocx"
 Object = "{DEF7CADD-83C0-11D0-A0F1-00A024703500}#7.0#0"; "todg7.ocx"
-Begin VB.Form FrmLapBeli 
+Begin VB.Form FrmLapJual 
    BackColor       =   &H00FFC0C0&
    BorderStyle     =   0  'None
    Caption         =   "Form2"
-   ClientHeight    =   7185
+   ClientHeight    =   7065
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   8310
+   ClientWidth     =   8280
    LinkTopic       =   "Form2"
-   ScaleHeight     =   7185
-   ScaleWidth      =   8310
+   ScaleHeight     =   7065
+   ScaleWidth      =   8280
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
+   Begin VB.TextBox TxtLapor 
+      Appearance      =   0  'Flat
+      Height          =   330
+      Left            =   6840
+      TabIndex        =   9
+      Top             =   3120
+      Visible         =   0   'False
+      Width           =   975
+   End
    Begin BasTombol.vbButton vbButton3 
       Height          =   495
-      Left            =   240
-      TabIndex        =   6
+      Left            =   6240
+      TabIndex        =   0
       Top             =   6120
       Width           =   1695
       _ExtentX        =   2990
@@ -42,7 +51,7 @@ Begin VB.Form FrmLapBeli
       FCOLO           =   0
       MCOL            =   12632256
       MPTR            =   1
-      MICON           =   "FrmLapBeli.frx":0000
+      MICON           =   "FrmLapJual.frx":0000
       UMCOL           =   -1  'True
       SOFT            =   0   'False
       PICPOS          =   0
@@ -55,7 +64,7 @@ Begin VB.Form FrmLapBeli
    Begin TrueOleDBGrid70.TDBGrid Grid2 
       Height          =   2055
       Left            =   360
-      TabIndex        =   0
+      TabIndex        =   1
       ToolTipText     =   "Untuk Delete Data Tekan Tombol Delete Pada Keyboard"
       Top             =   3720
       Width           =   7560
@@ -209,7 +218,7 @@ Begin VB.Form FrmLapBeli
       FCOLO           =   16777215
       MCOL            =   12632256
       MPTR            =   1
-      MICON           =   "FrmLapBeli.frx":001C
+      MICON           =   "FrmLapJual.frx":001C
       UMCOL           =   -1  'True
       SOFT            =   0   'False
       PICPOS          =   0
@@ -247,7 +256,7 @@ Begin VB.Form FrmLapBeli
       FCOLO           =   16777215
       MCOL            =   12632256
       MPTR            =   1
-      MICON           =   "FrmLapBeli.frx":0038
+      MICON           =   "FrmLapJual.frx":0038
       UMCOL           =   -1  'True
       SOFT            =   0   'False
       PICPOS          =   0
@@ -260,7 +269,7 @@ Begin VB.Form FrmLapBeli
    Begin TrueOleDBGrid70.TDBGrid Grid 
       Height          =   2055
       Left            =   360
-      TabIndex        =   5
+      TabIndex        =   4
       ToolTipText     =   "Untuk Delete Data Tekan Tombol Delete Pada Keyboard"
       Top             =   840
       Width           =   7560
@@ -386,36 +395,85 @@ Begin VB.Form FrmLapBeli
       _StyleDefs(63)  =   "Named:id=42:FilterBar"
       _StyleDefs(64)  =   ":id=42,.parent=33"
    End
-   Begin VB.Label Label2 
-      BackStyle       =   0  'Transparent
-      Caption         =   "Detail Pembelian"
-      BeginProperty Font 
-         Name            =   "Calibri"
-         Size            =   11.25
+   Begin BasTombol.vbButton vbButton4 
+      Height          =   495
+      Left            =   360
+      TabIndex        =   7
+      Top             =   6120
+      Width           =   855
+      _ExtentX        =   1508
+      _ExtentY        =   873
+      BTYPE           =   4
+      TX              =   "&Grosir"
+      ENAB            =   -1  'True
+      BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H00C00000&
-      Height          =   375
-      Left            =   360
-      TabIndex        =   4
-      Top             =   3240
-      Width           =   1815
+      COLTYPE         =   1
+      FOCUSR          =   -1  'True
+      BCOL            =   14215660
+      BCOLO           =   14215660
+      FCOL            =   0
+      FCOLO           =   0
+      MCOL            =   12632256
+      MPTR            =   1
+      MICON           =   "FrmLapJual.frx":0054
+      UMCOL           =   -1  'True
+      SOFT            =   0   'False
+      PICPOS          =   0
+      NGREY           =   0   'False
+      FX              =   0
+      HAND            =   0   'False
+      CHECK           =   0   'False
+      VALUE           =   0   'False
    End
-   Begin VB.Shape Shape1 
-      BorderColor     =   &H00FF0000&
-      BorderWidth     =   2
-      Height          =   6375
-      Left            =   120
-      Top             =   600
-      Width           =   8040
+   Begin BasTombol.vbButton vbButton5 
+      Height          =   495
+      Left            =   1320
+      TabIndex        =   8
+      Top             =   6120
+      Width           =   855
+      _ExtentX        =   1508
+      _ExtentY        =   873
+      BTYPE           =   4
+      TX              =   "&Eceran"
+      ENAB            =   -1  'True
+      BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      COLTYPE         =   1
+      FOCUSR          =   -1  'True
+      BCOL            =   14215660
+      BCOLO           =   14215660
+      FCOL            =   0
+      FCOLO           =   0
+      MCOL            =   12632256
+      MPTR            =   1
+      MICON           =   "FrmLapJual.frx":0070
+      UMCOL           =   -1  'True
+      SOFT            =   0   'False
+      PICPOS          =   0
+      NGREY           =   0   'False
+      FX              =   0
+      HAND            =   0   'False
+      CHECK           =   0   'False
+      VALUE           =   0   'False
    End
    Begin VB.Label Label1 
       BackStyle       =   0  'Transparent
-      Caption         =   "Form Laporan Pembelian"
+      Caption         =   "Form Laporan Penjualan"
       BeginProperty Font 
          Name            =   "Calibri"
          Size            =   15.75
@@ -428,42 +486,85 @@ Begin VB.Form FrmLapBeli
       ForeColor       =   &H8000000D&
       Height          =   495
       Left            =   120
-      TabIndex        =   1
+      TabIndex        =   6
       Top             =   120
       Width           =   3255
    End
+   Begin VB.Shape Shape1 
+      BorderColor     =   &H00FF0000&
+      BorderWidth     =   2
+      Height          =   6375
+      Left            =   120
+      Top             =   600
+      Width           =   8040
+   End
+   Begin VB.Label Label2 
+      BackStyle       =   0  'Transparent
+      Caption         =   "Detail Penjualan"
+      BeginProperty Font 
+         Name            =   "Calibri"
+         Size            =   11.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00C00000&
+      Height          =   375
+      Left            =   360
+      TabIndex        =   5
+      Top             =   3240
+      Width           =   1815
+   End
 End
-Attribute VB_Name = "FrmLapBeli"
+Attribute VB_Name = "FrmLapJual"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Dim Edit As Boolean
 Private Sub Form_Load()
 RefreshData
+TxtLapor = "grosir"
 End Sub
 
 Sub RefreshData()
+Edit = True
 Grid.DataSource = Nothing
-SQL = "SELECT     BeliBarang.KodeTransaksi AS [Kode Transaksi], BeliBarang.TglTransaksi AS Tanggal, " & _
-        "Supplier.NamaSupplier AS Supplier, BeliBarang.TglKirim AS [Tanggal Kirim] " & _
-        "FROM         BeliBarang INNER JOIN " & _
-        "Supplier ON BeliBarang.KodeSupplier = Supplier.KodeSupplier " & _
-        "ORDER BY BeliBarang.KodeTransaksi"
+SQL = "SELECT     JualGrosir.KodeTransaksi, JualGrosir.TglTransaksi, Konsumen.NamaKonsumen, " & _
+        "JualGrosir.TglKirim, JualGrosir.Discount " & _
+        "FROM         JualGrosir INNER JOIN " & _
+        "Konsumen ON JualGrosir.KodeKonsumen = Konsumen.KodeKonsumen"
+Set Grid.DataSource = DbCon.Execute(SQL)
+Grid.Refresh
+End Sub
+
+Sub RefreshData2()
+SQL = "SELECT     JualEcer.KodeTransaksi, JualEcer.TglTransaksi, Konsumen.NamaKonsumen, JualEcer.TglKirim " & _
+        "FROM         JualEcer INNER JOIN " & _
+        "Konsumen ON JualEcer.KodeKonsumen = Konsumen.KodeKonsumen"
 Set Grid.DataSource = DbCon.Execute(SQL)
 Grid.Refresh
 End Sub
 
 Private Sub Grid_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
-Dim SQL1 As String
-Grid2.DataSource = Nothing
-SQL1 = "SELECT     DtlBeliBarang.NoKet, Barang.NamaBarang, DtlBeliBarang.Jumlah, " & _
-        "DtlBeliBarang.HargaBeli, DtlBeliBarang.Discount " & _
-        "FROM         BeliBarang INNER JOIN " & _
-        "DtlBeliBarang ON BeliBarang.KodeTransaksi = DtlBeliBarang.KodeTransaksi INNER JOIN " & _
-        "Barang ON DtlBeliBarang.KodeBarang = Barang.KodeBarang where belibarang.kodeTransaksi='" & _
+If Edit Then
+    Grid2.DataSource = Nothing
+    SQL = " SELECT     DtlJualGrosir.NoKet, Barang.NamaBarang, DtlJualGrosir.Jumlah, DtlJualGrosir.HargaJual, " & _
+        "DtlJualGrosir.BiayaKirim FROM         DtlJualGrosir INNER JOIN " & _
+        "Barang ON DtlJualGrosir.KodeBarang = Barang.KodeBarang where dtlJualGrosir.kodeTransaksi='" & _
+        Trim(Grid.Columns(0).Text) & " '"
+    Set Grid2.DataSource = DbCon.Execute(SQL)
+    Grid2.Refresh
+ElseIf Not Edit Then
+    SQL = " SELECT     DtlJualEcer.NoKet, Barang.NamaBarang, DtlJualEcer.Jumlah, DtlJualEcer.HargaJual, " & _
+            "DtlJualEcer.BiayaKirim FROM         Barang INNER JOIN " & _
+            "DtlJualEcer ON Barang.KodeBarang = DtlJualEcer.KodeBarang where dtlJualEcer.kodeTransaksi='" & _
             Trim(Grid.Columns(0).Text) & "'"
-Set Grid2.DataSource = DbCon.Execute(SQL1)
-Grid2.Refresh
+    Set Grid2.DataSource = DbCon.Execute(SQL)
+    Grid2.Refresh
+End If
 End Sub
 
 Private Sub vbButton1_Click()
@@ -475,5 +576,16 @@ Unload Me
 End Sub
 
 Private Sub vbButton3_Click()
-FrmLaporBeli.Show
+FrmLaporJual.Show
+End Sub
+
+
+Private Sub vbButton4_Click()
+RefreshData
+TxtLapor = "grosir"
+End Sub
+
+Private Sub vbButton5_Click()
+RefreshData2
+TxtLapor = "ecer"
 End Sub
