@@ -110,12 +110,12 @@ If FrmLapJual.TxtLapor = "grosir" Then
     
     Set Report = New ReportJual
 ElseIf FrmLapJual.TxtLapor = "ecer" Then
-    ssql = "SELECT     * FROM         DtlJualecer INNER JOIN " & _
-        "Barang ON DtlJualecer.KodeBarang = Barang.KodeBarang INNER JOIN " & _
-        "Jualecer ON DtlJualecer.KodeTransaksi = Jualecer.KodeTransaksi INNER JOIN " & _
-        "Konsumen ON Jualecer.KodeKonsumen = Konsumen.KodeKonsumen " & _
-        "where JualEcer.kodeTransaksi='" & Trim(FrmLapJual.Grid.Columns(0).Text) & _
-        "' order by JualEcer.kodeTransaksi "
+    ssql = "SELECT     * FROM         JualEcer INNER JOIN " & _
+            "Konsumen ON JualEcer.KodeKonsumen = Konsumen.KodeKonsumen INNER JOIN " & _
+            "Barang INNER JOIN DtlJualEcer ON Barang.KodeBarang = DtlJualEcer.KodeBarang ON " & _
+            "JualEcer.KodeTransaksi = DtlJualEcer.KodeTransaksi " & _
+            "where JualEcer.kodeTransaksi='" & Trim(FrmLapJual.Grid.Columns(0).Text) & _
+            "' order by JualEcer.kodeTransaksi "
     
     Set Report = New ReportJual2
 End If
