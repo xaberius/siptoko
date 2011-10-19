@@ -65,7 +65,6 @@ Begin VB.Form FrmLapJual
       Height          =   2055
       Left            =   360
       TabIndex        =   1
-      ToolTipText     =   "Untuk Delete Data Tekan Tombol Delete Pada Keyboard"
       Top             =   3720
       Width           =   7560
       _ExtentX        =   13335
@@ -270,7 +269,6 @@ Begin VB.Form FrmLapJual
       Height          =   2055
       Left            =   360
       TabIndex        =   4
-      ToolTipText     =   "Untuk Delete Data Tekan Tombol Delete Pada Keyboard"
       Top             =   840
       Width           =   7560
       _ExtentX        =   13335
@@ -475,7 +473,6 @@ Begin VB.Form FrmLapJual
       Height          =   4455
       Left            =   8040
       TabIndex        =   10
-      ToolTipText     =   "Untuk Delete Data Tekan Tombol Delete Pada Keyboard"
       Top             =   1320
       Width           =   5400
       _ExtentX        =   9525
@@ -802,9 +799,9 @@ End Sub
 Sub RefreshData3()
 SQL = "select a.namabarang as [Nama Barang], " & _
         "isnull((select sum(b.jumlah) from dtljualgrosir b where a.kodebarang=b.kodebarang " & _
-        "and month(tgltransaksi)=month(getdate())-'" & Angka & "'),0)as [Penjualan Grosir], " & _
+        "and month(tgltransaksi)=month(getdate())-'" & Angka & "' and year(tgltransaksi)=Year(getdate()) ),0)as [Penjualan Grosir], " & _
         "isnull((select sum(c.jumlah) from dtljualecer c where a.kodebarang=c.kodebarang " & _
-        "and month(tgltransaksi)=month(getdate())-'" & Angka & "'),0)as [Penjualan Eceran] " & _
+        "and month(tgltransaksi)=month(getdate())-'" & Angka & "' and year(tgltransaksi)=Year(getdate()) ),0)as [Penjualan Eceran] " & _
         "from barang a"
 Set Grid3.DataSource = DbCon.Execute(SQL)
 Grid3.Refresh

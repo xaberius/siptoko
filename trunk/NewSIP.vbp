@@ -47,6 +47,7 @@ Form=Form\FrmLaporJual.frm
 Designer=Report\ReportJual2.Dsr
 Form=Form\FrmLaporJual2.frm
 Designer=Report\ReportJual.Dsr
+Form=Form\FrmGrafik.frm
 IconForm="FrmUtama"
 Startup="Sub Main"
 HelpFile=""
