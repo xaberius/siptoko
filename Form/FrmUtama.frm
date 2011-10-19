@@ -157,6 +157,7 @@ With SmartMenuXP1.MenuItems
         .Add 0, "mnuLaporan", , "&Laporan   ", getIcon("Laporan")
         .Add "mnuLaporan", "mnuLapBeli", , "Lap Pem&belian", getIcon("Laporan")
         .Add "mnuLaporan", "mnuLapJual", , "Lap Pen&jualan", getIcon("Laporan")
+        .Add "mnuLaporan", "mnuLapJual5", , "&TOP 5 Penjualan", getIcon("Laporan")
         
         .Add 0, "mnuUser", , "&User   ", getIcon("Me")
         .Add 0, "mnuAbout", , "&About   ", getIcon("Me")
@@ -194,8 +195,8 @@ With SmartMenuXP1.MenuItems
             Case "mnuReturJual": CekKonek FrmReturJual
             Case "mnuUser": CekKonek FrmUser
             Case "mnuLapBeli": CekKonek FrmLapBeli
-            Case "mnuLapJual": FrmGrafik.Show  'CekKonek FrmLapJual
-            Case "mnuMicrosoftPowerPoint": 'TODO : something here
+            Case "mnuLapJual": CekKonek FrmLapJual
+            Case "mnuLapJual5": CekKonek FrmGrafik
             Case "mnuMicrosoftPowerPoint": 'TODO : something here
             Case "mnuMicrosoftPowerPoint": 'TODO : something here
             Case "mnuMicrosoftPowerPoint": 'TODO : something here

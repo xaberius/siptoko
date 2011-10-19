@@ -789,14 +789,14 @@ Dim Nama(4) As String
 
 SQL = "SELECT     TOP 5 NamaBarang AS [Nama Barang], ISNULL ((SELECT     SUM(b.jumlah) " & _
         "FROM         dtljualgrosir b WHERE     a.kodebarang = b.kodebarang AND " & _
-        "month(tgltransaksi) = month(getdate())-'" & Angka & "'), 0) AS [Penjualan Grosir], ISNULL ((SELECT     SUM(c.jumlah) " & _
+        "month(tgltransaksi) = month(getdate())-'" & Angka & "' and year(tgltransaksi)=Year(getdate()) ), 0) AS [Penjualan Grosir], ISNULL ((SELECT     SUM(c.jumlah) " & _
         "FROM         dtljualecer c WHERE     a.kodebarang = c.kodebarang AND " & _
-        "month(tgltransaksi) = month(getdate())-'" & Angka & "'), 0) AS [Penjualan Eceran] " & _
+        "month(tgltransaksi) = month(getdate())-'" & Angka & "' and year(tgltransaksi)=Year(getdate()) ), 0) AS [Penjualan Eceran] " & _
         "FROM         Barang a ORDER BY ISNULL ((SELECT     SUM(b.jumlah) " & _
         "FROM         dtljualgrosir b WHERE     a.kodebarang = b.kodebarang AND " & _
-        "month(tgltransaksi) = month(getdate())-'" & Angka & "'), 0) DESC, ISNULL " & _
+        "month(tgltransaksi) = month(getdate())-'" & Angka & "' and year(tgltransaksi)=Year(getdate()) ), 0) DESC, ISNULL " & _
         "((SELECT     SUM(c.jumlah) FROM         dtljualecer c " & _
-        "WHERE     a.kodebarang = c.kodebarang AND month(tgltransaksi) = month(getdate())-'" & Angka & "'), 0) DESC"
+        "WHERE     a.kodebarang = c.kodebarang AND month(tgltransaksi) = month(getdate())-'" & Angka & "' and year(tgltransaksi)=Year(getdate())  ), 0) DESC"
 Set RSFind = DbCon.Execute(SQL)
 
 a = 0

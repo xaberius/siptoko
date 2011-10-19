@@ -17,7 +17,7 @@ Begin VB.Form FrmLapBeli
    Begin BasTombol.vbButton vbButton3 
       Height          =   495
       Left            =   240
-      TabIndex        =   6
+      TabIndex        =   5
       Top             =   6120
       Width           =   1695
       _ExtentX        =   2990
@@ -52,12 +52,87 @@ Begin VB.Form FrmLapBeli
       CHECK           =   0   'False
       VALUE           =   0   'False
    End
-   Begin TrueOleDBGrid70.TDBGrid Grid2 
+   Begin BasTombol.vbButton vbButton1 
+      Height          =   375
+      Left            =   7200
+      TabIndex        =   1
+      Top             =   120
+      Width           =   375
+      _ExtentX        =   661
+      _ExtentY        =   661
+      BTYPE           =   3
+      TX              =   "-"
+      ENAB            =   -1  'True
+      BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   18
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      COLTYPE         =   2
+      FOCUSR          =   -1  'True
+      BCOL            =   16744576
+      BCOLO           =   16744576
+      FCOL            =   16777215
+      FCOLO           =   16777215
+      MCOL            =   12632256
+      MPTR            =   1
+      MICON           =   "FrmLapBeli.frx":001C
+      UMCOL           =   -1  'True
+      SOFT            =   0   'False
+      PICPOS          =   0
+      NGREY           =   0   'False
+      FX              =   0
+      HAND            =   0   'False
+      CHECK           =   0   'False
+      VALUE           =   0   'False
+   End
+   Begin BasTombol.vbButton vbButton2 
+      Height          =   375
+      Left            =   7680
+      TabIndex        =   2
+      Top             =   120
+      Width           =   375
+      _ExtentX        =   661
+      _ExtentY        =   661
+      BTYPE           =   3
+      TX              =   "X"
+      ENAB            =   -1  'True
+      BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   13.5
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      COLTYPE         =   2
+      FOCUSR          =   -1  'True
+      BCOL            =   16744576
+      BCOLO           =   16744576
+      FCOL            =   16777215
+      FCOLO           =   16777215
+      MCOL            =   12632256
+      MPTR            =   1
+      MICON           =   "FrmLapBeli.frx":0038
+      UMCOL           =   -1  'True
+      SOFT            =   0   'False
+      PICPOS          =   0
+      NGREY           =   0   'False
+      FX              =   0
+      HAND            =   0   'False
+      CHECK           =   0   'False
+      VALUE           =   0   'False
+   End
+   Begin TrueOleDBGrid70.TDBGrid Grid 
       Height          =   2055
       Left            =   360
-      TabIndex        =   0
-      ToolTipText     =   "Untuk Delete Data Tekan Tombol Delete Pada Keyboard"
-      Top             =   3720
+      TabIndex        =   4
+      Top             =   840
       Width           =   7560
       _ExtentX        =   13335
       _ExtentY        =   3625
@@ -181,88 +256,11 @@ Begin VB.Form FrmLapBeli
       _StyleDefs(63)  =   "Named:id=42:FilterBar"
       _StyleDefs(64)  =   ":id=42,.parent=33"
    End
-   Begin BasTombol.vbButton vbButton1 
-      Height          =   375
-      Left            =   7200
-      TabIndex        =   2
-      Top             =   120
-      Width           =   375
-      _ExtentX        =   661
-      _ExtentY        =   661
-      BTYPE           =   3
-      TX              =   "-"
-      ENAB            =   -1  'True
-      BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
-         Size            =   18
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      COLTYPE         =   2
-      FOCUSR          =   -1  'True
-      BCOL            =   16744576
-      BCOLO           =   16744576
-      FCOL            =   16777215
-      FCOLO           =   16777215
-      MCOL            =   12632256
-      MPTR            =   1
-      MICON           =   "FrmLapBeli.frx":001C
-      UMCOL           =   -1  'True
-      SOFT            =   0   'False
-      PICPOS          =   0
-      NGREY           =   0   'False
-      FX              =   0
-      HAND            =   0   'False
-      CHECK           =   0   'False
-      VALUE           =   0   'False
-   End
-   Begin BasTombol.vbButton vbButton2 
-      Height          =   375
-      Left            =   7680
-      TabIndex        =   3
-      Top             =   120
-      Width           =   375
-      _ExtentX        =   661
-      _ExtentY        =   661
-      BTYPE           =   3
-      TX              =   "X"
-      ENAB            =   -1  'True
-      BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
-         Size            =   13.5
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      COLTYPE         =   2
-      FOCUSR          =   -1  'True
-      BCOL            =   16744576
-      BCOLO           =   16744576
-      FCOL            =   16777215
-      FCOLO           =   16777215
-      MCOL            =   12632256
-      MPTR            =   1
-      MICON           =   "FrmLapBeli.frx":0038
-      UMCOL           =   -1  'True
-      SOFT            =   0   'False
-      PICPOS          =   0
-      NGREY           =   0   'False
-      FX              =   0
-      HAND            =   0   'False
-      CHECK           =   0   'False
-      VALUE           =   0   'False
-   End
-   Begin TrueOleDBGrid70.TDBGrid Grid 
+   Begin TrueOleDBGrid70.TDBGrid Grid2 
       Height          =   2055
       Left            =   360
-      TabIndex        =   5
-      ToolTipText     =   "Untuk Delete Data Tekan Tombol Delete Pada Keyboard"
-      Top             =   840
+      TabIndex        =   6
+      Top             =   3720
       Width           =   7560
       _ExtentX        =   13335
       _ExtentY        =   3625
@@ -401,7 +399,7 @@ Begin VB.Form FrmLapBeli
       ForeColor       =   &H00C00000&
       Height          =   375
       Left            =   360
-      TabIndex        =   4
+      TabIndex        =   3
       Top             =   3240
       Width           =   1815
    End
@@ -428,7 +426,7 @@ Begin VB.Form FrmLapBeli
       ForeColor       =   &H8000000D&
       Height          =   495
       Left            =   120
-      TabIndex        =   1
+      TabIndex        =   0
       Top             =   120
       Width           =   3255
    End

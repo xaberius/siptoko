@@ -24,7 +24,7 @@ Begin VB.Form FrmSetting
       Height          =   375
       Left            =   2280
       MaxLength       =   15
-      TabIndex        =   3
+      TabIndex        =   0
       Top             =   240
       Width           =   2145
    End
@@ -42,7 +42,7 @@ Begin VB.Form FrmSetting
       Height          =   375
       Left            =   2280
       MaxLength       =   15
-      TabIndex        =   2
+      TabIndex        =   1
       ToolTipText     =   "Tidak Boleh Kosong"
       Top             =   690
       Width           =   2145
@@ -63,7 +63,7 @@ Begin VB.Form FrmSetting
       Left            =   2280
       MaxLength       =   15
       PasswordChar    =   "*"
-      TabIndex        =   1
+      TabIndex        =   2
       Top             =   1140
       Width           =   2145
    End
@@ -71,7 +71,7 @@ Begin VB.Form FrmSetting
       Caption         =   "&SET"
       Height          =   465
       Left            =   2985
-      TabIndex        =   0
+      TabIndex        =   3
       Top             =   1650
       Width           =   1425
    End
