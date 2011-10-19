@@ -82,82 +82,6 @@ Begin VB.Form FrmJenisBarang
       CHECK           =   0   'False
       VALUE           =   0   'False
    End
-   Begin BasTombol.vbButton vbButton1 
-      Height          =   375
-      Left            =   4680
-      TabIndex        =   7
-      Top             =   120
-      Width           =   375
-      _ExtentX        =   661
-      _ExtentY        =   661
-      BTYPE           =   3
-      TX              =   "-"
-      ENAB            =   -1  'True
-      BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
-         Size            =   18
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      COLTYPE         =   2
-      FOCUSR          =   -1  'True
-      BCOL            =   16744576
-      BCOLO           =   16744576
-      FCOL            =   16777215
-      FCOLO           =   16777215
-      MCOL            =   12632256
-      MPTR            =   1
-      MICON           =   "FrmJenisBarang.frx":001C
-      UMCOL           =   -1  'True
-      SOFT            =   0   'False
-      PICPOS          =   0
-      NGREY           =   0   'False
-      FX              =   0
-      HAND            =   0   'False
-      CHECK           =   0   'False
-      VALUE           =   0   'False
-   End
-   Begin BasTombol.vbButton vbButton2 
-      Height          =   375
-      Left            =   5160
-      TabIndex        =   8
-      Top             =   120
-      Width           =   375
-      _ExtentX        =   661
-      _ExtentY        =   661
-      BTYPE           =   3
-      TX              =   "X"
-      ENAB            =   -1  'True
-      BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
-         Size            =   13.5
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      COLTYPE         =   2
-      FOCUSR          =   -1  'True
-      BCOL            =   16744576
-      BCOLO           =   16744576
-      FCOL            =   16777215
-      FCOLO           =   16777215
-      MCOL            =   12632256
-      MPTR            =   1
-      MICON           =   "FrmJenisBarang.frx":0038
-      UMCOL           =   -1  'True
-      SOFT            =   0   'False
-      PICPOS          =   0
-      NGREY           =   0   'False
-      FX              =   0
-      HAND            =   0   'False
-      CHECK           =   0   'False
-      VALUE           =   0   'False
-   End
    Begin BasTombol.vbButton CmdCancel 
       Height          =   375
       Left            =   3960
@@ -186,7 +110,7 @@ Begin VB.Form FrmJenisBarang
       FCOLO           =   0
       MCOL            =   12632256
       MPTR            =   1
-      MICON           =   "FrmJenisBarang.frx":0054
+      MICON           =   "FrmJenisBarang.frx":001C
       UMCOL           =   -1  'True
       SOFT            =   0   'False
       PICPOS          =   0
@@ -353,6 +277,82 @@ Begin VB.Form FrmJenisBarang
       FCOLO           =   0
       MCOL            =   12632256
       MPTR            =   1
+      MICON           =   "FrmJenisBarang.frx":0038
+      UMCOL           =   -1  'True
+      SOFT            =   0   'False
+      PICPOS          =   0
+      NGREY           =   0   'False
+      FX              =   0
+      HAND            =   0   'False
+      CHECK           =   0   'False
+      VALUE           =   0   'False
+   End
+   Begin BasTombol.vbButton vbButton1 
+      Height          =   375
+      Left            =   4680
+      TabIndex        =   11
+      Top             =   120
+      Width           =   375
+      _ExtentX        =   661
+      _ExtentY        =   661
+      BTYPE           =   3
+      TX              =   "-"
+      ENAB            =   -1  'True
+      BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   18
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      COLTYPE         =   2
+      FOCUSR          =   -1  'True
+      BCOL            =   16744576
+      BCOLO           =   16744576
+      FCOL            =   16777215
+      FCOLO           =   16777215
+      MCOL            =   12632256
+      MPTR            =   1
+      MICON           =   "FrmJenisBarang.frx":0054
+      UMCOL           =   -1  'True
+      SOFT            =   0   'False
+      PICPOS          =   0
+      NGREY           =   0   'False
+      FX              =   0
+      HAND            =   0   'False
+      CHECK           =   0   'False
+      VALUE           =   0   'False
+   End
+   Begin BasTombol.vbButton vbButton2 
+      Height          =   375
+      Left            =   5160
+      TabIndex        =   12
+      Top             =   120
+      Width           =   375
+      _ExtentX        =   661
+      _ExtentY        =   661
+      BTYPE           =   3
+      TX              =   "X"
+      ENAB            =   -1  'True
+      BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   13.5
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      COLTYPE         =   2
+      FOCUSR          =   -1  'True
+      BCOL            =   16744576
+      BCOLO           =   16744576
+      FCOL            =   16777215
+      FCOLO           =   16777215
+      MCOL            =   12632256
+      MPTR            =   1
       MICON           =   "FrmJenisBarang.frx":0070
       UMCOL           =   -1  'True
       SOFT            =   0   'False
@@ -362,6 +362,14 @@ Begin VB.Form FrmJenisBarang
       HAND            =   0   'False
       CHECK           =   0   'False
       VALUE           =   0   'False
+   End
+   Begin VB.Shape Shape1 
+      BorderColor     =   &H00FF0000&
+      BorderWidth     =   2
+      Height          =   4815
+      Left            =   120
+      Top             =   720
+      Width           =   5400
    End
    Begin VB.Label Label3 
       BackStyle       =   0  'Transparent
@@ -378,7 +386,7 @@ Begin VB.Form FrmJenisBarang
       ForeColor       =   &H00FF0000&
       Height          =   255
       Left            =   240
-      TabIndex        =   12
+      TabIndex        =   10
       Top             =   4800
       Width           =   1455
    End
@@ -397,7 +405,7 @@ Begin VB.Form FrmJenisBarang
       ForeColor       =   &H00FF0000&
       Height          =   255
       Left            =   360
-      TabIndex        =   11
+      TabIndex        =   9
       Top             =   1320
       Width           =   1095
    End
@@ -416,17 +424,9 @@ Begin VB.Form FrmJenisBarang
       ForeColor       =   &H00FF0000&
       Height          =   255
       Left            =   360
-      TabIndex        =   10
+      TabIndex        =   8
       Top             =   960
       Width           =   1095
-   End
-   Begin VB.Shape Shape1 
-      BorderColor     =   &H00FF0000&
-      BorderWidth     =   2
-      Height          =   4815
-      Left            =   120
-      Top             =   720
-      Width           =   5400
    End
    Begin VB.Label Label1 
       BackStyle       =   0  'Transparent
@@ -443,7 +443,7 @@ Begin VB.Form FrmJenisBarang
       ForeColor       =   &H8000000D&
       Height          =   495
       Left            =   120
-      TabIndex        =   9
+      TabIndex        =   7
       Top             =   120
       Width           =   2415
    End

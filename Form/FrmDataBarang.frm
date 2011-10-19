@@ -32,7 +32,7 @@ Begin VB.Form FrmDataBarang
    Begin TrueOleDBGrid70.TDBDropDown TDBDropDown1 
       Height          =   735
       Left            =   3360
-      TabIndex        =   8
+      TabIndex        =   6
       Top             =   1440
       Width           =   1575
       _ExtentX        =   2778
@@ -201,82 +201,6 @@ Begin VB.Form FrmDataBarang
       CHECK           =   0   'False
       VALUE           =   0   'False
    End
-   Begin BasTombol.vbButton vbButton1 
-      Height          =   375
-      Left            =   12960
-      TabIndex        =   5
-      Top             =   240
-      Width           =   375
-      _ExtentX        =   661
-      _ExtentY        =   661
-      BTYPE           =   3
-      TX              =   "-"
-      ENAB            =   -1  'True
-      BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
-         Size            =   18
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      COLTYPE         =   2
-      FOCUSR          =   -1  'True
-      BCOL            =   16744576
-      BCOLO           =   16744576
-      FCOL            =   16777215
-      FCOLO           =   16777215
-      MCOL            =   12632256
-      MPTR            =   1
-      MICON           =   "FrmDataBarang.frx":001C
-      UMCOL           =   -1  'True
-      SOFT            =   0   'False
-      PICPOS          =   0
-      NGREY           =   0   'False
-      FX              =   0
-      HAND            =   0   'False
-      CHECK           =   0   'False
-      VALUE           =   0   'False
-   End
-   Begin BasTombol.vbButton vbButton2 
-      Height          =   375
-      Left            =   13440
-      TabIndex        =   6
-      Top             =   240
-      Width           =   375
-      _ExtentX        =   661
-      _ExtentY        =   661
-      BTYPE           =   3
-      TX              =   "X"
-      ENAB            =   -1  'True
-      BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "MS Sans Serif"
-         Size            =   13.5
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      COLTYPE         =   2
-      FOCUSR          =   -1  'True
-      BCOL            =   16744576
-      BCOLO           =   16744576
-      FCOL            =   16777215
-      FCOLO           =   16777215
-      MCOL            =   12632256
-      MPTR            =   1
-      MICON           =   "FrmDataBarang.frx":0038
-      UMCOL           =   -1  'True
-      SOFT            =   0   'False
-      PICPOS          =   0
-      NGREY           =   0   'False
-      FX              =   0
-      HAND            =   0   'False
-      CHECK           =   0   'False
-      VALUE           =   0   'False
-   End
    Begin BasTombol.vbButton CmdCancel 
       Height          =   375
       Left            =   1800
@@ -305,7 +229,7 @@ Begin VB.Form FrmDataBarang
       FCOLO           =   0
       MCOL            =   12632256
       MPTR            =   1
-      MICON           =   "FrmDataBarang.frx":0054
+      MICON           =   "FrmDataBarang.frx":001C
       UMCOL           =   -1  'True
       SOFT            =   0   'False
       PICPOS          =   0
@@ -701,7 +625,7 @@ Begin VB.Form FrmDataBarang
       FCOLO           =   0
       MCOL            =   12632256
       MPTR            =   1
-      MICON           =   "FrmDataBarang.frx":0070
+      MICON           =   "FrmDataBarang.frx":0038
       UMCOL           =   -1  'True
       SOFT            =   0   'False
       PICPOS          =   0
@@ -714,7 +638,7 @@ Begin VB.Form FrmDataBarang
    Begin BasTombol.vbButton vbButton3 
       Height          =   375
       Left            =   4680
-      TabIndex        =   9
+      TabIndex        =   7
       Top             =   7440
       Width           =   1815
       _ExtentX        =   3201
@@ -739,6 +663,82 @@ Begin VB.Form FrmDataBarang
       FCOLO           =   0
       MCOL            =   12632256
       MPTR            =   1
+      MICON           =   "FrmDataBarang.frx":0054
+      UMCOL           =   -1  'True
+      SOFT            =   0   'False
+      PICPOS          =   0
+      NGREY           =   0   'False
+      FX              =   0
+      HAND            =   0   'False
+      CHECK           =   0   'False
+      VALUE           =   0   'False
+   End
+   Begin BasTombol.vbButton vbButton1 
+      Height          =   375
+      Left            =   12960
+      TabIndex        =   8
+      Top             =   240
+      Width           =   375
+      _ExtentX        =   661
+      _ExtentY        =   661
+      BTYPE           =   3
+      TX              =   "-"
+      ENAB            =   -1  'True
+      BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   18
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      COLTYPE         =   2
+      FOCUSR          =   -1  'True
+      BCOL            =   16744576
+      BCOLO           =   16744576
+      FCOL            =   16777215
+      FCOLO           =   16777215
+      MCOL            =   12632256
+      MPTR            =   1
+      MICON           =   "FrmDataBarang.frx":0070
+      UMCOL           =   -1  'True
+      SOFT            =   0   'False
+      PICPOS          =   0
+      NGREY           =   0   'False
+      FX              =   0
+      HAND            =   0   'False
+      CHECK           =   0   'False
+      VALUE           =   0   'False
+   End
+   Begin BasTombol.vbButton vbButton2 
+      Height          =   375
+      Left            =   13440
+      TabIndex        =   9
+      Top             =   240
+      Width           =   375
+      _ExtentX        =   661
+      _ExtentY        =   661
+      BTYPE           =   3
+      TX              =   "X"
+      ENAB            =   -1  'True
+      BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   13.5
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      COLTYPE         =   2
+      FOCUSR          =   -1  'True
+      BCOL            =   16744576
+      BCOLO           =   16744576
+      FCOL            =   16777215
+      FCOLO           =   16777215
+      MCOL            =   12632256
+      MPTR            =   1
       MICON           =   "FrmDataBarang.frx":008C
       UMCOL           =   -1  'True
       SOFT            =   0   'False
@@ -748,6 +748,14 @@ Begin VB.Form FrmDataBarang
       HAND            =   0   'False
       CHECK           =   0   'False
       VALUE           =   0   'False
+   End
+   Begin VB.Shape Shape1 
+      BorderColor     =   &H00FF0000&
+      BorderWidth     =   2
+      Height          =   7935
+      Left            =   120
+      Top             =   120
+      Width           =   13800
    End
    Begin VB.Label Label1 
       BackStyle       =   0  'Transparent
@@ -764,17 +772,9 @@ Begin VB.Form FrmDataBarang
       ForeColor       =   &H8000000D&
       Height          =   495
       Left            =   240
-      TabIndex        =   7
+      TabIndex        =   5
       Top             =   240
       Width           =   2415
-   End
-   Begin VB.Shape Shape1 
-      BorderColor     =   &H00FF0000&
-      BorderWidth     =   2
-      Height          =   7935
-      Left            =   120
-      Top             =   120
-      Width           =   13800
    End
 End
 Attribute VB_Name = "FrmDataBarang"
@@ -985,7 +985,7 @@ On Error GoTo vb_error
       RSFind.MoveFirst
       While Not RSFind.EOF
           RsTemp1.AddNew
-          RsTemp1!KodeBarang = RSFind!KodeBarang
+          RsTemp1!kodebarang = RSFind!kodebarang
           RsTemp1!namaBarang = RSFind!namaBarang
           RsTemp1!jenis = RSFind!jenis
           RsTemp1!satuan = RSFind!satuan

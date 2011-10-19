@@ -194,7 +194,7 @@ With SmartMenuXP1.MenuItems
             Case "mnuReturJual": CekKonek FrmReturJual
             Case "mnuUser": CekKonek FrmUser
             Case "mnuLapBeli": CekKonek FrmLapBeli
-            Case "mnuLapJual": CekKonek FrmLapJual
+            Case "mnuLapJual": FrmGrafik.Show  'CekKonek FrmLapJual
             Case "mnuMicrosoftPowerPoint": 'TODO : something here
             Case "mnuMicrosoftPowerPoint": 'TODO : something here
             Case "mnuMicrosoftPowerPoint": 'TODO : something here

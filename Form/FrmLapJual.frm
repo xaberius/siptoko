@@ -678,6 +678,45 @@ Begin VB.Form FrmLapJual
       CHECK           =   0   'False
       VALUE           =   0   'False
    End
+   Begin BasTombol.vbButton vbButton8 
+      Height          =   495
+      Left            =   10080
+      TabIndex        =   14
+      ToolTipText     =   "Bulan Lalu"
+      Top             =   6120
+      Width           =   1215
+      _ExtentX        =   2143
+      _ExtentY        =   873
+      BTYPE           =   4
+      TX              =   "&Bulan Ini"
+      ENAB            =   -1  'True
+      BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      COLTYPE         =   1
+      FOCUSR          =   -1  'True
+      BCOL            =   14215660
+      BCOLO           =   14215660
+      FCOL            =   0
+      FCOLO           =   0
+      MCOL            =   12632256
+      MPTR            =   1
+      MICON           =   "FrmLapJual.frx":00C4
+      UMCOL           =   -1  'True
+      SOFT            =   0   'False
+      PICPOS          =   0
+      NGREY           =   0   'False
+      FX              =   0
+      HAND            =   0   'False
+      CHECK           =   0   'False
+      VALUE           =   0   'False
+   End
    Begin VB.Label Label3 
       BackStyle       =   0  'Transparent
       Caption         =   "Penjualan Bulanan"
@@ -690,12 +729,12 @@ Begin VB.Form FrmLapJual
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
-      ForeColor       =   &H8000000D&
+      ForeColor       =   &H00C00000&
       Height          =   495
       Left            =   8040
       TabIndex        =   11
       Top             =   720
-      Width           =   3255
+      Width           =   5415
    End
    Begin VB.Label Label1 
       BackStyle       =   0  'Transparent
@@ -754,6 +793,7 @@ Dim Angka As Integer
 
 Private Sub Form_Load()
 Angka = 0
+Bulanan
 RefreshData
 RefreshData3
 TxtLapor = "grosir"
@@ -762,9 +802,9 @@ End Sub
 Sub RefreshData3()
 SQL = "select a.namabarang as [Nama Barang], " & _
         "isnull((select sum(b.jumlah) from dtljualgrosir b where a.kodebarang=b.kodebarang " & _
-        "and month(tgltransaksi)=month(getdate())),0)as [Penjualan Grosir], " & _
+        "and month(tgltransaksi)=month(getdate())-'" & Angka & "'),0)as [Penjualan Grosir], " & _
         "isnull((select sum(c.jumlah) from dtljualecer c where a.kodebarang=c.kodebarang " & _
-        "and month(tgltransaksi)=month(getdate())),0)as [Penjualan Eceran] " & _
+        "and month(tgltransaksi)=month(getdate())-'" & Angka & "'),0)as [Penjualan Eceran] " & _
         "from barang a"
 Set Grid3.DataSource = DbCon.Execute(SQL)
 Grid3.Refresh
@@ -782,12 +822,15 @@ Grid.Refresh
 End Sub
 
 Sub RefreshData2()
+Edit = False
 SQL = "SELECT     JualEcer.KodeTransaksi, JualEcer.TglTransaksi, Konsumen.NamaKonsumen, JualEcer.TglKirim " & _
         "FROM         JualEcer INNER JOIN " & _
         "Konsumen ON JualEcer.KodeKonsumen = Konsumen.KodeKonsumen"
 Set Grid.DataSource = DbCon.Execute(SQL)
 Grid.Refresh
 End Sub
+
+
 
 Private Sub Grid_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
 If Edit Then
@@ -799,6 +842,7 @@ If Edit Then
     Set Grid2.DataSource = DbCon.Execute(SQL)
     Grid2.Refresh
 ElseIf Not Edit Then
+    Grid2.DataSource = Nothing
     SQL = " SELECT     DtlJualEcer.NoKet, Barang.NamaBarang, DtlJualEcer.Jumlah, DtlJualEcer.HargaJual, " & _
             "DtlJualEcer.BiayaKirim FROM         Barang INNER JOIN " & _
             "DtlJualEcer ON Barang.KodeBarang = DtlJualEcer.KodeBarang where dtlJualEcer.kodeTransaksi='" & _
@@ -807,6 +851,8 @@ ElseIf Not Edit Then
     Grid2.Refresh
 End If
 End Sub
+
+
 
 Private Sub vbButton1_Click()
 Me.WindowState = vbMinimized
@@ -829,4 +875,48 @@ End Sub
 Private Sub vbButton5_Click()
 RefreshData2
 TxtLapor = "ecer"
+End Sub
+
+Private Sub vbButton6_Click()
+If Angka <= 0 - (12 - Month(Date)) Then
+    Exit Sub
+Else
+    Angka = Angka - 1
+    Bulanan
+    RefreshData3
+End If
+
+End Sub
+
+Private Sub vbButton7_Click()
+If Angka >= Month(Date) - 1 Then
+    Exit Sub
+Else
+    Angka = Angka + 1
+    Bulanan
+    RefreshData3
+End If
+End Sub
+
+Private Sub vbButton8_Click()
+Angka = 0
+RefreshData3
+Bulanan
+End Sub
+
+Sub Bulanan()
+Select Case (Month(Date) - Angka)
+    Case 1:     Label3.Caption = "Penjualan Bulan Januari"
+    Case 2:     Label3.Caption = "Penjualan Bulan Febuari"
+    Case 3:     Label3.Caption = "Penjualan Bulan Maret"
+    Case 4:     Label3.Caption = "Penjualan Bulan April"
+    Case 5:     Label3.Caption = "Penjualan Bulan Mei"
+    Case 6:     Label3.Caption = "Penjualan Bulan Juni"
+    Case 7:     Label3.Caption = "Penjualan Bulan Juli"
+    Case 8:     Label3.Caption = "Penjualan Bulan Agustus"
+    Case 9:     Label3.Caption = "Penjualan Bulan September"
+    Case 10:    Label3.Caption = "Penjualan Bulan Oktober"
+    Case 11:    Label3.Caption = "Penjualan Bulan November"
+    Case 12:    Label3.Caption = "Penjualan Bulan Desember"
+End Select
 End Sub
