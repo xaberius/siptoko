@@ -20,6 +20,7 @@ TabelJualEcer 'ok
 TabelDtlJualEcer 'ok
 TabelReturJual 'ok
 TabelDtlReturJual 'ok
+TabelPerubahanHarga 'ok
 End Sub
 
 Sub TabelBarang()
@@ -281,4 +282,14 @@ SQL = SQL + "    [Keterangan] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_A
 SQL = SQL + ") ON [PRIMARY]"
 End Sub
 
-
+Sub TabelPerubahanHarga()
+SQL = "if not exists(select * from dbo.sysobjects where name = 'PerubahanHarga') "
+SQL = SQL + "CREATE TABLE [dbo].[PerubahanHarga] ("
+SQL = SQL + "    [NoTransaksi] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [KodeBarang] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [TglPerubahan] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,"
+SQL = SQL + "    [HargaLama] [money] NULL ,"
+SQL = SQL + "    [HargaBaru] [money] NULL ,"
+SQL = SQL + "    [Keterangan] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL"
+SQL = SQL + ") ON [PRIMARY]"
+End Sub
