@@ -9,13 +9,13 @@ Begin VB.Form FrmReturJual
    BackColor       =   &H00FFC0C0&
    BorderStyle     =   0  'None
    Caption         =   "Form2"
-   ClientHeight    =   7680
+   ClientHeight    =   9420
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   8265
+   ClientWidth     =   9735
    LinkTopic       =   "Form2"
-   ScaleHeight     =   7680
-   ScaleWidth      =   8265
+   ScaleHeight     =   9420
+   ScaleWidth      =   9735
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
    Begin VB.OptionButton Option2 
@@ -674,6 +674,14 @@ Begin VB.Form FrmReturJual
       MaxValueVT      =   1549533189
       MinValueVT      =   1701707781
    End
+   Begin VB.Shape Shape1 
+      BorderColor     =   &H00FF0000&
+      BorderWidth     =   2
+      Height          =   6375
+      Left            =   120
+      Top             =   600
+      Width           =   8040
+   End
    Begin VB.Label Label10 
       BackStyle       =   0  'Transparent
       Caption         =   "Jenis Penjualan :"
@@ -988,7 +996,7 @@ End If
 SQL = "Select jumlah from dtlbelibarang where kodeTransaksi='" & Trim(CmbTransaksi) & _
     "' and kodebarang='" & Trim(CmbBarang.Columns(0).Text) & "'"
 Set RSFind = DbCon.Execute(SQL)
-If Val(RSFind!Jumlah) < TxtJumlah Then
+If Val(RSFind!jumlah) < TxtJumlah Then
     MsgBox "Jumlah Tidak Sesuai Dengan Pesanan"
     TxtJumlah = 0
     TxtJumlah.SetFocus
@@ -1001,9 +1009,9 @@ If RsTemp6.EOF Then
     With RsTemp6
         .AddNew
         !NoKet = .RecordCount
-        !KodeBarang = Trim(CmbBarang.Columns(0).Text)
+        !kodebarang = Trim(CmbBarang.Columns(0).Text)
         !namaBarang = Trim(CmbBarang.Columns(1).Text)
-        !Jumlah = TxtJumlah
+        !jumlah = TxtJumlah
         !Alasan = Trim(TxtAlasan)
         .Update
         Grid.Refresh
@@ -1037,11 +1045,19 @@ Else
     While Not RsTemp6.EOF
         With RsTemp6
             SQL = "insert into dtlReturJual values('" & Trim(Tran) & "','" & FormatTgl(Date) & "','" & _
-            Trim(!NoKet) & "','" & Trim(!KodeBarang) & "','" & !Jumlah & "','" & !Alasan & "')"
+            Trim(!NoKet) & "','" & Trim(!kodebarang) & "','" & !jumlah & "','" & !Alasan & "')"
             DbCon.Execute SQL
         End With
         RsTemp6.MoveNext
     Wend
+    If Penjualan = "Grosir" Then
+        SQL = "update jualGrosir set retur=1 where kodetransaksi='" & Trim(CmbTransaksi) & "'"
+        DbCon.Execute SQL
+    If Penjualan = "Eceran" Then
+        SQL = "update jualGrosir set retur=1 where kodetransaksi='" & Trim(CmbTransaksi) & "'"
+        DbCon.Execute SQL
+    End If
+    
 End If
 
 MsgBox "Data Saved"

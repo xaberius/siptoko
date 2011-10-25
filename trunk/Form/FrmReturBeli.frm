@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
 Object = "{8B946F6F-F1C6-4F89-A615-115403ACC638}#1.0#0"; "BasTombol.ocx"
 Object = "{49CBFCC0-1337-11D2-9BBF-00A024695830}#1.0#0"; "tinumb6.ocx"
 Object = "{A49CE0E0-C0F9-11D2-B0EA-00A024695830}#1.0#0"; "tidate6.ocx"
@@ -989,7 +989,7 @@ End If
 SQL = "Select jumlah from dtlbelibarang where kodeTransaksi='" & Trim(CmbTransaksi) & _
     "' and kodebarang='" & Trim(CmbBarang.Columns(0).Text) & "'"
 Set RSFind = DbCon.Execute(SQL)
-If Val(RSFind!Jumlah) < TxtJumlah Then
+If Val(RSFind!jumlah) < TxtJumlah Then
     MsgBox "Jumlah Tidak Sesuai Dengan Pesanan"
     TxtJumlah = 0
     TxtJumlah.SetFocus
@@ -1002,9 +1002,9 @@ If RsTemp3.EOF Then
     With RsTemp3
         .AddNew
         !NoKet = .RecordCount
-        !KodeBarang = Trim(CmbBarang.Columns(0).Text)
+        !kodebarang = Trim(CmbBarang.Columns(0).Text)
         !namaBarang = Trim(CmbBarang.Columns(1).Text)
-        !Jumlah = TxtJumlah
+        !jumlah = TxtJumlah
         !Alasan = Trim(TxtAlasan)
         .Update
         Grid.Refresh
@@ -1036,9 +1036,13 @@ Else
     While Not RsTemp3.EOF
         With RsTemp3
             SQL = "insert into dtlReturBeli values('" & Trim(CmbTransaksi) & "','" & FormatTgl(Date) & "','" & _
-            Trim(!NoKet) & "','" & Trim(!KodeBarang) & "','" & !Jumlah & "','" & !Alasan & "')"
+            Trim(!NoKet) & "','" & Trim(!kodebarang) & "','" & !jumlah & "','" & !Alasan & "')"
             DbCon.Execute SQL
         End With
+        
+        SQL = "update belibarang set retur =1"
+        DbCon.Execute SQL
+        
         RsTemp3.MoveNext
     Wend
 End If

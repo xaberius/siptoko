@@ -48,6 +48,7 @@ Designer=Report\ReportJual2.Dsr
 Form=Form\FrmLaporJual2.frm
 Designer=Report\ReportJual.Dsr
 Form=Form\FrmGrafik.frm
+Reference=*\G{3D5C6BF0-69A3-11D0-B393-00A0C9055D8E}#1.0#0#..\Program Files\Common Files\designer\MSDERUN.DLL#Microsoft Data Environment Instance 1.0
 IconForm="FrmUtama"
 Startup="Sub Main"
 HelpFile=""
