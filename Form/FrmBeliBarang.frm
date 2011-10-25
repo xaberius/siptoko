@@ -1132,8 +1132,8 @@ If RsTemp2.EOF Then
         .AddNew
         !NoKet = RsTemp2.RecordCount
         !namaBarang = Trim(CmbBarang)
-        !KodeBarang = Trim(CmbBarang.Columns(0).Text)
-        !Jumlah = Val(TxtJumlah)
+        !kodebarang = Trim(CmbBarang.Columns(0).Text)
+        !jumlah = Val(TxtJumlah)
         !HargaBeli = Val(TxtHarga)
         !BiayaKirim = Val(TxtKirim)
         .Update
@@ -1172,27 +1172,30 @@ If RsTemp2.RecordCount = 0 Then
 End If
 
 SQL = "insert into BeliBarang values('" & Trim(TxtKwitansi) & "','" & FormatTgl(TxtTgl) & "','" & _
-    Trim(CmbSupplier.Columns(0).Text) & "','" & FormatTgl(TxtTglKirim) & "')"
+    Trim(CmbSupplier.Columns(0).Text) & "','" & FormatTgl(TxtTglKirim) & "',0)"
 DbCon.Execute SQL
 
 RsTemp2.MoveFirst
 While Not RsTemp2.EOF
     With RsTemp2
         SQL = "insert into dtlBeliBarang values('" & Trim(TxtKwitansi) & "','" & FormatTgl(TxtTgl) & _
-            "','" & !NoKet & "','" & !KodeBarang & "'," & !Jumlah & "," & !HargaBeli & "," & _
+            "','" & !NoKet & "','" & !kodebarang & "'," & !jumlah & "," & !HargaBeli & "," & _
             !BiayaKirim & ")"
         DbCon.Execute SQL
-        KodesBarang = Trim(RsTemp2!KodeBarang)
-        SQL = "Select HargaBeli from Barang where kodebarang='" & !KodeBarang & "'"
+        KodesBarang = Trim(RsTemp2!kodebarang)
+        SQL = "Select HargaBeli from Barang where kodebarang='" & !kodebarang & "'"
         Set RSFind = DbCon.Execute(SQL)
         If RSFind!HargaBeli <> !HargaBeli Then
             If MsgBox("Harga Beli Tidak Sama." & vbCrLf & "Akan Dirubah?", vbYesNo) = vbYes Then
                 FrmPerubahanHarga.TxtKwitansi = Trim(TxtKwitansi)
-                FrmPerubahanHarga.TxtKodeBarang = !KodeBarang
+                FrmPerubahanHarga.TxtKodeBarang = !kodebarang
                 FrmPerubahanHarga.TxtKet = "Pembelian"
                 FrmPerubahanHarga.Show 1
             End If
         End If
+        
+        SQL = "Update Barang set stock =stock + '" & !jumlah & "' where kodebarang='" & !kodebarang & "'"
+        DbCon.Execute SQL
     End With
     RsTemp2.MoveNext
     KodesBarang = ""
@@ -1205,9 +1208,6 @@ FrmReturBeli.CmbTransaksi.Refresh
 End Sub
 
 Private Sub Form_Load()
-
-
-
 If RsTemp2.State Then RsTemp2.Close
 AdoBarang.ConnectionString = ConDB
 AdoSupplier.ConnectionString = ConDB
@@ -1267,6 +1267,16 @@ End Sub
 
 Private Sub TxtHarga_GotFocus()
 CmbBarang_GotFocus
+End Sub
+
+Private Sub TxtJumlah_Change()
+SQL = "Select stock,stockMax from barang where kodebarang='" & Trim(CmbBarang.Columns(0).Text) & "'"
+Set RSFind = DbCon.Execute(SQL)
+If RSFind!stock + Val(TxtJumlah) > RSFind!stockMax Then
+    MsgBox "Stock Terlalu Banyak."
+    TxtJumlah = RSFind!stockMax - RSFind!stock
+    Exit Sub
+End If
 End Sub
 
 Private Sub TxtJumlah_GotFocus()

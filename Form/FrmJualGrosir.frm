@@ -1064,6 +1064,11 @@ Dim Keterangan1 As Integer
 Dim Discount As Double
 
 Private Sub CmbBarang_Click()
+SQL = "Select stock from barang where kodebarang='" & Trim(CmbBarang.Columns(0).Text) & "'"
+Set RSFind = DbCon.Execute(SQL)
+If RSFind!Stock <= RSFind!StockMin Then
+    MsgBox "Stock tinggal " & RSFind!StockMin & ". Lakukan Pembelian Untuk Barang ini."
+End If
 TxtHarga = Val(CmbBarang.Columns(2).Text)
 TxtKirim = Val(CmbBarang.Columns(3).Text)
 End Sub
@@ -1146,8 +1151,8 @@ If RsTemp4.EOF Then
         .AddNew
         !NoKet = RsTemp4.RecordCount
         !namaBarang = Trim(CmbBarang)
-        !KodeBarang = Trim(CmbBarang.Columns(0).Text)
-        !Jumlah = Val(TxtJumlah)
+        !kodebarang = Trim(CmbBarang.Columns(0).Text)
+        !jumlah = Val(TxtJumlah)
         !HargaGrosir = Val(TxtHarga)
         !BiayaKirim = Val(TxtKirim)
         .Update
@@ -1200,15 +1205,19 @@ End If
 
 With RsTemp4
     SQL = "Insert into JualGrosir values('" & Trim(TxtKwitansi) & "','" & FormatTgl(TxtTgl) & _
-            "','" & Trim(CmbKonsumen.Columns(0).Text) & "','" & FormatTgl(TxtTglKirim) & "'," & Discount & ")"
+            "','" & Trim(CmbKonsumen.Columns(0).Text) & "','" & FormatTgl(TxtTglKirim) & "'," & Discount & ",0)"
         DbCon.Execute SQL
     .MoveFirst
     
     While Not .EOF
         SQL = "insert into DtlJualGrosir values('" & Trim(TxtKwitansi) & "','" & FormatTgl(TxtTgl) & _
-            "','" & !NoKet & "','" & !KodeBarang & "'," & !Jumlah & "," & !HargaGrosir & _
+            "','" & !NoKet & "','" & !kodebarang & "'," & !jumlah & "," & !HargaGrosir & _
             "," & !BiayaKirim & ")"
         DbCon.Execute SQL
+        
+        SQL = "Update Barang set stock =stock - '" & !jumlah & "' where kodebarang='" & !kodebarang & "'"
+        DbCon.Execute SQL
+        
         .MoveNext
     Wend
 End With
@@ -1297,6 +1306,17 @@ End Sub
 
 Private Sub TxtHarga_GotFocus()
 CmbBarang_GotFocus
+End Sub
+
+Private Sub TxtJumlah_Change()
+SQL = "Select stock from barang where kodebarang='" & Trim(CmbBarang.Columns(0).Text) & "'"
+Set RSFind = DbCon.Execute(SQL)
+If RSFind!Stock < Val(TxtJumlah) Then
+    MsgBox "Stock Tidak Mencukupi."
+    TxtJumlah = 0
+    TxtJumlah.SetFocus
+    Exit Sub
+End If
 End Sub
 
 Private Sub TxtJumlah_GotFocus()
