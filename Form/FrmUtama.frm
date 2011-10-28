@@ -165,9 +165,6 @@ With SmartMenuXP1.MenuItems
     
 End Sub
 
-
-
-
 Private Sub SmartMenuXP1_Click(ByVal ID As Long)
 With SmartMenuXP1.MenuItems
         Select Case .Key(ID)

@@ -9,13 +9,13 @@ Begin VB.Form FrmReturJual
    BackColor       =   &H00FFC0C0&
    BorderStyle     =   0  'None
    Caption         =   "Form2"
-   ClientHeight    =   9420
+   ClientHeight    =   7680
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   9735
+   ClientWidth     =   8235
    LinkTopic       =   "Form2"
-   ScaleHeight     =   9420
-   ScaleWidth      =   9735
+   ScaleHeight     =   7680
+   ScaleWidth      =   8235
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
    Begin VB.OptionButton Option2 
@@ -677,10 +677,10 @@ Begin VB.Form FrmReturJual
    Begin VB.Shape Shape1 
       BorderColor     =   &H00FF0000&
       BorderWidth     =   2
-      Height          =   6375
+      Height          =   6975
       Left            =   120
       Top             =   600
-      Width           =   8040
+      Width           =   8025
    End
    Begin VB.Label Label10 
       BackStyle       =   0  'Transparent
