@@ -117,13 +117,13 @@ Public Sub GetLogin()
   'Dim nama As String
   Open FileName For Input As #1
   Do Until EOF(1)
-  Line Input #1, nama
+  Line Input #1, Nama
      a = a + 1
      'nama = Names
      Select Case a
-        Case 1: Log.LogNama = nama
-        Case 2: Log.LogPass = nama
-        Case 3: Log.LogDB = nama
+        Case 1: Log.LogNama = Nama
+        Case 2: Log.LogPass = Nama
+        Case 3: Log.LogDB = Nama
      End Select
      If a = 3 Then Exit Do
   Loop

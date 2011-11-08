@@ -1,8 +1,8 @@
 VERSION 5.00
-Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "MSADODC.OCX"
-Object = "{8B946F6F-F1C6-4F89-A615-115403ACC638}#1.0#0"; "BasTombol.ocx"
 Object = "{49CBFCC0-1337-11D2-9BBF-00A024695830}#1.0#0"; "tinumb6.ocx"
 Object = "{A49CE0E0-C0F9-11D2-B0EA-00A024695830}#1.0#0"; "tidate6.ocx"
+Object = "{67397AA1-7FB1-11D0-B148-00A0C922E820}#6.0#0"; "msadodc.ocx"
+Object = "{8B946F6F-F1C6-4F89-A615-115403ACC638}#1.0#0"; "BasTombol.ocx"
 Object = "{DEF7CADD-83C0-11D0-A0F1-00A024703500}#7.0#0"; "todg7.ocx"
 Object = "{4A4AA691-3E6F-11D2-822F-00104B9E07A1}#3.0#0"; "ssdw3bo.ocx"
 Begin VB.Form FrmReturJual 
@@ -1053,7 +1053,7 @@ Else
     If Penjualan = "Grosir" Then
         SQL = "update jualGrosir set retur=1 where kodetransaksi='" & Trim(CmbTransaksi) & "'"
         DbCon.Execute SQL
-    If Penjualan = "Eceran" Then
+    ElseIf Penjualan = "Eceran" Then
         SQL = "update jualGrosir set retur=1 where kodetransaksi='" & Trim(CmbTransaksi) & "'"
         DbCon.Execute SQL
     End If
