@@ -4,7 +4,7 @@ Most Recent Package=Standard Setup Package 1
 
 [Package|Standard Setup Package 1|Root]
 SubWizProgID=PDWizard.SetupPkgSubWiz
-BuildFolder=C:\Package
+BuildFolder=C:\New SIP
 
 [Package|Standard Setup Package 1|Configure DAO ISAMs]
 Applicable=No
@@ -30,6 +30,8 @@ C:\WINDOWS\system32\SmartMenuXP.ocx=
 C:\WINDOWS\system32\AlphaImageControl.ocx=
 C:\WINDOWS\system32\Str2Bit.dll=
 C:\Program Files\Common Files\System\ado\msado25.tlb=
+C:\WINDOWS\system32\MSDERUN.DLL=
+C:\WINDOWS\system32\msstdfmt.dll=
 
 [Package|Standard Setup Package 1|Out-of-Date Dependency Information]
 C:\WINDOWS\system32\tdbgpp7.dll=
@@ -70,7 +72,6 @@ C:\WINDOWS\system32\tidate6.ocx=Yes
 C:\WINDOWS\system32\todg7.ocx=Yes
 C:\WINDOWS\system32\Todgub7.DLL=Yes
 C:\WINDOWS\system32\tdbgpp7.dll=Yes
-C:\WINDOWS\system32\IGScroll40.ocx=Yes
 C:\WINDOWS\system32\XPControls.ocx=Yes
 C:\WINDOWS\system32\ssdw3bo.ocx=Yes
 C:\WINDOWS\system32\MSDBRPTR.DLL=Yes
@@ -81,6 +82,7 @@ C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
 C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
 C:\WINDOWS\system32\VB6STKIT.DLL=Yes
 C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+C:\WINDOWS\system32\MSDERUN.DLL=Yes
 
 [Package|Standard Setup Package 1|Configure Registry Files]
 Applicable=No
@@ -123,6 +125,7 @@ C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPa
 C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
 C:\WINDOWS\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
 C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+C:\WINDOWS\system32\MSDERUN.DLL=$(WinSysPath)
 
 [Package|Standard Setup Package 1|Configure Shared Files]
 Applicable=Yes
@@ -145,11 +148,11 @@ StartIn1=$(AppPath)
 Key1=Icon1
 
 [Package|Standard Setup Package 1|Package]
-PackageFolder=C:\Package
+PackageFolder=C:\New SIP
 ProjectFolder=C:\New SIP
 ServerSideCab=
-File1=C:\Package\setup.exe
-File2=C:\Package\Setup.Lst
-File3=C:\Package\NewSIP.CAB
+File1=C:\New SIP\setup.exe
+File2=C:\New SIP\Setup.Lst
+File3=C:\New SIP\NewSIP.CAB
 Handler1=PDWizard.FolderDplySubWiz
 Handler2=PDWizard.WebPostDplySubWiz
