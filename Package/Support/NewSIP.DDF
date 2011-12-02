@@ -1,0 +1,47 @@
+.OPTION EXPLICIT
+.Set Cabinet=off
+.Set Compress=off
+.Set MaxDiskSize=CDROM
+.Set ReservePerCabinetSize=6144
+.Set DiskDirectoryTemplate=".."
+.Set CompressionType=MSZIP
+.Set CompressionLevel=7
+.Set CompressionMemory=21
+.Set CabinetNameTemplate="NewSIP.CAB"
+"Setup.Lst"
+"setup.exe"
+.Set Cabinet=on
+.Set Compress=on
+"NewSIP.exe"
+"msvbvm60.dll"
+"oleaut32.dll"
+"olepro32.dll"
+"asycfilt.dll"
+"stdole2.tlb"
+"COMCAT.DLL"
+"msado25.tlb"
+"Str2Bit.dll"
+"tinumb6.ocx"
+"TIShare6.DLL"
+"TIBase6.DLL"
+"titime6.ocx"
+"tidate6.ocx"
+"MSDBRPTR.DLL"
+"msstdfmt.dll"
+"crviewer.dll"
+"craxdrt.dll"
+"craxddrt.dll"
+"MSDERUN.DLL"
+"AlphaImageControl.ocx"
+"SmartMenuXP.ocx"
+"msadodc.ocx"
+"BasKomponen.ocx"
+"BasTombol.ocx"
+"todg7.ocx"
+"Todgub7.DLL"
+"tdbgpp7.dll"
+"XPControls.ocx"
+"ssdw3bo.ocx"
+"SETUP1.EXE"
+"VB6STKIT.DLL"
+"ST6UNST.EXE"
